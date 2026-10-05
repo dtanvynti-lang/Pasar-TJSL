@@ -1,998 +1,1086 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TJSL Petrokimia | Platform UMKM</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<title>TJSL Petrokimia | Platform UMKM</title>
 
 <style>
 :root{
-  --green:#174d36;
-  --green2:#236848;
-  --green3:#dfeee5;
-  --lime:#9acb74;
-  --brown:#7a4b2a;
-  --brown2:#a86f42;
-  --cream:#faf7f1;
-  --cream2:#f3ede3;
-  --white:#ffffff;
-  --dark:#17231d;
-  --muted:#68756e;
-  --line:#e5e5df;
-  --danger:#c94b4b;
-  --shadow:0 12px 40px rgba(23,77,54,.10);
+    --green:#176b45;
+    --green-dark:#0d5134;
+    --green-light:#e9f6ef;
+    --brown:#8b5e3c;
+    --brown-dark:#65432b;
+    --cream:#faf7f0;
+    --white:#ffffff;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --border:#e5e7eb;
+    --danger:#dc2626;
+    --warning:#d97706;
+    --shadow:0 10px 35px rgba(0,0,0,.08);
+    --radius:18px;
 }
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  font-family:"DM Sans",sans-serif;
-  background:var(--cream);
-  color:var(--dark);
-  line-height:1.6;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:var(--cream);
+    color:var(--text);
+    line-height:1.6;
 }
 
-button,input,select{
-  font-family:inherit;
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
 }
 
 button{
-  cursor:pointer;
+    cursor:pointer;
 }
 
 a{
-  text-decoration:none;
-  color:inherit;
+    text-decoration:none;
+    color:inherit;
 }
 
 /* ================= HEADER ================= */
 
-.header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:rgba(250,247,241,.94);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(23,77,54,.08);
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
 }
 
 .navbar{
-  max-width:1250px;
-  margin:auto;
-  height:78px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 25px;
+    max-width:1200px;
+    margin:auto;
+    height:76px;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  font-weight:800;
-  font-size:20px;
-  color:var(--green);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    color:var(--green);
+    font-size:20px;
+    white-space:nowrap;
 }
 
-.logo-mark{
-  width:40px;
-  height:40px;
-  background:var(--green);
-  border-radius:13px 13px 13px 4px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  font-size:20px;
-  box-shadow:0 6px 15px rgba(23,77,54,.2);
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:var(--green);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
 }
 
-.nav-links{
-  display:flex;
-  gap:29px;
-  align-items:center;
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    font-size:14px;
+    font-weight:600;
 }
 
-.nav-links a{
-  font-size:14px;
-  font-weight:600;
-  color:#536158;
-  transition:.2s;
+.nav-menu a{
+    color:#4b5563;
+    transition:.2s;
 }
 
-.nav-links a:hover{
-  color:var(--green);
+.nav-menu a:hover{
+    color:var(--green);
 }
 
 .nav-actions{
-  display:flex;
-  align-items:center;
-  gap:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
-.search-btn{
-  width:42px;
-  height:42px;
-  border:1px solid var(--line);
-  background:white;
-  border-radius:12px;
-  font-size:17px;
+.search-btn,
+.cart-btn{
+    border:1px solid var(--border);
+    background:white;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    font-size:18px;
 }
 
-.btn{
-  border:0;
-  border-radius:12px;
-  padding:12px 18px;
-  font-weight:700;
-  transition:.25s;
+.primary-btn{
+    background:var(--green);
+    color:white;
+    border:none;
+    padding:11px 17px;
+    border-radius:11px;
+    font-weight:700;
 }
 
-.btn:hover{
-  transform:translateY(-2px);
+.primary-btn:hover{
+    background:var(--green-dark);
 }
 
-.btn-green{
-  background:var(--green);
-  color:white;
+.secondary-btn{
+    background:white;
+    color:var(--green);
+    border:1px solid var(--green);
+    padding:10px 17px;
+    border-radius:11px;
+    font-weight:700;
 }
 
-.btn-green:hover{
-  background:#103b29;
-}
-
-.btn-brown{
-  background:var(--brown);
-  color:white;
-}
-
-.btn-outline{
-  background:white;
-  border:1px solid var(--green);
-  color:var(--green);
-}
-
-.btn-light{
-  background:var(--green3);
-  color:var(--green);
-}
-
-.mobile-menu{
-  display:none;
-  font-size:25px;
-  border:0;
-  background:none;
+.secondary-btn:hover{
+    background:var(--green-light);
 }
 
 /* ================= HERO ================= */
 
 .hero{
-  max-width:1250px;
-  margin:0 auto;
-  padding:75px 25px 60px;
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:60px;
-  align-items:center;
+    max-width:1200px;
+    margin:35px auto 0;
+    padding:65px 55px;
+    border-radius:28px;
+    background:
+        radial-gradient(circle at 90% 20%,rgba(23,107,69,.13),transparent 30%),
+        radial-gradient(circle at 10% 90%,rgba(139,94,60,.10),transparent 30%),
+        white;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:50px;
+    align-items:center;
 }
 
 .badge{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:var(--green3);
-  color:var(--green);
-  padding:8px 13px;
-  border-radius:30px;
-  font-size:12px;
-  font-weight:800;
-  margin-bottom:20px;
-}
-
-.badge-dot{
-  width:7px;
-  height:7px;
-  background:#6caf5b;
-  border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:var(--green-light);
+    color:var(--green);
+    padding:7px 12px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:20px;
 }
 
 .hero h1{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(45px,5.3vw,76px);
-  line-height:1.02;
-  letter-spacing:-2px;
-  color:var(--green);
-  margin-bottom:22px;
+    font-size:48px;
+    line-height:1.12;
+    letter-spacing:-1.5px;
+    margin-bottom:20px;
 }
 
 .hero h1 span{
-  color:var(--brown);
+    color:var(--green);
 }
 
 .hero p{
-  font-size:17px;
-  color:var(--muted);
-  max-width:580px;
-  margin-bottom:30px;
+    color:var(--muted);
+    font-size:17px;
+    max-width:650px;
+    margin-bottom:28px;
 }
 
-.hero-buttons{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
+.hero-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
-.hero-image{
-  position:relative;
-  height:520px;
+.hero-card{
+    background:linear-gradient(145deg,#176b45,#0d5134);
+    border-radius:25px;
+    color:white;
+    padding:28px;
+    min-height:310px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow:0 20px 45px rgba(23,107,69,.25);
 }
 
-.hero-main-img{
-  width:82%;
-  height:100%;
-  object-fit:cover;
-  border-radius:30px;
-  margin-left:auto;
-  display:block;
-  box-shadow:var(--shadow);
+.hero-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.floating-card{
-  position:absolute;
-  left:0;
-  bottom:45px;
-  background:white;
-  padding:18px;
-  border-radius:18px;
-  box-shadow:0 15px 45px rgba(0,0,0,.13);
-  width:220px;
+.hero-card-icon{
+    width:55px;
+    height:55px;
+    border-radius:16px;
+    background:rgba(255,255,255,.13);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
 }
 
-.floating-card small{
-  color:var(--muted);
+.hero-card h3{
+    font-size:25px;
+    margin:15px 0 5px;
 }
 
-.floating-card strong{
-  display:block;
-  font-size:24px;
-  color:var(--green);
+.hero-card p{
+    color:rgba(255,255,255,.78);
+    font-size:14px;
 }
 
-.mini-avatars{
-  display:flex;
-  margin-top:10px;
+.mini-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
 }
 
-.mini-avatars span{
-  width:29px;
-  height:29px;
-  border-radius:50%;
-  border:2px solid white;
-  background:var(--brown2);
-  margin-left:-6px;
+.mini-stat{
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:14px;
+    padding:13px;
 }
 
-.mini-avatars span:first-child{
-  margin-left:0;
-  background:var(--green2);
+.mini-stat strong{
+    display:block;
+    font-size:22px;
+}
+
+.mini-stat span{
+    font-size:12px;
+    color:rgba(255,255,255,.7);
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    max-width:1200px;
+    margin:80px auto;
+    padding:0 20px;
+}
+
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.section-heading h2{
+    font-size:30px;
+    letter-spacing:-.5px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    max-width:650px;
 }
 
 /* ================= STATS ================= */
 
 .stats{
-  max-width:1200px;
-  margin:0 auto 75px;
-  padding:0 25px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
 }
 
-.stats-box{
-  background:var(--green);
-  border-radius:24px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  overflow:hidden;
+.stat-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:24px;
+    box-shadow:0 5px 20px rgba(0,0,0,.04);
 }
 
-.stat{
-  padding:27px;
-  color:white;
-  border-right:1px solid rgba(255,255,255,.13);
+.stat-icon{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    background:var(--green-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:14px;
 }
 
-.stat:last-child{
-  border:0;
+.stat-card strong{
+    display:block;
+    font-size:27px;
 }
 
-.stat-number{
-  font-family:"Playfair Display",serif;
-  font-size:33px;
-  font-weight:700;
+.stat-card span{
+    color:var(--muted);
+    font-size:13px;
 }
 
-.stat-label{
-  color:#c9d9d0;
-  font-size:13px;
+/* ================= CATALOG ================= */
+
+.catalog-tools{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
 }
 
-/* ================= GENERAL ================= */
-
-.section{
-  max-width:1250px;
-  margin:auto;
-  padding:80px 25px;
+.search-box{
+    flex:1;
+    min-width:240px;
+    position:relative;
 }
 
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  margin-bottom:35px;
+.search-box input{
+    width:100%;
+    padding:13px 15px 13px 42px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    outline:none;
+    background:white;
 }
 
-.section-title{
-  font-family:"Playfair Display",serif;
-  font-size:42px;
-  line-height:1.1;
-  color:var(--green);
-}
-
-.section-subtitle{
-  color:var(--muted);
-  max-width:550px;
-  margin-top:10px;
-}
-
-.view-all{
-  color:var(--brown);
-  font-weight:800;
-  font-size:14px;
-}
-
-/* ================= PRODUCT ================= */
-
-.product-toolbar{
-  display:flex;
-  gap:12px;
-  margin-bottom:28px;
-  flex-wrap:wrap;
-}
-
-.search-input{
-  flex:1;
-  min-width:220px;
-  padding:13px 16px;
-  border:1px solid var(--line);
-  background:white;
-  border-radius:12px;
-  outline:none;
+.search-box span{
+    position:absolute;
+    left:15px;
+    top:10px;
 }
 
 .filter-select{
-  padding:13px 16px;
-  border:1px solid var(--line);
-  background:white;
-  border-radius:12px;
-  outline:none;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:0 15px;
+    background:white;
+    min-width:170px;
 }
 
-.product-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:22px;
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
 
 .product-card{
-  background:white;
-  border:1px solid #ecebe5;
-  border-radius:20px;
-  overflow:hidden;
-  transition:.3s;
-  position:relative;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    transition:.25s;
+    position:relative;
 }
 
 .product-card:hover{
-  transform:translateY(-5px);
-  box-shadow:var(--shadow);
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
 }
 
-.product-img{
-  height:220px;
-  position:relative;
-  overflow:hidden;
-  background:#eee;
+.product-image{
+    height:205px;
+    background:#f1eee7;
+    position:relative;
+    overflow:hidden;
 }
 
-.product-img img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.5s;
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.product-card:hover .product-img img{
-  transform:scale(1.05);
+.stock-badge{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:white;
+    border-radius:20px;
+    padding:5px 9px;
+    font-size:11px;
+    font-weight:700;
 }
 
-.product-tag{
-  position:absolute;
-  left:12px;
-  top:12px;
-  background:white;
-  color:var(--green);
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:10px;
-  font-weight:800;
+.stock-available{
+    color:var(--green);
 }
 
-.product-body{
-  padding:18px;
+.stock-limited{
+    color:var(--warning);
+}
+
+.stock-empty{
+    color:var(--danger);
+}
+
+.product-content{
+    padding:17px;
 }
 
 .product-category{
-  color:var(--brown);
-  font-size:11px;
-  font-weight:800;
-  text-transform:uppercase;
+    color:var(--green);
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
 }
 
-.product-name{
-  font-weight:800;
-  font-size:17px;
-  margin:5px 0;
+.product-title{
+    font-size:17px;
+    font-weight:800;
+    margin:4px 0;
 }
 
 .product-umkm{
-  font-size:12px;
-  color:var(--muted);
-  margin-bottom:13px;
+    font-size:12px;
+    color:var(--muted);
+    margin-bottom:12px;
 }
 
-.product-bottom{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.product-price{
+    font-size:19px;
+    font-weight:800;
+    color:var(--brown-dark);
 }
 
-.price{
-  font-weight:800;
-  color:var(--green);
-  font-size:17px;
+.product-info{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--muted);
+    margin:7px 0 14px;
 }
 
-.stock{
-  font-size:11px;
-  color:#758078;
+.product-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:7px;
 }
 
-.product-actions{
-  display:flex;
-  gap:8px;
-  margin-top:15px;
+.product-buttons button{
+    padding:9px 6px;
+    border-radius:9px;
+    border:1px solid var(--border);
+    background:white;
+    font-size:11px;
+    font-weight:700;
 }
 
-.product-actions button{
-  flex:1;
-  border:0;
-  padding:10px 7px;
-  border-radius:10px;
-  font-size:11px;
-  font-weight:800;
+.product-buttons .view-btn{
+    color:var(--green);
+    border-color:#cce7d9;
 }
 
-.buy-btn{
-  background:var(--green);
-  color:white;
+.product-buttons .affiliate-btn{
+    background:var(--green);
+    color:white;
+    border-color:var(--green);
 }
 
-.affiliate-btn{
-  background:var(--cream2);
-  color:var(--brown);
-}
-
-/* ================= IMPACT ================= */
-
-.impact-section{
-  background:var(--green);
-  color:white;
-}
-
-.impact-inner{
-  max-width:1250px;
-  margin:auto;
-  padding:85px 25px;
-}
-
-.impact-inner .section-title{
-  color:white;
-}
-
-.impact-inner .section-subtitle{
-  color:#cbd9d2;
-}
-
-.impact-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  margin-top:40px;
-}
-
-.impact-card{
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:20px;
-  padding:28px;
-}
-
-.impact-icon{
-  width:48px;
-  height:48px;
-  background:#dcebdc;
-  color:var(--green);
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  margin-bottom:18px;
-}
-
-.impact-card h3{
-  font-size:28px;
-  font-family:"Playfair Display",serif;
-}
-
-.impact-card p{
-  color:#c5d4cc;
-  font-size:13px;
+.product-buttons button:disabled{
+    opacity:.45;
+    cursor:not-allowed;
 }
 
 /* ================= UMKM ================= */
 
 .umkm-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
 
 .umkm-card{
-  background:white;
-  border:1px solid var(--line);
-  padding:23px;
-  border-radius:20px;
-  display:flex;
-  gap:17px;
-  align-items:flex-start;
-  transition:.25s;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px;
 }
 
-.umkm-card:hover{
-  box-shadow:var(--shadow);
-  transform:translateY(-3px);
+.umkm-head{
+    display:flex;
+    gap:13px;
+    align-items:center;
+    margin-bottom:14px;
 }
 
-.umkm-logo{
-  width:60px;
-  height:60px;
-  min-width:60px;
-  background:var(--green3);
-  color:var(--green);
-  border-radius:17px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:25px;
-  font-weight:800;
+.umkm-avatar{
+    width:55px;
+    height:55px;
+    border-radius:15px;
+    background:var(--green-light);
+    color:var(--green);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    font-size:20px;
 }
 
 .umkm-card h3{
-  font-size:16px;
+    font-size:17px;
+}
+
+.umkm-card small{
+    color:var(--muted);
 }
 
 .umkm-card p{
-  font-size:12px;
-  color:var(--muted);
-  margin:3px 0 10px;
+    color:#6b7280;
+    font-size:13px;
+    margin-bottom:15px;
 }
 
-/* ================= HOW ================= */
-
-.how-section{
-  background:var(--cream2);
+.umkm-meta{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--muted);
 }
 
-.how-grid{
-  max-width:1250px;
-  margin:auto;
-  padding:80px 25px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+/* ================= ABOUT ================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
 }
 
-.how-card{
-  background:white;
-  border-radius:23px;
-  padding:30px;
-  position:relative;
+.about-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:30px;
 }
 
-.step{
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  background:var(--green);
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
-  margin-bottom:20px;
+.about-card h3{
+    margin-bottom:12px;
+    font-size:22px;
 }
 
-.how-card h3{
-  font-size:20px;
-  color:var(--green);
-  margin-bottom:7px;
+.about-card p{
+    color:var(--muted);
 }
 
-.how-card p{
-  color:var(--muted);
-  font-size:14px;
+.feature-list{
+    display:grid;
+    gap:13px;
+    margin-top:20px;
+}
+
+.feature{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+}
+
+.feature-icon{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:var(--green-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+/* ================= IMPACT ================= */
+
+.impact{
+    background:linear-gradient(145deg,#176b45,#0d5134);
+    color:white;
+    border-radius:25px;
+    padding:35px;
+}
+
+.impact h2{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.impact > p{
+    color:rgba(255,255,255,.75);
+}
+
+.impact-grid{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:13px;
+}
+
+.impact-card{
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:15px;
+    padding:20px;
+}
+
+.impact-card strong{
+    display:block;
+    font-size:27px;
+}
+
+.impact-card span{
+    color:rgba(255,255,255,.7);
+    font-size:12px;
 }
 
 /* ================= CTA ================= */
 
 .cta{
-  max-width:1200px;
-  margin:80px auto;
-  padding:55px;
-  background:linear-gradient(120deg,var(--brown),#9a633c);
-  border-radius:30px;
-  color:white;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:30px;
+    background:#f1e8dc;
+    border-radius:25px;
+    padding:45px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
 }
 
 .cta h2{
-  font-family:"Playfair Display",serif;
-  font-size:38px;
+    font-size:28px;
 }
 
 .cta p{
-  color:#f3e6dc;
-  margin-top:8px;
-}
-
-.cta .btn{
-  background:white;
-  color:var(--brown);
-  white-space:nowrap;
+    color:var(--muted);
+    margin-top:5px;
 }
 
 /* ================= FOOTER ================= */
 
 footer{
-  background:#102e22;
-  color:white;
-  padding:55px 25px 25px;
+    background:#10291f;
+    color:white;
+    margin-top:80px;
+    padding:45px 20px 25px;
 }
 
 .footer-inner{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:40px;
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr;
+    gap:35px;
 }
 
-.footer-logo{
-  font-size:21px;
-  font-weight:800;
+.footer-brand p{
+    color:rgba(255,255,255,.65);
+    margin-top:10px;
+    max-width:430px;
+    font-size:14px;
 }
 
-.footer-text{
-  color:#b8c9c0;
-  font-size:13px;
-  max-width:340px;
-  margin-top:15px;
+.footer-col h4{
+    margin-bottom:12px;
 }
 
-footer h4{
-  margin-bottom:14px;
+.footer-col a{
+    display:block;
+    color:rgba(255,255,255,.65);
+    font-size:14px;
+    margin:7px 0;
 }
 
-footer ul{
-  list-style:none;
-}
-
-footer li{
-  color:#b8c9c0;
-  font-size:13px;
-  margin-bottom:9px;
-}
-
-.copyright{
-  max-width:1200px;
-  margin:40px auto 0;
-  padding-top:20px;
-  border-top:1px solid rgba(255,255,255,.1);
-  color:#91a59a;
-  font-size:12px;
+.footer-bottom{
+    max-width:1200px;
+    margin:35px auto 0;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.1);
+    color:rgba(255,255,255,.5);
+    font-size:12px;
 }
 
 /* ================= MODAL ================= */
 
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal-overlay.active{
+    display:flex;
+}
+
 .modal{
-  display:none;
-  position:fixed;
-  z-index:2000;
-  inset:0;
-  background:rgba(9,28,19,.62);
-  backdrop-filter:blur(5px);
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+    background:white;
+    width:min(700px,100%);
+    max-height:90vh;
+    overflow:auto;
+    border-radius:22px;
+    box-shadow:0 25px 70px rgba(0,0,0,.25);
+    animation:modalIn .2s ease;
 }
 
-.modal.active{
-  display:flex;
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-.modal-box{
-  background:var(--cream);
-  width:min(760px,100%);
-  max-height:90vh;
-  overflow:auto;
-  border-radius:25px;
-  padding:30px;
-  position:relative;
+.modal-header{
+    padding:20px 24px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.modal-close{
-  position:absolute;
-  right:20px;
-  top:20px;
-  width:35px;
-  height:35px;
-  border:0;
-  border-radius:50%;
-  background:var(--cream2);
-  font-size:20px;
+.modal-header h3{
+    font-size:20px;
 }
 
-.modal-title{
-  font-family:"Playfair Display",serif;
-  color:var(--green);
-  font-size:30px;
-  margin-bottom:20px;
+.close-btn{
+    width:35px;
+    height:35px;
+    border:0;
+    background:#f3f4f6;
+    border-radius:10px;
+    font-size:18px;
 }
 
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
+.modal-body{
+    padding:24px;
 }
 
 .form-group{
-  margin-bottom:15px;
-}
-
-.form-group.full{
-  grid-column:1/-1;
+    margin-bottom:15px;
 }
 
 .form-group label{
-  display:block;
-  font-size:12px;
-  font-weight:800;
-  margin-bottom:7px;
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:6px;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select{
-  width:100%;
-  padding:12px;
-  border:1px solid var(--line);
-  border-radius:11px;
-  outline:none;
-  background:white;
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:11px 13px;
+    outline:none;
 }
 
 .form-group textarea{
-  min-height:100px;
-  resize:vertical;
+    min-height:90px;
+    resize:vertical;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.modal-footer{
+    padding:15px 24px 24px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+/* ================= PRODUCT DETAIL ================= */
+
+.product-detail{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.detail-image{
+    height:320px;
+    border-radius:18px;
+    overflow:hidden;
+    background:#f2efe8;
+}
+
+.detail-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.detail-info h2{
+    font-size:27px;
+    margin:5px 0;
+}
+
+.detail-price{
+    font-size:25px;
+    font-weight:900;
+    color:var(--brown-dark);
+    margin:10px 0;
+}
+
+.detail-description{
+    color:var(--muted);
+    font-size:14px;
+    margin:15px 0;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:15px 0;
+}
+
+.quantity button{
+    width:35px;
+    height:35px;
+    border:1px solid var(--border);
+    background:white;
+    border-radius:8px;
+    font-size:18px;
+}
+
+.quantity span{
+    min-width:30px;
+    text-align:center;
+    font-weight:800;
+}
+
+.detail-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
 /* ================= CART ================= */
 
 .cart-item{
-  display:flex;
-  align-items:center;
-  gap:15px;
-  background:white;
-  padding:14px;
-  border-radius:15px;
-  margin-bottom:10px;
+    display:flex;
+    gap:13px;
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+    align-items:center;
 }
 
-.cart-img{
-  width:65px;
-  height:65px;
-  object-fit:cover;
-  border-radius:12px;
+.cart-item img{
+    width:65px;
+    height:65px;
+    object-fit:cover;
+    border-radius:12px;
 }
 
-.qty{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  margin-left:auto;
+.cart-item-info{
+    flex:1;
 }
 
-.qty button{
-  width:27px;
-  height:27px;
-  border:0;
-  border-radius:8px;
-  background:var(--green3);
-  color:var(--green);
-  font-weight:800;
+.cart-item-info strong{
+    display:block;
+}
+
+.cart-item-info small{
+    color:var(--muted);
 }
 
 .cart-total{
-  display:flex;
-  justify-content:space-between;
-  padding-top:18px;
-  margin-top:15px;
-  border-top:1px solid var(--line);
-  font-size:20px;
-  font-weight:800;
+    display:flex;
+    justify-content:space-between;
+    font-size:20px;
+    font-weight:800;
+    margin-top:20px;
+}
+
+/* ================= AFFILIATE ================= */
+
+.affiliate-box{
+    background:var(--green-light);
+    border:1px solid #cce7d9;
+    border-radius:16px;
+    padding:18px;
+}
+
+.affiliate-link{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:12px;
+    font-size:12px;
+    word-break:break-all;
+    margin:12px 0;
+}
+
+.affiliate-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.aff-stat{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:15px;
+}
+
+.aff-stat strong{
+    display:block;
+    font-size:22px;
+    color:var(--green);
+}
+
+.aff-stat span{
+    font-size:11px;
+    color:var(--muted);
 }
 
 /* ================= TOAST ================= */
 
 .toast{
-  position:fixed;
-  right:25px;
-  bottom:25px;
-  background:var(--green);
-  color:white;
-  padding:15px 20px;
-  border-radius:13px;
-  box-shadow:var(--shadow);
-  transform:translateY(100px);
-  opacity:0;
-  transition:.3s;
-  z-index:5000;
-  font-size:13px;
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#17251e;
+    color:white;
+    padding:13px 17px;
+    border-radius:12px;
+    z-index:5000;
+    display:none;
+    box-shadow:var(--shadow);
+    font-size:13px;
 }
 
 .toast.show{
-  transform:translateY(0);
-  opacity:1;
+    display:block;
 }
 
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:1000px){
-  .nav-links{
-    display:none;
-  }
 
-  .mobile-menu{
-    display:block;
-  }
+    .nav-menu{
+        display:none;
+    }
 
-  .nav-actions .btn{
-    display:none;
-  }
+    .hero{
+        grid-template-columns:1fr;
+    }
 
-  .hero{
-    grid-template-columns:1fr;
-  }
+    .products-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .hero-image{
-    height:430px;
-  }
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .product-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    .umkm-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-  .umkm-grid,
-  .impact-grid,
-  .how-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .footer-inner{
-    grid-template-columns:1fr 1fr;
-  }
+    .impact-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
-@media(max-width:650px){
-  .navbar{
-    height:68px;
-  }
+@media(max-width:700px){
 
-  .hero{
-    padding-top:50px;
-  }
+    .navbar{
+        padding:0 14px;
+    }
 
-  .hero h1{
-    font-size:45px;
-  }
+    .logo{
+        font-size:16px;
+    }
 
-  .hero-image{
-    height:350px;
-  }
+    .nav-actions .secondary-btn{
+        display:none;
+    }
 
-  .stats-box{
-    grid-template-columns:1fr 1fr;
-  }
+    .hero{
+        margin:15px;
+        padding:35px 22px;
+    }
 
-  .stat{
-    border-bottom:1px solid rgba(255,255,255,.13);
-  }
+    .hero h1{
+        font-size:34px;
+    }
 
-  .product-grid,
-  .umkm-grid,
-  .impact-grid,
-  .how-grid{
-    grid-template-columns:1fr;
-  }
+    .section{
+        margin:55px auto;
+    }
 
-  .section-title{
-    font-size:34px;
-  }
+    .products-grid,
+    .umkm-grid,
+    .stats,
+    .impact-grid,
+    .about{
+        grid-template-columns:1fr;
+    }
 
-  .section-head{
-    display:block;
-  }
+    .section-heading{
+        display:block;
+    }
 
-  .view-all{
-    display:inline-block;
-    margin-top:15px;
-  }
+    .section-heading h2{
+        margin-bottom:8px;
+    }
 
-  .cta{
-    margin:50px 20px;
-    padding:35px 25px;
-    display:block;
-  }
+    .cta{
+        display:block;
+        padding:30px;
+    }
 
-  .cta h2{
-    font-size:31px;
-  }
+    .cta .primary-btn{
+        margin-top:18px;
+    }
 
-  .cta .btn{
-    margin-top:20px;
-  }
+    .footer-inner{
+        grid-template-columns:1fr;
+    }
 
-  .footer-inner{
-    grid-template-columns:1fr;
-  }
+    .product-detail{
+        grid-template-columns:1fr;
+    }
 
-  .form-grid{
-    grid-template-columns:1fr;
-  }
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .affiliate-stats{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
@@ -1001,124 +1089,168 @@ footer li{
 
 <!-- ================= HEADER ================= -->
 
-<header class="header">
-<nav class="navbar">
+<header>
+<div class="navbar">
 
-<a href="#beranda" class="logo">
-  <span class="logo-mark">TJ</span>
-  <span>TJSL Petrokimia</span>
-</a>
+    <a href="#" class="logo">
+        <div class="logo-icon">🌱</div>
+        <span>TJSL Petrokimia</span>
+    </a>
 
-<div class="nav-links">
-  <a href="#beranda">Beranda</a>
-  <a href="#produk">Produk</a>
-  <a href="#umkm">UMKM</a>
-  <a href="#tentang">Tentang Kami</a>
-  <a href="#dampak">Dampak</a>
+    <nav class="nav-menu">
+        <a href="#beranda">Beranda</a>
+        <a href="#produk">Produk</a>
+        <a href="#umkm">UMKM</a>
+        <a href="#tentang">Tentang Kami</a>
+        <a href="#dampak">Dampak yang Dihasilkan</a>
+    </nav>
+
+    <div class="nav-actions">
+
+        <button class="search-btn" onclick="focusSearch()">⌕</button>
+
+        <button class="cart-btn" onclick="openCart()">
+            🛒 <span id="cartCount">0</span>
+        </button>
+
+        <button class="secondary-btn" onclick="openAffiliateDashboard()">
+            Gabung sebagai Affiliate
+        </button>
+
+        <button class="primary-btn" onclick="openUMKMForm()">
+            Daftarkan UMKM
+        </button>
+
+    </div>
+
 </div>
-
-<div class="nav-actions">
-  <button class="search-btn" onclick="focusSearch()">⌕</button>
-  <button class="btn btn-outline" onclick="openModal('affiliateModal')">
-    Gabung Affiliate
-  </button>
-  <button class="btn btn-green" onclick="openModal('umkmModal')">
-    Daftarkan UMKM
-  </button>
-</div>
-
-<button class="mobile-menu" onclick="toggleMobile()">☰</button>
-
-</nav>
 </header>
 
 
 <!-- ================= HERO ================= -->
 
-<section class="hero" id="beranda">
+<main id="beranda">
 
-<div>
+<section class="hero">
 
-<div class="badge">
-<span class="badge-dot"></span>
-Platform Digital UMKM Binaan TJSL
-</div>
+    <div>
 
-<h1>
-Dari UMKM Lokal,
-<span>Menuju Pasar Lebih Luas.</span>
-</h1>
+        <div class="badge">
+            ✦ Platform Digital UMKM Binaan Petrokimia
+        </div>
 
-<p>
-TJSL Petrokimia menjadi ruang digital yang mempertemukan UMKM binaan,
-pelanggan, dan affiliate untuk menciptakan peluang pemasaran yang lebih luas.
-</p>
+        <h1>
+            Satu Platform,
+            <span>Banyak UMKM,</span>
+            Lebih Banyak Peluang.
+        </h1>
 
-<div class="hero-buttons">
-<button class="btn btn-green" onclick="document.querySelector('#produk').scrollIntoView()">
-Jelajahi Produk →
-</button>
+        <p>
+            Temukan produk UMKM binaan Petrokimia,
+            dukung produk lokal, dan bantu memperluas
+            pemasaran melalui sistem affiliate.
+        </p>
 
-<button class="btn btn-outline" onclick="openModal('affiliateModal')">
-Gabung sebagai Affiliate
-</button>
-</div>
+        <div class="hero-actions">
 
-</div>
+            <button class="primary-btn" onclick="scrollToProducts()">
+                Jelajahi Produk →
+            </button>
+
+            <button class="secondary-btn" onclick="openAffiliateDashboard()">
+                Gabung sebagai Affiliate
+            </button>
+
+        </div>
+
+    </div>
 
 
-<div class="hero-image">
+    <div class="hero-card">
 
-<img
-class="hero-main-img"
-src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1000&q=85"
-alt="UMKM"
->
+        <div>
 
-<div class="floating-card">
-<small>UMKM yang telah bergabung</small>
-<strong>120+ UMKM</strong>
+            <div class="hero-card-top">
 
-<div class="mini-avatars">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</div>
-</div>
+                <div>
+                    <small>Digital Empowerment</small>
+                    <h3>UMKM Naik Kelas</h3>
+                </div>
 
-</div>
+                <div class="hero-card-icon">
+                    🚀
+                </div>
+
+            </div>
+
+            <p>
+                Menghubungkan UMKM binaan dengan konsumen
+                dan jaringan affiliate untuk memperluas pasar.
+            </p>
+
+        </div>
+
+
+        <div class="mini-stats">
+
+            <div class="mini-stat">
+                <strong id="heroUMKM">22+</strong>
+                <span>UMKM Binaan</span>
+            </div>
+
+            <div class="mini-stat">
+                <strong id="heroProducts">48+</strong>
+                <span>Produk</span>
+            </div>
+
+            <div class="mini-stat">
+                <strong>150+</strong>
+                <span>Affiliate</span>
+            </div>
+
+            <div class="mini-stat">
+                <strong>Rp1,2M</strong>
+                <span>Nilai Penjualan</span>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- ================= STATS ================= -->
 
-<section class="stats">
+<section class="section">
 
-<div class="stats-box">
+    <div class="stats">
 
-<div class="stat">
-<div class="stat-number">120+</div>
-<div class="stat-label">UMKM Binaan</div>
-</div>
+        <div class="stat-card">
+            <div class="stat-icon">🏪</div>
+            <strong id="statUMKM">22</strong>
+            <span>UMKM Binaan</span>
+        </div>
 
-<div class="stat">
-<div class="stat-number">350+</div>
-<div class="stat-label">Produk Lokal</div>
-</div>
+        <div class="stat-card">
+            <div class="stat-icon">📦</div>
+            <strong id="statProducts">48</strong>
+            <span>Produk Dipasarkan</span>
+        </div>
 
-<div class="stat">
-<div class="stat-number">780+</div>
-<div class="stat-label">Affiliate</div>
-</div>
+        <div class="stat-card">
+            <div class="stat-icon">🤝</div>
+            <strong>150+</strong>
+            <span>Affiliate Aktif</span>
+        </div>
 
-<div class="stat">
-<div class="stat-number">Rp1,2M</div>
-<div class="stat-label">Nilai Penjualan</div>
-</div>
+        <div class="stat-card">
+            <div class="stat-icon">📈</div>
+            <strong>Rp1,2M</strong>
+            <span>Total Nilai Penjualan</span>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
@@ -1127,102 +1259,47 @@ alt="UMKM"
 
 <section class="section" id="produk">
 
-<div class="section-head">
+    <div class="section-heading">
 
-<div>
-<div class="badge">Produk Pilihan</div>
-<h2 class="section-title">Temukan Produk<br>UMKM Unggulan.</h2>
-<p class="section-subtitle">
-Temukan produk lokal pilihan dari UMKM binaan TJSL Petrokimia.
-Dukung usaha lokal sekaligus menemukan produk berkualitas.
-</p>
-</div>
+        <div>
+            <h2>Produk UMKM Pilihan</h2>
+            <p>
+                Produk dari UMKM binaan yang dapat dibeli
+                maupun dipromosikan melalui affiliate.
+            </p>
+        </div>
 
-<a class="view-all" href="#produk">Lihat Semua Produk →</a>
-
-</div>
+    </div>
 
 
-<div class="product-toolbar">
+    <div class="catalog-tools">
 
-<input
-id="searchProduct"
-class="search-input"
-placeholder="Cari produk atau UMKM..."
-onkeyup="searchProducts()"
->
+        <div class="search-box">
+            <span>🔎</span>
+            <input
+                id="productSearch"
+                type="text"
+                placeholder="Cari produk atau UMKM..."
+                oninput="displayProducts()"
+            >
+        </div>
 
-<select id="categoryFilter" class="filter-select" onchange="filterProducts()">
-<option value="all">Semua Kategori</option>
-<option value="Makanan">Makanan</option>
-<option value="Minuman">Minuman</option>
-<option value="Fashion">Fashion</option>
-<option value="Kerajinan">Kerajinan</option>
-</select>
+        <select
+            class="filter-select"
+            id="categoryFilter"
+            onchange="displayProducts()"
+        >
+            <option value="all">Semua Kategori</option>
+            <option value="Makanan">Makanan</option>
+            <option value="Minuman">Minuman</option>
+            <option value="Kerajinan">Kerajinan</option>
+            <option value="Fashion">Fashion</option>
+        </select>
 
-</div>
+    </div>
 
 
-<div class="product-grid" id="productGrid"></div>
-
-</section>
-
-
-<!-- ================= HOW IT WORKS ================= -->
-
-<section class="how-section">
-
-<div class="how-grid">
-
-<div>
-<div class="badge">Cara Kerja</div>
-<h2 class="section-title">Satu platform,<br>banyak peluang.</h2>
-<p class="section-subtitle">
-Semua dibuat sederhana agar UMKM dan affiliate dapat langsung menggunakannya.
-</p>
-</div>
-
-<div class="how-card">
-<div class="step">01</div>
-<h3>UMKM Bergabung</h3>
-<p>
-Daftarkan usaha dan produk. Tentukan harga, stok, serta komisi affiliate.
-</p>
-</div>
-
-<div class="how-card">
-<div class="step">02</div>
-<h3>Affiliate Promosi</h3>
-<p>
-Affiliate memilih produk, mendapatkan link unik, lalu membagikannya ke pelanggan.
-</p>
-</div>
-
-<div class="how-card">
-<div class="step">03</div>
-<h3>Pelanggan Membeli</h3>
-<p>
-Pelanggan memilih produk dan jumlah pembelian sesuai stok yang tersedia.
-</p>
-</div>
-
-<div class="how-card">
-<div class="step">04</div>
-<h3>Penjualan Bertambah</h3>
-<p>
-Stok otomatis berkurang dan penjualan tercatat dalam sistem.
-</p>
-</div>
-
-<div class="how-card">
-<div class="step">05</div>
-<h3>Affiliate Mendapat Komisi</h3>
-<p>
-Setiap penjualan melalui link affiliate akan tercatat sebagai komisi.
-</p>
-</div>
-
-</div>
+    <div class="products-grid" id="productGrid"></div>
 
 </section>
 
@@ -1231,113 +1308,110 @@ Setiap penjualan melalui link affiliate akan tercatat sebagai komisi.
 
 <section class="section" id="umkm">
 
-<div class="section-head">
+    <div class="section-heading">
 
-<div>
-<div class="badge">UMKM Binaan</div>
-<h2 class="section-title">Kenali Mereka,<br>Dukung Karyanya.</h2>
-<p class="section-subtitle">
-Berbagai UMKM dengan produk lokal dan cerita usaha yang berbeda.
-</p>
-</div>
+        <div>
+            <h2>UMKM Binaan</h2>
 
-</div>
+            <p>
+                Mengenal lebih dekat UMKM yang tumbuh
+                bersama program pemberdayaan Petrokimia.
+            </p>
+        </div>
 
+        <button class="secondary-btn" onclick="openUMKMForm()">
+            + Daftarkan UMKM
+        </button>
 
-<div class="umkm-grid">
-
-<div class="umkm-card">
-<div class="umkm-logo">KS</div>
-<div>
-<h3>Keripik Sari Nusantara</h3>
-<p>Serang • Makanan</p>
-<button class="btn btn-light" onclick="showToast('Profil UMKM dibuka')">Lihat UMKM</button>
-</div>
-</div>
-
-<div class="umkm-card">
-<div class="umkm-logo">KN</div>
-<div>
-<h3>Kopi Nusantara</h3>
-<p>Banten • Minuman</p>
-<button class="btn btn-light" onclick="showToast('Profil UMKM dibuka')">Lihat UMKM</button>
-</div>
-</div>
-
-<div class="umkm-card">
-<div class="umkm-logo">BN</div>
-<div>
-<h3>Batik Kreatif Nusantara</h3>
-<p>Serang • Fashion</p>
-<button class="btn btn-light" onclick="showToast('Profil UMKM dibuka')">Lihat UMKM</button>
-</div>
-</div>
-
-</div>
-
-</section>
+    </div>
 
 
-<!-- ================= IMPACT ================= -->
+    <div class="umkm-grid">
 
-<section class="impact-section" id="dampak">
+        <div class="umkm-card">
 
-<div class="impact-inner">
+            <div class="umkm-head">
 
-<div class="badge">Dampak yang Dihasilkan</div>
+                <div class="umkm-avatar">
+                    SP
+                </div>
 
-<h2 class="section-title">
-Bukan hanya menjual produk.<br>
-Kami memperluas peluang.
-</h2>
+                <div>
+                    <h3>Si Pisang Trepan</h3>
+                    <small>📍 Gresik</small>
+                </div>
 
-<p class="section-subtitle">
-Digitalisasi menjadi salah satu cara untuk membantu UMKM memperluas pasar,
-meningkatkan peluang penjualan, dan menciptakan aktivitas ekonomi baru.
-</p>
+            </div>
+
+            <p>
+                UMKM olahan pisang dengan produk makanan
+                yang dipasarkan secara digital.
+            </p>
+
+            <div class="umkm-meta">
+                <span>🍌 Makanan</span>
+                <span>8 Produk</span>
+            </div>
+
+        </div>
 
 
-<div class="impact-grid">
+        <div class="umkm-card">
 
-<div class="impact-card">
-<div class="impact-icon">🏪</div>
-<h3>120+</h3>
-<p>UMKM yang mendapatkan akses pemasaran digital.</p>
-</div>
+            <div class="umkm-head">
 
-<div class="impact-card">
-<div class="impact-icon">📦</div>
-<h3>350+</h3>
-<p>Produk UMKM yang dapat dipasarkan melalui platform.</p>
-</div>
+                <div class="umkm-avatar">
+                    KR
+                </div>
 
-<div class="impact-card">
-<div class="impact-icon">🤝</div>
-<h3>780+</h3>
-<p>Affiliate yang ikut memperluas jangkauan produk.</p>
-</div>
+                <div>
+                    <h3>Kriya Rasa</h3>
+                    <small>📍 Gresik</small>
+                </div>
 
-<div class="impact-card">
-<div class="impact-icon">📈</div>
-<h3>Rp1,2M</h3>
-<p>Nilai penjualan yang tercatat melalui ekosistem digital.</p>
-</div>
+            </div>
 
-<div class="impact-card">
-<div class="impact-icon">🌱</div>
-<h3>+35%</h3>
-<p>Peningkatan jangkauan pemasaran UMKM secara digital.</p>
-</div>
+            <p>
+                Produk kerajinan dan olahan kreatif
+                dari pelaku UMKM lokal.
+            </p>
 
-<div class="impact-card">
-<div class="impact-icon">💼</div>
-<h3>200+</h3>
-<p>Peluang ekonomi yang tercipta melalui ekosistem UMKM.</p>
-</div>
+            <div class="umkm-meta">
+                <span>🎨 Kerajinan</span>
+                <span>12 Produk</span>
+            </div>
 
-</div>
+        </div>
 
-</div>
+
+        <div class="umkm-card">
+
+            <div class="umkm-head">
+
+                <div class="umkm-avatar">
+                    RJ
+                </div>
+
+                <div>
+                    <h3>Rasa Jaya</h3>
+                    <small>📍 Gresik</small>
+                </div>
+
+            </div>
+
+            <p>
+                Produk makanan dan minuman lokal
+                yang dikembangkan untuk pasar digital.
+            </p>
+
+            <div class="umkm-meta">
+                <span>🥤 Minuman</span>
+                <span>15 Produk</span>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -1346,72 +1420,192 @@ meningkatkan peluang penjualan, dan menciptakan aktivitas ekonomi baru.
 
 <section class="section" id="tentang">
 
-<div class="section-head">
+    <div class="about">
 
-<div>
-<div class="badge">Tentang Platform</div>
+        <div class="about-card">
 
-<h2 class="section-title">
-Membangun ekosistem<br>
-UMKM yang lebih terhubung.
-</h2>
+            <h3>
+                Dari Pembinaan Menuju Kemandirian Digital
+            </h3>
 
-<p class="section-subtitle">
-TJSL Petrokimia hadir sebagai ruang digital untuk mempertemukan potensi
-UMKM dengan peluang pemasaran yang lebih luas.
-</p>
+            <p>
+                Platform ini dirancang untuk membantu UMKM
+                binaan memperluas pemasaran, meningkatkan
+                peluang penjualan, dan memperkenalkan produk
+                kepada pasar yang lebih luas.
+            </p>
 
-</div>
+            <div class="feature-list">
 
-</div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <div>
+                        <strong>Pemasaran Digital</strong>
+                        <p>
+                            Produk dapat ditemukan dan dipromosikan
+                            secara online.
+                        </p>
+                    </div>
+                </div>
 
-<div class="umkm-grid">
+                <div class="feature">
+                    <div class="feature-icon">🌐</div>
+                    <div>
+                        <strong>Perluasan Pasar</strong>
+                        <p>
+                            UMKM memiliki peluang menjangkau
+                            konsumen di luar wilayah.
+                        </p>
+                    </div>
+                </div>
 
-<div class="umkm-card">
-<div class="umkm-logo">01</div>
-<div>
-<h3>Digitalisasi</h3>
-<p>Memudahkan UMKM masuk ke ekosistem pemasaran digital.</p>
-</div>
-</div>
+                <div class="feature">
+                    <div class="feature-icon">🤝</div>
+                    <div>
+                        <strong>Kolaborasi Affiliate</strong>
+                        <p>
+                            Masyarakat dapat membantu memasarkan
+                            produk dan memperoleh komisi.
+                        </p>
+                    </div>
+                </div>
 
-<div class="umkm-card">
-<div class="umkm-logo">02</div>
-<div>
-<h3>Kolaborasi</h3>
-<p>Menghubungkan UMKM dengan affiliate dan pelanggan.</p>
-</div>
-</div>
+            </div>
 
-<div class="umkm-card">
-<div class="umkm-logo">03</div>
-<div>
-<h3>Peluang Ekonomi</h3>
-<p>Membuka peluang pasar dan aktivitas ekonomi baru.</p>
-</div>
-</div>
+        </div>
 
-</div>
+
+        <div class="about-card">
+
+            <h3>
+                Bagaimana Sistem Ini Bekerja?
+            </h3>
+
+            <div class="feature-list">
+
+                <div class="feature">
+                    <div class="feature-icon">1</div>
+                    <div>
+                        <strong>UMKM Mendaftarkan Produk</strong>
+                        <p>
+                            UMKM mengisi informasi usaha dan produk.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">2</div>
+                    <div>
+                        <strong>Konsumen Menemukan Produk</strong>
+                        <p>
+                            Produk ditampilkan dalam katalog digital.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">3</div>
+                    <div>
+                        <strong>Affiliate Membagikan Link</strong>
+                        <p>
+                            Affiliate memperoleh link khusus
+                            untuk mempromosikan produk.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">4</div>
+                    <div>
+                        <strong>Penjualan Bertambah</strong>
+                        <p>
+                            UMKM memperoleh peluang pasar yang lebih luas.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= IMPACT ================= -->
+
+<section class="section" id="dampak">
+
+    <div class="impact">
+
+        <h2>Dampak yang Dihasilkan</h2>
+
+        <p>
+            Platform digital tidak hanya menjual produk,
+            tetapi juga menjadi bagian dari pengukuran
+            dampak pemberdayaan UMKM.
+        </p>
+
+
+        <div class="impact-grid">
+
+            <div class="impact-card">
+                <strong>22</strong>
+                <span>UMKM Dibina</span>
+            </div>
+
+            <div class="impact-card">
+                <strong>48+</strong>
+                <span>Produk Dipasarkan</span>
+            </div>
+
+            <div class="impact-card">
+                <strong>150+</strong>
+                <span>Affiliate</span>
+            </div>
+
+            <div class="impact-card">
+                <strong>Rp1,2M</strong>
+                <span>Nilai Penjualan</span>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 <!-- ================= CTA ================= -->
 
-<section class="cta">
+<section class="section">
 
-<div>
-<h2>Punya produk UMKM?</h2>
-<p>
-Gabungkan usaha kamu ke dalam ekosistem digital TJSL Petrokimia.
-</p>
-</div>
+    <div class="cta">
 
-<button class="btn" onclick="openModal('umkmModal')">
-Daftarkan UMKM →
-</button>
+        <div>
+            <h2>
+                Punya UMKM dan ingin berkembang?
+            </h2>
+
+            <p>
+                Daftarkan produk Anda dan perluas peluang
+                pemasaran melalui platform digital.
+            </p>
+        </div>
+
+        <button
+            class="primary-btn"
+            onclick="openUMKMForm()"
+        >
+            Daftarkan UMKM →
+        </button>
+
+    </div>
 
 </section>
+
+</main>
 
 
 <!-- ================= FOOTER ================= -->
@@ -1420,204 +1614,450 @@ Daftarkan UMKM →
 
 <div class="footer-inner">
 
-<div>
-<div class="footer-logo">TJSL Petrokimia</div>
-<p class="footer-text">
-Platform digital untuk memperluas pemasaran dan membuka peluang
-bagi UMKM binaan melalui kolaborasi dan teknologi.
-</p>
+    <div class="footer-brand">
+
+        <div class="logo" style="color:white">
+            <div class="logo-icon">🌱</div>
+            TJSL Petrokimia
+        </div>
+
+        <p>
+            Platform digital pemberdayaan UMKM binaan
+            Petrokimia untuk memperluas pemasaran,
+            meningkatkan peluang penjualan, dan
+            menciptakan dampak ekonomi berkelanjutan.
+        </p>
+
+    </div>
+
+
+    <div class="footer-col">
+
+        <h4>Platform</h4>
+
+        <a href="#produk">Produk</a>
+        <a href="#umkm">UMKM</a>
+        <a href="#dampak">Dampak</a>
+
+    </div>
+
+
+    <div class="footer-col">
+
+        <h4>Kolaborasi</h4>
+
+        <a href="#" onclick="openAffiliateDashboard();return false;">
+            Affiliate
+        </a>
+
+        <a href="#" onclick="openUMKMForm();return false;">
+            Daftarkan UMKM
+        </a>
+
+    </div>
+
 </div>
 
-<div>
-<h4>Platform</h4>
-<ul>
-<li><a href="#produk">Produk</a></li>
-<li><a href="#umkm">UMKM</a></li>
-<li><a href="#dampak">Dampak</a></li>
-</ul>
-</div>
 
-<div>
-<h4>Gabung</h4>
-<ul>
-<li><a href="#" onclick="openModal('affiliateModal')">Affiliate</a></li>
-<li><a href="#" onclick="openModal('umkmModal')">Daftarkan UMKM</a></li>
-</ul>
-</div>
-
-<div>
-<h4>Informasi</h4>
-<ul>
-<li>Tentang Kami</li>
-<li>Kontak</li>
-<li>Bantuan</li>
-</ul>
-</div>
-
-</div>
-
-<div class="copyright">
-© 2026 TJSL Petrokimia. Platform Digital Pemberdayaan UMKM.
+<div class="footer-bottom">
+    © 2026 TJSL Petrokimia. Prototype Platform Digital UMKM.
 </div>
 
 </footer>
 
 
-<!-- ================= AFFILIATE MODAL ================= -->
-
-<div class="modal" id="affiliateModal">
-
-<div class="modal-box">
-
-<button class="modal-close" onclick="closeModal('affiliateModal')">×</button>
-
-<h2 class="modal-title">Gabung sebagai Affiliate</h2>
-
-<p style="color:var(--muted);margin-bottom:25px;">
-Pilih produk UMKM, bagikan link, dan dapatkan komisi dari setiap penjualan.
-</p>
-
-<div class="form-grid">
-
-<div class="form-group">
-<label>Nama Lengkap</label>
-<input id="affiliateName" placeholder="Nama kamu">
-</div>
-
-<div class="form-group">
-<label>Nomor WhatsApp</label>
-<input placeholder="08xxxxxxxxxx">
-</div>
-
-<div class="form-group full">
-<label>Email</label>
-<input type="email" placeholder="nama@email.com">
-</div>
-
-<div class="form-group full">
-<label>Platform Promosi</label>
-<select>
-<option>Instagram</option>
-<option>TikTok</option>
-<option>WhatsApp</option>
-<option>Facebook</option>
-<option>Lainnya</option>
-</select>
-</div>
-
-</div>
-
-<button class="btn btn-green" style="width:100%" onclick="registerAffiliate()">
-Daftar sebagai Affiliate
-</button>
-
-</div>
-</div>
-
-
-<!-- ================= UMKM MODAL ================= -->
-
-<div class="modal" id="umkmModal">
-
-<div class="modal-box">
-
-<button class="modal-close" onclick="closeModal('umkmModal')">×</button>
-
-<h2 class="modal-title">Daftarkan UMKM</h2>
-
-<p style="color:var(--muted);margin-bottom:25px;">
-Daftarkan usaha kamu untuk mendapatkan akses pemasaran digital.
-</p>
-
-<div class="form-grid">
-
-<div class="form-group">
-<label>Nama UMKM</label>
-<input placeholder="Contoh: Keripik Sari Nusantara">
-</div>
-
-<div class="form-group">
-<label>Nama Pemilik</label>
-<input placeholder="Nama pemilik">
-</div>
-
-<div class="form-group">
-<label>Nomor WhatsApp</label>
-<input placeholder="08xxxxxxxxxx">
-</div>
-
-<div class="form-group">
-<label>Kategori Usaha</label>
-<select>
-<option>Makanan</option>
-<option>Minuman</option>
-<option>Fashion</option>
-<option>Kerajinan</option>
-<option>Lainnya</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Kota / Lokasi</label>
-<input placeholder="Serang, Banten">
-</div>
-
-<div class="form-group">
-<label>Email</label>
-<input type="email" placeholder="email@contoh.com">
-</div>
-
-<div class="form-group full">
-<label>Deskripsi UMKM</label>
-<textarea placeholder="Ceritakan secara singkat tentang usaha kamu..."></textarea>
-</div>
-
-</div>
-
-<button class="btn btn-green" style="width:100%" onclick="registerUMKM()">
-Kirim Pendaftaran
-</button>
-
-</div>
-</div>
-
-
 <!-- ================= PRODUCT MODAL ================= -->
 
-<div class="modal" id="productModal">
+<div class="modal-overlay" id="productModal">
 
-<div class="modal-box">
+<div class="modal">
 
-<button class="modal-close" onclick="closeModal('productModal')">×</button>
+    <div class="modal-header">
 
-<div id="productDetail"></div>
+        <h3>Detail Produk</h3>
+
+        <button class="close-btn" onclick="closeModal('productModal')">
+            ×
+        </button>
+
+    </div>
+
+    <div class="modal-body" id="productDetailContent"></div>
 
 </div>
+
 </div>
 
 
 <!-- ================= CART MODAL ================= -->
 
-<div class="modal" id="cartModal">
+<div class="modal-overlay" id="cartModal">
 
-<div class="modal-box">
+<div class="modal">
 
-<button class="modal-close" onclick="closeModal('cartModal')">×</button>
+    <div class="modal-header">
 
-<h2 class="modal-title">Keranjang Belanja</h2>
+        <h3>Keranjang Belanja</h3>
 
-<div id="cartItems"></div>
+        <button class="close-btn" onclick="closeModal('cartModal')">
+            ×
+        </button>
 
-<div class="cart-total">
-<span>Total</span>
-<span id="cartTotal">Rp0</span>
+    </div>
+
+    <div class="modal-body">
+
+        <div id="cartItems"></div>
+
+        <div class="cart-total">
+
+            <span>Total</span>
+
+            <span id="cartTotal">
+                Rp0
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+
+        <button class="secondary-btn" onclick="closeModal('cartModal')">
+            Lanjut Belanja
+        </button>
+
+        <button class="primary-btn" onclick="checkout()">
+            Checkout
+        </button>
+
+    </div>
+
 </div>
 
-<button class="btn btn-green" style="width:100%;margin-top:20px" onclick="checkout()">
-Lanjutkan Pembelian
-</button>
+</div>
+
+
+<!-- ================= AFFILIATE MODAL ================= -->
+
+<div class="modal-overlay" id="affiliateModal">
+
+<div class="modal">
+
+    <div class="modal-header">
+
+        <h3>Affiliate Center</h3>
+
+        <button class="close-btn" onclick="closeModal('affiliateModal')">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+        <div class="affiliate-box">
+
+            <strong>Gabung sebagai Affiliate</strong>
+
+            <p style="font-size:13px;color:#6b7280;margin-top:5px;">
+                Pilih produk, lalu buat link khusus untuk
+                dibagikan ke WhatsApp, TikTok, Instagram,
+                atau media sosial lainnya.
+            </p>
+
+            <div class="form-group" style="margin-top:15px;">
+
+                <label>ID Affiliate</label>
+
+                <input
+                    id="affiliateIdInput"
+                    type="text"
+                    value="AFF001"
+                    placeholder="Contoh: AFF001"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Pilih Produk</label>
+
+                <select id="affiliateProductSelect"></select>
+
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="createAffiliateLink()"
+            >
+                🔗 Buat Link Affiliate
+            </button>
+
+            <div
+                id="generatedAffiliate"
+                style="display:none;margin-top:20px;"
+            >
+
+                <strong>Link Affiliate Kamu</strong>
+
+                <div
+                    class="affiliate-link"
+                    id="affiliateLinkText"
+                ></div>
+
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="copyGeneratedAffiliate()"
+                    >
+                        📋 Copy Link
+                    </button>
+
+                    <button
+                        class="secondary-btn"
+                        onclick="shareGeneratedAffiliate()"
+                    >
+                        📤 Bagikan
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="affiliate-stats">
+
+            <div class="aff-stat">
+                <strong id="affiliateClicks">0</strong>
+                <span>Total Klik</span>
+            </div>
+
+            <div class="aff-stat">
+                <strong id="affiliateOrders">0</strong>
+                <span>Total Pesanan</span>
+            </div>
+
+            <div class="aff-stat">
+                <strong id="affiliateCommission">
+                    Rp0
+                </strong>
+                <span>Total Komisi</span>
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
+
+</div>
+
+
+<!-- ================= UMKM MODAL ================= -->
+
+<div class="modal-overlay" id="umkmModal">
+
+<div class="modal">
+
+    <div class="modal-header">
+
+        <h3>Daftarkan UMKM</h3>
+
+        <button class="close-btn" onclick="closeModal('umkmModal')">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="modal-body">
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>Nama UMKM</label>
+
+                <input
+                    id="umkmName"
+                    type="text"
+                    placeholder="Contoh: Si Pisang Trepan"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Nama Pemilik</label>
+
+                <input
+                    id="umkmOwner"
+                    type="text"
+                    placeholder="Nama pemilik"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>WhatsApp</label>
+
+                <input
+                    id="umkmPhone"
+                    type="text"
+                    placeholder="08xxxxxxxxxx"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Lokasi</label>
+
+                <input
+                    id="umkmLocation"
+                    type="text"
+                    placeholder="Gresik"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Kategori</label>
+
+            <select id="umkmCategory">
+
+                <option>Makanan</option>
+                <option>Minuman</option>
+                <option>Kerajinan</option>
+                <option>Fashion</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Deskripsi UMKM</label>
+
+            <textarea
+                id="umkmDescription"
+                placeholder="Ceritakan singkat tentang UMKM..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>Nama Produk</label>
+
+                <input
+                    id="newProductName"
+                    type="text"
+                    placeholder="Nama produk"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Harga Produk</label>
+
+                <input
+                    id="newProductPrice"
+                    type="number"
+                    placeholder="25000"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Deskripsi Produk</label>
+
+            <textarea
+                id="newProductDescription"
+                placeholder="Deskripsi produk..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>Stock</label>
+
+                <input
+                    id="newProductStock"
+                    type="number"
+                    min="0"
+                    value="10"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Komisi Affiliate (%)</label>
+
+                <input
+                    id="newProductCommission"
+                    type="number"
+                    min="0"
+                    max="100"
+                    value="10"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+
+        <button
+            class="secondary-btn"
+            onclick="closeModal('umkmModal')"
+        >
+            Batal
+        </button>
+
+        <button
+            class="primary-btn"
+            onclick="submitUMKM()"
+        >
+            Kirim Pendaftaran
+        </button>
+
+    </div>
+
+</div>
+
 </div>
 
 
@@ -1628,681 +2068,1439 @@ Lanjutkan Pembelian
 
 <script>
 
-/* ================= DATA PRODUK ================= */
+/* =========================================================
+   DATA PRODUK
+========================================================= */
 
 const products = [
 
-{
-id:1,
-name:"Keripik Pisang Original",
-umkm:"Keripik Sari Nusantara",
-category:"Makanan",
-price:25000,
-stock:100,
-commission:10,
-rating:4.9,
-image:"https://images.unsplash.com/photo-1621939514649-280e2aa55e13?auto=format&fit=crop&w=700&q=85"
-},
+    {
+        id:1,
+        name:"Trepan Pisang Original",
+        umkm:"Si Pisang Trepan",
+        category:"Makanan",
+        price:18000,
+        stock:25,
+        commission:10,
+        rating:4.9,
+        image:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80",
+        description:"Olahan pisang dengan rasa khas yang cocok dinikmati sebagai camilan."
+    },
 
-{
-id:2,
-name:"Kopi Robusta Banten",
-umkm:"Kopi Nusantara",
-category:"Minuman",
-price:45000,
-stock:50,
-commission:10,
-rating:4.8,
-image:"https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=700&q=85"
-},
+    {
+        id:2,
+        name:"Trepan Pisang Cokelat",
+        umkm:"Si Pisang Trepan",
+        category:"Makanan",
+        price:22000,
+        stock:14,
+        commission:12,
+        rating:4.8,
+        image:"https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80",
+        description:"Olahan pisang dengan perpaduan rasa manis cokelat."
+    },
 
-{
-id:3,
-name:"Batik Motif Bunga",
-umkm:"Batik Kreatif Nusantara",
-category:"Fashion",
-price:150000,
-stock:20,
-commission:8,
-rating:4.9,
-image:"https://images.unsplash.com/photo-1583744946564-b52d01e7f922?auto=format&fit=crop&w=700&q=85"
-},
+    {
+        id:3,
+        name:"Keripik Pisang Premium",
+        umkm:"Rasa Jaya",
+        category:"Makanan",
+        price:25000,
+        stock:30,
+        commission:10,
+        rating:4.7,
+        image:"https://images.unsplash.com/photo-1621939514649-280e2aaac9a3?auto=format&fit=crop&w=900&q=80",
+        description:"Keripik pisang renyah dengan pilihan rasa yang menarik."
+    },
 
-{
-id:4,
-name:"Brownies Cokelat UMKM",
-umkm:"Dapur Sari",
-category:"Makanan",
-price:35000,
-stock:35,
-commission:12,
-rating:4.7,
-image:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85"
-},
+    {
+        id:4,
+        name:"Kopi Gresik Arabica",
+        umkm:"Kopi Lokal Gresik",
+        category:"Minuman",
+        price:45000,
+        stock:12,
+        commission:15,
+        rating:4.9,
+        image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
+        description:"Kopi lokal dengan karakter aroma dan rasa yang kuat."
+    },
 
-{
-id:5,
-name:"Teh Herbal Lokal",
-umkm:"Sehat Bersama",
-category:"Minuman",
-price:30000,
-stock:60,
-commission:10,
-rating:4.8,
-image:"https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=700&q=85"
-},
+    {
+        id:5,
+        name:"Cookies UMKM",
+        umkm:"Dapur Rasa",
+        category:"Makanan",
+        price:30000,
+        stock:8,
+        commission:10,
+        rating:4.6,
+        image:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80",
+        description:"Cookies rumahan dengan tekstur renyah dan rasa manis."
+    },
 
-{
-id:6,
-name:"Tas Anyaman Handmade",
-umkm:"Karya Ibu Mandiri",
-category:"Kerajinan",
-price:85000,
-stock:18,
-commission:9,
-rating:4.9,
-image:"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=700&q=85"
-},
+    {
+        id:6,
+        name:"Tas Anyaman Lokal",
+        umkm:"Kriya Rasa",
+        category:"Kerajinan",
+        price:85000,
+        stock:5,
+        commission:15,
+        rating:4.8,
+        image:"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=900&q=80",
+        description:"Tas anyaman buatan tangan dari pengrajin lokal."
+    },
 
-{
-id:7,
-name:"Sambal Nusantara",
-umkm:"Dapur Banten",
-category:"Makanan",
-price:28000,
-stock:75,
-commission:10,
-rating:4.8,
-image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=85"
-},
+    {
+        id:7,
+        name:"Batik UMKM Gresik",
+        umkm:"Batik Nusantara",
+        category:"Fashion",
+        price:125000,
+        stock:6,
+        commission:12,
+        rating:4.8,
+        image:"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=80",
+        description:"Batik dengan motif khas yang dikembangkan oleh UMKM lokal."
+    },
 
-{
-id:8,
-name:"Madu Hutan Lokal",
-umkm:"Petani Lebah Mandiri",
-category:"Minuman",
-price:65000,
-stock:30,
-commission:11,
-rating:4.9,
-image:"https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=700&q=85"
-}
+    {
+        id:8,
+        name:"Sambal Nusantara",
+        umkm:"Dapur Rasa",
+        category:"Makanan",
+        price:20000,
+        stock:0,
+        commission:10,
+        rating:4.7,
+        image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80",
+        description:"Sambal lokal dengan cita rasa pedas dan gurih."
+    }
 
 ];
 
 
-/* ================= CART ================= */
+/* =========================================================
+   CART
+========================================================= */
 
-let cart=[];
-
-
-/* ================= FORMAT RUPIAH ================= */
-
-function rupiah(number){
-return new Intl.NumberFormat("id-ID",{
-style:"currency",
-currency:"IDR",
-maximumFractionDigits:0
-}).format(number);
-}
+let cart = JSON.parse(
+    localStorage.getItem("tjsl_cart") || "[]"
+);
 
 
-/* ================= DISPLAY PRODUCTS ================= */
+/* =========================================================
+   AFFILIATE DATA
+========================================================= */
 
-function displayProducts(data=products){
+let affiliateData = JSON.parse(
+    localStorage.getItem("tjsl_affiliate_data") ||
+    '{"clicks":0,"orders":0,"commission":0}'
+);
 
-const grid=document.getElementById("productGrid");
+let currentAffiliateLink = "";
 
-grid.innerHTML="";
 
-if(data.length===0){
-grid.innerHTML=`
-<div style="grid-column:1/-1;text-align:center;padding:50px;color:#68756e">
-<h3>Produk tidak ditemukan</h3>
-<p>Coba gunakan kata pencarian lain.</p>
-</div>`;
-return;
-}
+/* =========================================================
+   FORMAT RUPIAH
+========================================================= */
 
-data.forEach(product=>{
+function formatRupiah(number){
 
-let stockText=product.stock===0
-?"Stok Habis"
-:product.stock<20
-?`Stok terbatas: ${product.stock}`
-:`Stok: ${product.stock}`;
-
-let disabled=product.stock===0?"disabled":"";
-
-grid.innerHTML+=`
-
-<div class="product-card">
-
-<div class="product-img">
-
-<img src="${product.image}" alt="${product.name}">
-
-<div class="product-tag">${product.category}</div>
-
-</div>
-
-<div class="product-body">
-
-<div class="product-category">
-${product.category}
-</div>
-
-<div class="product-name">
-${product.name}
-</div>
-
-<div class="product-umkm">
-${product.umkm}
-</div>
-
-<div class="product-bottom">
-
-<div class="price">
-${rupiah(product.price)}
-</div>
-
-<div class="stock">
-${stockText}
-</div>
-
-</div>
-
-<div style="font-size:11px;color:#a86f42;margin-top:8px;font-weight:700">
-Affiliate ${product.commission}%
-</div>
-
-<div class="product-actions">
-
-<button class="buy-btn"
-onclick="openProduct(${product.id})">
-Lihat Produk
-</button>
-
-<button class="affiliate-btn"
-onclick="makeAffiliate(${product.id})"
-${disabled}>
-Affiliate
-</button>
-
-</div>
-
-</div>
-</div>
-
-`;
-
-});
+    return new Intl.NumberFormat(
+        "id-ID",
+        {
+            style:"currency",
+            currency:"IDR",
+            maximumFractionDigits:0
+        }
+    ).format(number);
 
 }
 
 
-/* ================= SEARCH ================= */
+/* =========================================================
+   SAVE
+========================================================= */
 
-function searchProducts(){
+function saveCart(){
 
-const keyword=document
-.getElementById("searchProduct")
-.value
-.toLowerCase();
+    localStorage.setItem(
+        "tjsl_cart",
+        JSON.stringify(cart)
+    );
 
-const category=document
-.getElementById("categoryFilter")
-.value;
-
-const result=products.filter(p=>{
-
-const matchKeyword=
-p.name.toLowerCase().includes(keyword) ||
-p.umkm.toLowerCase().includes(keyword);
-
-const matchCategory=
-category==="all" ||
-p.category===category;
-
-return matchKeyword && matchCategory;
-
-});
-
-displayProducts(result);
+    updateCartCount();
 
 }
 
 
-/* ================= FILTER ================= */
+function saveAffiliateData(){
 
-function filterProducts(){
-searchProducts();
+    localStorage.setItem(
+        "tjsl_affiliate_data",
+        JSON.stringify(affiliateData)
+    );
+
 }
 
 
-/* ================= PRODUCT DETAIL ================= */
+/* =========================================================
+   DISPLAY PRODUCTS
+========================================================= */
+
+function displayProducts(){
+
+    const grid =
+        document.getElementById("productGrid");
+
+    const search =
+        document.getElementById("productSearch")
+        .value
+        .toLowerCase();
+
+    const category =
+        document.getElementById("categoryFilter")
+        .value;
+
+
+    const filtered =
+        products.filter(p => {
+
+            const matchSearch =
+                p.name.toLowerCase().includes(search) ||
+                p.umkm.toLowerCase().includes(search);
+
+            const matchCategory =
+                category === "all" ||
+                p.category === category;
+
+            return matchSearch && matchCategory;
+
+        });
+
+
+    grid.innerHTML = "";
+
+
+    if(filtered.length === 0){
+
+        grid.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                background:white;
+                border:1px solid var(--border);
+                padding:40px;
+                text-align:center;
+                border-radius:18px;
+            ">
+                <h3>Produk tidak ditemukan</h3>
+                <p style="color:#6b7280">
+                    Coba gunakan kata kunci lain.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    filtered.forEach(p => {
+
+        let stockClass = "stock-available";
+        let stockText = `Tersedia ${p.stock}`;
+
+        if(p.stock === 0){
+
+            stockClass = "stock-empty";
+            stockText = "Habis";
+
+        }
+        else if(p.stock <= 5){
+
+            stockClass = "stock-limited";
+            stockText = `Terbatas ${p.stock}`;
+
+        }
+
+
+        grid.innerHTML += `
+
+        <div class="product-card">
+
+            <div class="product-image">
+
+                <img
+                    src="${p.image}"
+                    alt="${p.name}"
+                >
+
+                <div class="stock-badge ${stockClass}">
+                    ${stockText}
+                </div>
+
+            </div>
+
+
+            <div class="product-content">
+
+                <div class="product-category">
+                    ${p.category}
+                </div>
+
+                <div class="product-title">
+                    ${p.name}
+                </div>
+
+                <div class="product-umkm">
+                    ${p.umkm}
+                </div>
+
+                <div class="product-price">
+                    ${formatRupiah(p.price)}
+                </div>
+
+
+                <div class="product-info">
+
+                    <span>
+                        ⭐ ${p.rating}
+                    </span>
+
+                    <span>
+                        Komisi ${p.commission}%
+                    </span>
+
+                </div>
+
+
+                <div class="product-buttons">
+
+                    <button
+                        class="view-btn"
+                        onclick="openProduct(${p.id})"
+                    >
+                        Lihat Produk
+                    </button>
+
+                    <button
+                        class="affiliate-btn"
+                        onclick="makeAffiliate(${p.id})"
+                        ${p.stock === 0 ? "disabled" : ""}
+                    >
+                        🔗 Affiliate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================================================
+   PRODUCT DETAIL
+========================================================= */
+
+let currentProductId = null;
+let currentQuantity = 1;
+
 
 function openProduct(id){
 
-const p=products.find(x=>x.id===id);
+    const p =
+        products.find(x => x.id === id);
 
-const modal=document.getElementById("productModal");
-
-document.getElementById("productDetail").innerHTML=`
-
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center">
-
-<div>
-<img
-src="${p.image}"
-style="width:100%;height:320px;object-fit:cover;border-radius:20px"
->
-</div>
-
-<div>
-
-<div class="badge">${p.category}</div>
-
-<h2 class="modal-title" style="margin-bottom:5px">
-${p.name}
-</h2>
-
-<p style="color:#68756e;margin-bottom:15px">
-${p.umkm}
-</p>
-
-<div style="font-size:25px;color:#174d36;font-weight:800">
-${rupiah(p.price)}
-</div>
-
-<div style="margin:12px 0;color:#7a4b2a;font-weight:700">
-★ ${p.rating} &nbsp; • &nbsp; Komisi ${p.commission}%
-</div>
-
-<p style="font-size:13px;color:#68756e">
-Produk pilihan dari UMKM binaan TJSL Petrokimia.
-Dukung produk lokal dan bantu memperluas pasar UMKM.
-</p>
-
-<div style="margin-top:20px">
-
-<label style="font-size:12px;font-weight:800">
-Jumlah Produk
-</label>
-
-<div style="display:flex;align-items:center;gap:15px;margin-top:8px">
-
-<button
-class="btn btn-light"
-onclick="changeDetailQty(-1)">
-−
-</button>
-
-<strong id="detailQty">1</strong>
-
-<button
-class="btn btn-light"
-onclick="changeDetailQty(1)">
-+
-</button>
-
-<span style="font-size:12px;color:#68756e">
-Stok ${p.stock}
-</span>
-
-</div>
-
-</div>
-
-<div id="detailTotal"
-style="font-size:18px;font-weight:800;color:#174d36;margin:20px 0">
-Total: ${rupiah(p.price)}
-</div>
-
-<button
-class="btn btn-green"
-style="width:100%"
-onclick="addFromDetail(${p.id})">
-Tambah ke Keranjang
-</button>
-
-<button
-class="btn btn-brown"
-style="width:100%;margin-top:8px"
-onclick="makeAffiliate(${p.id})">
-Promosikan sebagai Affiliate
-</button>
-
-</div>
-
-</div>
-`;
-
-window.currentProduct=id;
-window.detailQty=1;
-
-modal.classList.add("active");
-
-}
+    if(!p) return;
 
 
-/* ================= QUANTITY ================= */
-
-function changeDetailQty(change){
-
-const p=products.find(x=>x.id===window.currentProduct);
-
-let qty=window.detailQty+change;
-
-if(qty<1)qty=1;
-
-if(qty>p.stock){
-showToast("Jumlah melebihi stok yang tersedia");
-return;
-}
-
-window.detailQty=qty;
-
-document.getElementById("detailQty").innerText=qty;
-
-document.getElementById("detailTotal").innerText=
-"Total: "+rupiah(p.price*qty);
-
-}
+    currentProductId = id;
+    currentQuantity = 1;
 
 
-/* ================= ADD CART ================= */
+    document.getElementById(
+        "productDetailContent"
+    ).innerHTML = `
 
-function addFromDetail(id){
+        <div class="product-detail">
 
-const p=products.find(x=>x.id===id);
+            <div class="detail-image">
 
-const existing=cart.find(x=>x.id===id);
+                <img
+                    src="${p.image}"
+                    alt="${p.name}"
+                >
 
-if(existing){
+            </div>
 
-if(existing.qty+window.detailQty>p.stock){
-showToast("Stok tidak mencukupi");
-return;
-}
 
-existing.qty+=window.detailQty;
+            <div class="detail-info">
 
-}else{
+                <div class="product-category">
+                    ${p.category}
+                </div>
 
-cart.push({
-...p,
-qty:window.detailQty
-});
+                <h2>${p.name}</h2>
 
-}
+                <div style="color:#6b7280;font-size:13px;">
+                    ${p.umkm}
+                </div>
 
-closeModal("productModal");
+                <div class="detail-price">
+                    ${formatRupiah(p.price)}
+                </div>
 
-showToast("Produk berhasil ditambahkan ke keranjang 🛒");
+                <div style="font-size:13px;">
+                    ⭐ ${p.rating}
+                    &nbsp; • &nbsp;
+                    Stock: <strong>${p.stock}</strong>
+                </div>
+
+                <div class="detail-description">
+                    ${p.description}
+                </div>
+
+                ${
+                    p.stock > 0
+                    ? `
+                    <div class="quantity">
+
+                        <button onclick="changeQuantity(-1)">
+                            −
+                        </button>
+
+                        <span id="quantityValue">
+                            1
+                        </span>
+
+                        <button onclick="changeQuantity(1)">
+                            +
+                        </button>
+
+                    </div>
+                    `
+                    :
+                    `
+                    <div style="
+                        padding:12px;
+                        background:#fee2e2;
+                        color:#b91c1c;
+                        border-radius:10px;
+                        margin:15px 0;
+                        font-size:13px;
+                    ">
+                        Produk sedang habis.
+                    </div>
+                    `
+                }
+
+
+                <div class="detail-actions">
+
+                    ${
+                        p.stock > 0
+                        ?
+                        `
+                        <button
+                            class="primary-btn"
+                            onclick="buyNow()"
+                        >
+                            Beli Sekarang
+                        </button>
+
+                        <button
+                            class="secondary-btn"
+                            onclick="addCurrentToCart()"
+                        >
+                            🛒 Tambah Keranjang
+                        </button>
+                        `
+                        :
+                        ""
+                    }
+
+
+                    ${
+                        p.stock > 0
+                        ?
+                        `
+                        <button
+                            class="secondary-btn"
+                            onclick="makeAffiliate(${p.id})"
+                        >
+                            🔗 Promosikan
+                        </button>
+                        `
+                        :
+                        ""
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+
+    openModal("productModal");
 
 }
 
 
-/* ================= CART ================= */
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+function changeQuantity(change){
+
+    const p =
+        products.find(x => x.id === currentProductId);
+
+    if(!p) return;
+
+
+    currentQuantity += change;
+
+
+    if(currentQuantity < 1)
+        currentQuantity = 1;
+
+
+    if(currentQuantity > p.stock)
+        currentQuantity = p.stock;
+
+
+    const q =
+        document.getElementById("quantityValue");
+
+    if(q)
+        q.textContent = currentQuantity;
+
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function addCurrentToCart(){
+
+    const p =
+        products.find(x => x.id === currentProductId);
+
+    if(!p || p.stock === 0)
+        return;
+
+
+    addToCart(p.id,currentQuantity);
+
+}
+
+
+function addToCart(id,quantity=1){
+
+    const p =
+        products.find(x => x.id === id);
+
+    if(!p || p.stock === 0){
+
+        showToast("Produk sedang habis.");
+        return;
+
+    }
+
+
+    const existing =
+        cart.find(x => x.id === id);
+
+
+    if(existing){
+
+        existing.quantity += quantity;
+
+    }
+    else{
+
+        cart.push({
+            id:id,
+            quantity:quantity
+        });
+
+    }
+
+
+    const item =
+        cart.find(x => x.id === id);
+
+
+    if(item.quantity > p.stock)
+        item.quantity = p.stock;
+
+
+    saveCart();
+
+    showToast("Produk berhasil masuk keranjang 🛒");
+
+}
+
+
+function updateCartCount(){
+
+    const total =
+        cart.reduce(
+            (sum,item)=>sum + item.quantity,
+            0
+        );
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = total;
+
+}
+
 
 function openCart(){
 
-renderCart();
+    renderCart();
 
-openModal("cartModal");
+    openModal("cartModal");
 
 }
 
 
 function renderCart(){
 
-const container=document.getElementById("cartItems");
+    const container =
+        document.getElementById("cartItems");
 
-if(cart.length===0){
+    if(cart.length === 0){
 
-container.innerHTML=`
-<div style="text-align:center;padding:40px;color:#68756e">
-<div style="font-size:40px">🛒</div>
-<p>Keranjang masih kosong.</p>
-</div>
-`;
+        container.innerHTML = `
+            <div style="
+                text-align:center;
+                padding:35px 10px;
+            ">
+                <div style="font-size:40px;">
+                    🛒
+                </div>
 
-document.getElementById("cartTotal").innerText="Rp0";
+                <h3>Keranjang masih kosong</h3>
 
-return;
+                <p style="color:#6b7280;">
+                    Yuk pilih produk UMKM.
+                </p>
+            </div>
+        `;
 
-}
+        document.getElementById(
+            "cartTotal"
+        ).textContent = formatRupiah(0);
 
-let total=0;
+        return;
 
-container.innerHTML="";
-
-cart.forEach((item,index)=>{
-
-total+=item.price*item.qty;
-
-container.innerHTML+=`
-
-<div class="cart-item">
-
-<img class="cart-img" src="${item.image}">
-
-<div>
-<strong>${item.name}</strong>
-<div style="font-size:12px;color:#68756e">
-${rupiah(item.price)}
-</div>
-</div>
-
-<div class="qty">
-
-<button onclick="changeCartQty(${index},-1)">−</button>
-
-<span>${item.qty}</span>
-
-<button onclick="changeCartQty(${index},1)">+</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("cartTotal").innerText=rupiah(total);
-
-}
+    }
 
 
-function changeCartQty(index,change){
+    let total = 0;
 
-const item=cart[index];
-
-const newQty=item.qty+change;
-
-if(newQty<1){
-cart.splice(index,1);
-renderCart();
-return;
-}
-
-if(newQty>item.stock){
-showToast("Stok tidak mencukupi");
-return;
-}
-
-item.qty=newQty;
-
-renderCart();
-
-}
+    container.innerHTML = "";
 
 
-/* ================= AFFILIATE ================= */
+    cart.forEach((item,index)=>{
 
-function makeAffiliate(id){
+        const p =
+            products.find(x => x.id === item.id);
 
-const p=products.find(x=>x.id===id);
+        if(!p) return;
 
-if(p.stock===0){
-showToast("Produk sedang habis");
-return;
-}
 
-const link=
-"https://tjslpetrokimia.id/affiliate/"+p.id;
+        const subtotal =
+            p.price * item.quantity;
 
-navigator.clipboard?.writeText(link);
+        total += subtotal;
 
-showToast(
-`Link affiliate ${p.name} berhasil dibuat & disalin!`
-);
+
+        container.innerHTML += `
+
+        <div class="cart-item">
+
+            <img
+                src="${p.image}"
+                alt="${p.name}"
+            >
+
+            <div class="cart-item-info">
+
+                <strong>${p.name}</strong>
+
+                <small>
+                    ${item.quantity} ×
+                    ${formatRupiah(p.price)}
+                </small>
+
+            </div>
+
+            <strong>
+                ${formatRupiah(subtotal)}
+            </strong>
+
+            <button
+                class="close-btn"
+                onclick="removeFromCart(${index})"
+            >
+                ×
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+
+    document.getElementById(
+        "cartTotal"
+    ).textContent = formatRupiah(total);
 
 }
 
 
-/* ================= MODALS ================= */
+function removeFromCart(index){
 
-function openModal(id){
+    cart.splice(index,1);
 
-document.getElementById(id).classList.add("active");
+    saveCart();
 
-}
-
-function closeModal(id){
-
-document.getElementById(id).classList.remove("active");
+    renderCart();
 
 }
 
 
-/* ================= REGISTER ================= */
-
-function registerAffiliate(){
-
-closeModal("affiliateModal");
-
-showToast(
-"Selamat! Pendaftaran affiliate berhasil dikirim 🎉"
-);
-
-}
-
-function registerUMKM(){
-
-closeModal("umkmModal");
-
-showToast(
-"Form pendaftaran UMKM berhasil dikirim. Menunggu verifikasi admin."
-);
-
-}
-
-
-/* ================= CHECKOUT ================= */
+/* =========================================================
+   CHECKOUT
+========================================================= */
 
 function checkout(){
 
-if(cart.length===0){
+    if(cart.length === 0){
 
-showToast("Keranjang masih kosong");
+        showToast("Keranjang masih kosong.");
+        return;
 
-return;
+    }
+
+
+    let orderTotal = 0;
+    let commissionTotal = 0;
+
+
+    cart.forEach(item => {
+
+        const p =
+            products.find(x => x.id === item.id);
+
+        if(!p) return;
+
+
+        if(p.stock < item.quantity){
+
+            showToast(
+                `${p.name} tidak memiliki stock cukup.`
+            );
+
+            return;
+
+        }
+
+
+        p.stock -= item.quantity;
+
+        const subtotal =
+            p.price * item.quantity;
+
+        orderTotal += subtotal;
+
+        commissionTotal +=
+            subtotal * (p.commission / 100);
+
+    });
+
+
+    if(orderTotal === 0)
+        return;
+
+
+    /*
+        Jika pembelian berasal dari affiliate,
+        komisi dicatat ke affiliate.
+    */
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const ref =
+        params.get("ref");
+
+
+    if(ref){
+
+        affiliateData.orders += 1;
+
+        affiliateData.commission +=
+            commissionTotal;
+
+        saveAffiliateData();
+
+    }
+
+
+    cart = [];
+
+    saveCart();
+
+    displayProducts();
+
+
+    closeModal("cartModal");
+
+
+    showToast(
+        "Pesanan berhasil dibuat! 🎉"
+    );
 
 }
 
-cart=[];
 
-closeModal("cartModal");
+/* =========================================================
+   BUY NOW
+========================================================= */
 
-showToast(
-"Pesanan berhasil dibuat! Terima kasih telah mendukung UMKM lokal ❤️"
-);
+function buyNow(){
 
-}
+    addToCart(
+        currentProductId,
+        currentQuantity
+    );
 
+    closeModal("productModal");
 
-/* ================= TOAST ================= */
-
-function showToast(message){
-
-const toast=document.getElementById("toast");
-
-toast.innerText=message;
-
-toast.classList.add("show");
-
-setTimeout(()=>{
-toast.classList.remove("show");
-},3000);
+    openCart();
 
 }
 
 
-/* ================= SEARCH BUTTON ================= */
+/* =========================================================
+   AFFILIATE
+========================================================= */
+
+function makeAffiliate(id){
+
+    const p =
+        products.find(x => x.id === id);
+
+    if(!p)
+        return;
+
+
+    if(p.stock === 0){
+
+        showToast("Produk sedang habis.");
+        return;
+
+    }
+
+
+    const affiliateId =
+        getAffiliateId();
+
+
+    const baseURL =
+        window.location.origin +
+        window.location.pathname;
+
+
+    /*
+        LINK AFFILIATE BARU
+
+        Contoh:
+        https://username.github.io/tjsl/?product=1&ref=AFF001
+    */
+
+    const link =
+        baseURL +
+        "?product=" +
+        encodeURIComponent(p.id) +
+        "&ref=" +
+        encodeURIComponent(affiliateId);
+
+
+    currentAffiliateLink = link;
+
+
+    /*
+        Copy otomatis
+    */
+
+    navigator.clipboard
+        .writeText(link)
+        .then(()=>{
+
+            showToast(
+                "Link affiliate berhasil disalin 🔗"
+            );
+
+        })
+        .catch(()=>{
+
+            showToast(
+                "Link dibuat. Copy dari Affiliate Center."
+            );
+
+        });
+
+
+    /*
+        Buka Affiliate Center
+    */
+
+    openAffiliateDashboard();
+
+
+    setTimeout(()=>{
+
+        const select =
+            document.getElementById(
+                "affiliateProductSelect"
+            );
+
+        if(select)
+            select.value = p.id;
+
+
+        showGeneratedLink(link);
+
+    },100);
+
+}
+
+
+/* =========================================================
+   AFFILIATE ID
+========================================================= */
+
+function getAffiliateId(){
+
+    let id =
+        localStorage.getItem(
+            "tjsl_affiliate_id"
+        );
+
+
+    if(!id){
+
+        id =
+            "AFF" +
+            Math.floor(
+                10000 +
+                Math.random()*90000
+            );
+
+        localStorage.setItem(
+            "tjsl_affiliate_id",
+            id
+        );
+
+    }
+
+
+    return id;
+
+}
+
+
+/* =========================================================
+   AFFILIATE DASHBOARD
+========================================================= */
+
+function openAffiliateDashboard(){
+
+    const select =
+        document.getElementById(
+            "affiliateProductSelect"
+        );
+
+
+    select.innerHTML = "";
+
+    products.forEach(p => {
+
+        select.innerHTML += `
+
+            <option
+                value="${p.id}"
+                ${p.stock === 0 ? "disabled" : ""}
+            >
+                ${p.name}
+                ${p.stock === 0 ? " - HABIS" : ""}
+            </option>
+
+        `;
+
+    });
+
+
+    document.getElementById(
+        "affiliateIdInput"
+    ).value = getAffiliateId();
+
+
+    updateAffiliateStats();
+
+
+    openModal("affiliateModal");
+
+}
+
+
+/* =========================================================
+   CREATE AFFILIATE LINK
+========================================================= */
+
+function createAffiliateLink(){
+
+    const productId =
+        parseInt(
+            document.getElementById(
+                "affiliateProductSelect"
+            ).value
+        );
+
+
+    const affiliateId =
+        document.getElementById(
+            "affiliateIdInput"
+        ).value
+        .trim()
+        .replace(/\s/g,"");
+
+
+    if(!affiliateId){
+
+        showToast("Masukkan ID affiliate.");
+        return;
+
+    }
+
+
+    const p =
+        products.find(x => x.id === productId);
+
+
+    if(!p)
+        return;
+
+
+    if(p.stock === 0){
+
+        showToast("Produk sedang habis.");
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "tjsl_affiliate_id",
+        affiliateId
+    );
+
+
+    const baseURL =
+        window.location.origin +
+        window.location.pathname;
+
+
+    const link =
+        baseURL +
+        "?product=" +
+        encodeURIComponent(p.id) +
+        "&ref=" +
+        encodeURIComponent(affiliateId);
+
+
+    currentAffiliateLink = link;
+
+
+    showGeneratedLink(link);
+
+}
+
+
+function showGeneratedLink(link){
+
+    document.getElementById(
+        "generatedAffiliate"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "affiliateLinkText"
+    ).textContent = link;
+
+}
+
+
+function copyGeneratedAffiliate(){
+
+    if(!currentAffiliateLink)
+        return;
+
+
+    navigator.clipboard
+        .writeText(currentAffiliateLink)
+        .then(()=>{
+
+            showToast(
+                "Link affiliate berhasil dicopy 📋"
+            );
+
+        });
+
+}
+
+
+function shareGeneratedAffiliate(){
+
+    if(!currentAffiliateLink)
+        return;
+
+
+    if(navigator.share){
+
+        navigator.share({
+
+            title:"Produk UMKM TJSL Petrokimia",
+
+            text:"Lihat produk UMKM ini:",
+
+            url:currentAffiliateLink
+
+        });
+
+    }
+    else{
+
+        copyGeneratedAffiliate();
+
+    }
+
+}
+
+
+/* =========================================================
+   UPDATE AFFILIATE STATS
+========================================================= */
+
+function updateAffiliateStats(){
+
+    document.getElementById(
+        "affiliateClicks"
+    ).textContent =
+        affiliateData.clicks;
+
+
+    document.getElementById(
+        "affiliateOrders"
+    ).textContent =
+        affiliateData.orders;
+
+
+    document.getElementById(
+        "affiliateCommission"
+    ).textContent =
+        formatRupiah(
+            affiliateData.commission
+        );
+
+}
+
+
+/* =========================================================
+   CHECK AFFILIATE LINK
+========================================================= */
+
+function checkAffiliateLink(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const productParam =
+        params.get("product");
+
+
+    const ref =
+        params.get("ref");
+
+
+    if(!productParam)
+        return;
+
+
+    const productId =
+        parseInt(productParam);
+
+
+    const product =
+        products.find(
+            p => p.id === productId
+        );
+
+
+    if(!product)
+        return;
+
+
+    /*
+        CATAT KLIK AFFILIATE
+    */
+
+    if(ref){
+
+        affiliateData.clicks += 1;
+
+        saveAffiliateData();
+
+    }
+
+
+    /*
+        BUKA PRODUK OTOMATIS
+    */
+
+    setTimeout(()=>{
+
+        openProduct(product.id);
+
+
+        showToast(
+            ref
+            ?
+            `Produk dibuka melalui affiliate ${ref} 🔗`
+            :
+            "Produk berhasil ditemukan."
+        );
+
+
+    },500);
+
+}
+
+
+/* =========================================================
+   UMKM FORM
+========================================================= */
+
+function openUMKMForm(){
+
+    openModal("umkmModal");
+
+}
+
+
+function submitUMKM(){
+
+    const name =
+        document.getElementById(
+            "umkmName"
+        ).value.trim();
+
+    const owner =
+        document.getElementById(
+            "umkmOwner"
+        ).value.trim();
+
+    const phone =
+        document.getElementById(
+            "umkmPhone"
+        ).value.trim();
+
+    const productName =
+        document.getElementById(
+            "newProductName"
+        ).value.trim();
+
+
+    if(
+        !name ||
+        !owner ||
+        !phone ||
+        !productName
+    ){
+
+        showToast(
+            "Mohon lengkapi data utama."
+        );
+
+        return;
+
+    }
+
+
+    closeModal("umkmModal");
+
+
+    showToast(
+        "Pendaftaran UMKM berhasil dikirim! 🎉"
+    );
+
+
+    /*
+        Catatan:
+        Pada versi prototype, data belum dikirim
+        ke database. Untuk sistem sungguhan,
+        bagian ini dapat dihubungkan ke backend.
+    */
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function openModal(id){
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+}
+
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("active");
+
+}
+
+
+document
+    .querySelectorAll(".modal-overlay")
+    .forEach(modal => {
+
+        modal.addEventListener(
+            "click",
+            function(e){
+
+                if(e.target === modal){
+
+                    modal.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
 
 function focusSearch(){
 
-document
-.getElementById("produk")
-.scrollIntoView();
-
-setTimeout(()=>{
-document
-.getElementById("searchProduct")
-.focus();
-},500);
-
-}
+    document
+        .getElementById("produk")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 
 
-/* ================= MOBILE ================= */
+    setTimeout(()=>{
 
-function toggleMobile(){
+        document
+            .getElementById("productSearch")
+            .focus();
 
-const nav=document.querySelector(".nav-links");
-
-if(nav.style.display==="flex"){
-nav.style.display="none";
-}else{
-
-nav.style.display="flex";
-nav.style.position="absolute";
-nav.style.top="68px";
-nav.style.left="0";
-nav.style.right="0";
-nav.style.background="var(--cream)";
-nav.style.padding="20px";
-nav.style.flexDirection="column";
-nav.style.boxShadow="0 10px 30px rgba(0,0,0,.1)";
-
-}
+    },500);
 
 }
 
 
-/* ================= CLOSE MODAL CLICK OUTSIDE ================= */
+function scrollToProducts(){
 
-document.querySelectorAll(".modal").forEach(modal=>{
+    document
+        .getElementById("produk")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
 
-modal.addEventListener("click",function(e){
-
-if(e.target===modal){
-modal.classList.remove("active");
 }
 
-});
 
-});
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
 
 
-/* ================= INITIALIZE ================= */
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+
+    clearTimeout(toastTimer);
+
+
+    toastTimer =
+        setTimeout(()=>{
+
+            toast.classList.remove(
+                "show"
+            );
+
+        },3000);
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 displayProducts();
+
+updateCartCount();
+
+checkAffiliateLink();
+
 
 </script>
 
 </body>
 </html>
+```
