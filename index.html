@@ -964,6 +964,92 @@ footer{
     color:var(--muted);
 }
 
+
+
+/* ================= UMKM DASHBOARD ================= */
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:18px;
+}
+.dashboard-card{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:16px;
+}
+.dashboard-card strong{
+    display:block;
+    font-size:22px;
+    color:var(--green);
+    margin-top:5px;
+}
+.dashboard-card span{
+    font-size:12px;
+    color:var(--muted);
+}
+.dashboard-section{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:18px;
+    margin-top:14px;
+}
+.dashboard-section h4{
+    margin-bottom:12px;
+}
+.dashboard-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+}
+.dashboard-table th,.dashboard-table td{
+    padding:10px 8px;
+    border-bottom:1px solid var(--border);
+    text-align:left;
+}
+.dashboard-table th{
+    color:var(--muted);
+    font-size:11px;
+    text-transform:uppercase;
+}
+.money-flow{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+.flow-item{
+    background:var(--green-light);
+    border:1px solid #cce7d9;
+    border-radius:12px;
+    padding:14px;
+}
+.flow-item strong{
+    display:block;
+    color:var(--green-dark);
+    font-size:17px;
+    margin-top:4px;
+}
+.dashboard-note{
+    background:#fff8e7;
+    border:1px solid #f2dfaa;
+    color:#7a5b10;
+    border-radius:12px;
+    padding:12px;
+    font-size:12px;
+    margin-bottom:14px;
+}
+@media(max-width:900px){
+    .dashboard-grid{grid-template-columns:repeat(2,1fr);}
+    .money-flow{grid-template-columns:1fr;}
+}
+@media(max-width:700px){
+    .dashboard-grid{grid-template-columns:1fr 1fr;}
+    .dashboard-table{font-size:11px;}
+    .dashboard-table th,.dashboard-table td{padding:8px 5px;}
+}
+
 /* ================= TOAST ================= */
 
 .toast{
@@ -1100,6 +1186,7 @@ footer{
         <a href="#beranda">Beranda</a>
         <a href="#produk">Produk</a>
         <a href="#umkm">UMKM</a>
+        <a href="#" onclick="openUMKMDashboard();return false;">Dashboard UMKM</a>
         <a href="#tentang">Tentang Kami</a>
         <a href="#dampak">Dampak yang Dihasilkan</a>
     </nav>
@@ -1114,6 +1201,10 @@ footer{
 
         <button class="secondary-btn" onclick="openAffiliateDashboard()">
             Gabung sebagai Affiliate
+        </button>
+
+        <button class="secondary-btn" onclick="openUMKMDashboard()">
+            📊 Dashboard UMKM
         </button>
 
         <button class="primary-btn" onclick="openUMKMForm()">
@@ -1318,9 +1409,14 @@ footer{
             </p>
         </div>
 
-        <button class="secondary-btn" onclick="openUMKMForm()">
-            + Daftarkan UMKM
-        </button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+            <button class="secondary-btn" onclick="openUMKMDashboard()">
+                📊 Dashboard UMKM
+            </button>
+            <button class="secondary-btn" onclick="openUMKMForm()">
+                + Daftarkan UMKM
+            </button>
+        </div>
 
     </div>
 
@@ -1856,6 +1952,19 @@ footer{
 
 </div>
 
+
+
+
+<!-- ================= UMKM DASHBOARD MODAL ================= -->
+<div class="modal-overlay" id="umkmDashboardModal">
+<div class="modal">
+    <div class="modal-header">
+        <h3>📊 Dashboard UMKM</h3>
+        <button class="close-btn" onclick="closeModal('umkmDashboardModal')">×</button>
+    </div>
+    <div class="modal-body" id="umkmDashboardContent"></div>
+</div>
+</div>
 
 <!-- ================= UMKM MODAL ================= -->
 
@@ -3122,6 +3231,11 @@ function createAffiliateLink(){
         affiliateId
     );
 
+    localStorage.setItem("tjsl_affiliate_payout", JSON.stringify({
+        method: document.getElementById("affiliatePayoutMethod")?.value || "Belum diisi",
+        account: document.getElementById("affiliatePayoutAccount")?.value.trim() || "Belum diisi"
+    }));
+
 
     const baseURL =
         window.location.origin +
@@ -3321,59 +3435,179 @@ function openUMKMForm(){
 function submitUMKM(){
 
     const name =
-        document.getElementById(
-            "umkmName"
-        ).value.trim();
-
+        document.getElementById("umkmName").value.trim();
     const owner =
-        document.getElementById(
-            "umkmOwner"
-        ).value.trim();
-
+        document.getElementById("umkmOwner").value.trim();
     const phone =
-        document.getElementById(
-            "umkmPhone"
-        ).value.trim();
-
+        document.getElementById("umkmPhone").value.trim();
+    const location =
+        document.getElementById("umkmLocation").value.trim();
+    const category =
+        document.getElementById("umkmCategory").value;
+    const description =
+        document.getElementById("umkmDescription").value.trim();
     const productName =
-        document.getElementById(
-            "newProductName"
-        ).value.trim();
+        document.getElementById("newProductName").value.trim();
+    const productPrice =
+        Number(document.getElementById("newProductPrice").value || 0);
+    const productDescription =
+        document.getElementById("newProductDescription").value.trim();
+    const productStock =
+        Number(document.getElementById("newProductStock").value || 0);
+    const productCommission =
+        Number(document.getElementById("newProductCommission").value || 0);
 
-
-    if(
-        !name ||
-        !owner ||
-        !phone ||
-        !productName
-    ){
-
-        showToast(
-            "Mohon lengkapi data utama."
-        );
-
+    if(!name || !owner || !phone || !location || !productName || !productPrice){
+        showToast("Mohon lengkapi data utama dan produk.");
         return;
-
     }
 
+    const registration = {
+        name, owner, phone, location, category, description,
+        productName, productPrice, productDescription,
+        productStock, productCommission,
+        registeredAt:new Date().toLocaleDateString("id-ID")
+    };
+
+    localStorage.setItem("petrogrow_umkm_registration", JSON.stringify(registration));
 
     closeModal("umkmModal");
+    showToast("Pendaftaran UMKM berhasil disimpan! 🎉");
 
-
-    showToast(
-        "Pendaftaran UMKM berhasil dikirim! 🎉"
-    );
-
-
-    /*
-        Catatan:
-        Pada versi prototype, data belum dikirim
-        ke database. Untuk sistem sungguhan,
-        bagian ini dapat dihubungkan ke backend.
-    */
-
+    setTimeout(()=>openUMKMDashboard(),350);
 }
 
+
+
+
+/* =========================================================
+   UMKM DASHBOARD
+   Prototype: data tersimpan di browser (localStorage).
+========================================================= */
+
+const demoMarketingData = {
+    buyers: 87,
+    orders: 96,
+    productsSold: 142,
+    revenue: 2874000,
+    clicks: 624,
+    cities: [
+        {city:"Gresik", buyers:31, sales:980000},
+        {city:"Surabaya", buyers:24, sales:760000},
+        {city:"Sidoarjo", buyers:15, sales:495000},
+        {city:"Jakarta", buyers:9, sales:319000},
+        {city:"Kota lainnya", buyers:8, sales:320000}
+    ],
+    channels: [
+        {channel:"Website langsung", buyers:39, sales:1250000},
+        {channel:"Affiliate", buyers:34, sales:1044000},
+        {channel:"Media sosial", buyers:14, sales:580000}
+    ],
+    affiliate: {
+        clicks:214,
+        orders:34,
+        commission:104400,
+        payoutMethod:"DANA",
+        payoutAccount:"08xxxxxxxxxx",
+        status:"Siap dicairkan"
+    }
+};
+
+function getUMKMRegistration(){
+    try{
+        return JSON.parse(localStorage.getItem("petrogrow_umkm_registration") || "null");
+    }catch(e){
+        return null;
+    }
+}
+
+function openUMKMDashboard(){
+    const registration = getUMKMRegistration();
+    const data = demoMarketingData;
+    const container = document.getElementById("umkmDashboardContent");
+
+    const umkmName = registration ? registration.name : "Si Pisang Trepan";
+    const location = registration ? registration.location : "Gresik";
+    const productName = registration ? registration.productName : "Trepan Pisang Original";
+
+    let savedPayout = null;
+    try{ savedPayout = JSON.parse(localStorage.getItem("tjsl_affiliate_payout") || "null"); }catch(e){}
+    const payoutMethod = savedPayout?.method || data.affiliate.payoutMethod;
+    const payoutAccount = savedPayout?.account || data.affiliate.payoutAccount;
+    const commission = data.affiliate.commission;
+    const umkmRevenue = data.revenue - commission;
+
+    container.innerHTML = `
+        <div class="dashboard-note">
+            <strong>📌 ${registration ? "UMKM sudah terdaftar" : "Contoh Dashboard UMKM"}</strong><br>
+            ${registration ? `Data usaha <strong>${umkmName}</strong> tersimpan. Lokasi: ${location}.` : "Silakan daftar UMKM terlebih dahulu. Angka pemasaran di bawah adalah data simulasi untuk menunjukkan cara kerja dashboard."}
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card"><span>👥 Pembeli</span><strong>${data.buyers}</strong></div>
+            <div class="dashboard-card"><span>🛒 Pesanan</span><strong>${data.orders}</strong></div>
+            <div class="dashboard-card"><span>📦 Produk Terjual</span><strong>${data.productsSold}</strong></div>
+            <div class="dashboard-card"><span>💰 Penjualan</span><strong>${formatRupiah(data.revenue)}</strong></div>
+        </div>
+
+        <div class="dashboard-section">
+            <h4>📣 Kinerja Pemasaran</h4>
+            <div class="dashboard-grid">
+                <div class="dashboard-card"><span>Total klik/link</span><strong>${data.clicks}</strong></div>
+                <div class="dashboard-card"><span>Konversi pembeli</span><strong>${((data.buyers/data.clicks)*100).toFixed(1)}%</strong></div>
+                <div class="dashboard-card"><span>Produk utama</span><strong style="font-size:15px;">${productName}</strong></div>
+                <div class="dashboard-card"><span>Lokasi UMKM</span><strong style="font-size:15px;">${location}</strong></div>
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <h4>📍 Pembeli Berasal dari Mana?</h4>
+            <table class="dashboard-table">
+                <thead><tr><th>Lokasi</th><th>Jumlah Pembeli</th><th>Nilai Penjualan</th></tr></thead>
+                <tbody>
+                    ${data.cities.map(x=>`<tr><td>${x.city}</td><td>${x.buyers} orang</td><td>${formatRupiah(x.sales)}</td></tr>`).join("")}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="dashboard-section">
+            <h4>💳 Uang Masuk & Aliran Dana</h4>
+            <div class="money-flow">
+                <div class="flow-item"><span>Total penjualan</span><strong>${formatRupiah(data.revenue)}</strong></div>
+                <div class="flow-item"><span>Masuk untuk UMKM</span><strong>${formatRupiah(umkmRevenue)}</strong></div>
+                <div class="flow-item"><span>Komisi affiliate</span><strong>${formatRupiah(commission)}</strong></div>
+            </div>
+            <p style="font-size:12px;color:#6b7280;margin-top:12px;">Alur: pembeli melakukan transaksi → penjualan tercatat → bagian komisi affiliate dihitung → sisanya menjadi nilai penjualan UMKM.</p>
+        </div>
+
+        <div class="dashboard-section">
+            <h4>🤝 Pemasaran Berdasarkan Channel</h4>
+            <table class="dashboard-table">
+                <thead><tr><th>Channel</th><th>Pembeli</th><th>Penjualan</th></tr></thead>
+                <tbody>
+                    ${data.channels.map(x=>`<tr><td>${x.channel}</td><td>${x.buyers} orang</td><td>${formatRupiah(x.sales)}</td></tr>`).join("")}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="dashboard-section">
+            <h4>🔗 Uang Affiliate Masuk ke Mana?</h4>
+            <div class="money-flow">
+                <div class="flow-item"><span>Klik affiliate</span><strong>${data.affiliate.clicks}</strong></div>
+                <div class="flow-item"><span>Pesanan affiliate</span><strong>${data.affiliate.orders}</strong></div>
+                <div class="flow-item"><span>Komisi affiliate</span><strong>${formatRupiah(data.affiliate.commission)}</strong></div>
+            </div>
+            <div style="margin-top:14px;padding:14px;border:1px solid var(--border);border-radius:12px;">
+                <strong>Tujuan pencairan:</strong> ${data.affiliate.payoutMethod}<br>
+                <strong>Penerima:</strong> ${payoutAccount}<br>
+                <strong>Status:</strong> ${data.affiliate.status}
+            </div>
+            <p style="font-size:12px;color:#6b7280;margin-top:10px;">Tujuan pencairan affiliate dapat diisi saat affiliate membuat profil/link. Pada prototype ini belum terhubung ke payment gateway atau rekening bank sungguhan.</p>
+        </div>
+    `;
+
+    openModal("umkmDashboardModal");
+}
 
 /* =========================================================
    MODAL
