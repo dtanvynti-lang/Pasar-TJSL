@@ -560,6 +560,24 @@ header{
     color:var(--muted);
 }
 
+.umkm-card.registered{
+    border-color:#bfe3cf;
+    box-shadow:0 8px 25px rgba(23,107,69,.08);
+}
+
+.umkm-status{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    margin-top:5px;
+    padding:4px 8px;
+    border-radius:20px;
+    background:var(--green-light);
+    color:var(--green);
+    font-size:10px;
+    font-weight:800;
+}
+
 /* ================= ABOUT ================= */
 
 .about{
@@ -964,58 +982,66 @@ footer{
     color:var(--muted);
 }
 
-/* ================= PAYOUT ================= */
+.affiliate-profile-list{
+    display:grid;
+    gap:10px;
+    margin-top:14px;
+}
 
-.payout-box{
-    margin-top:20px;
-    padding:18px;
-    background:white;
+.affiliate-profile{
     border:1px solid var(--border);
-    border-radius:14px;
+    border-radius:13px;
+    padding:14px;
+    background:#fff;
 }
 
-.payout-box h4{
-    margin-bottom:14px;
-    color:var(--green-dark);
+.affiliate-profile-head{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    align-items:flex-start;
 }
 
-.payout-status{
-    margin-top:10px;
-    padding:10px 12px;
-    border-radius:10px;
+.affiliate-profile small{
+    color:var(--muted);
+}
+
+.affiliate-payout-badge{
+    display:inline-block;
+    margin-top:7px;
+    padding:4px 8px;
+    border-radius:8px;
     background:var(--green-light);
-    color:var(--green-dark);
-    font-size:12px;
+    color:var(--green);
+    font-size:11px;
+    font-weight:700;
 }
+
+
 
 /* ================= UMKM DASHBOARD ================= */
-
 .dashboard-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:12px;
     margin-bottom:18px;
 }
-
 .dashboard-card{
     background:white;
     border:1px solid var(--border);
     border-radius:14px;
     padding:16px;
 }
-
 .dashboard-card strong{
     display:block;
     font-size:22px;
     color:var(--green);
     margin-top:5px;
 }
-
 .dashboard-card span{
     font-size:12px;
     color:var(--muted);
 }
-
 .dashboard-section{
     background:#fff;
     border:1px solid var(--border);
@@ -1023,50 +1049,41 @@ footer{
     padding:18px;
     margin-top:14px;
 }
-
 .dashboard-section h4{
     margin-bottom:12px;
 }
-
 .dashboard-table{
     width:100%;
     border-collapse:collapse;
     font-size:13px;
 }
-
-.dashboard-table th,
-.dashboard-table td{
+.dashboard-table th,.dashboard-table td{
     padding:10px 8px;
     border-bottom:1px solid var(--border);
     text-align:left;
 }
-
 .dashboard-table th{
     color:var(--muted);
     font-size:11px;
     text-transform:uppercase;
 }
-
 .money-flow{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:10px;
 }
-
 .flow-item{
     background:var(--green-light);
     border:1px solid #cce7d9;
     border-radius:12px;
     padding:14px;
 }
-
 .flow-item strong{
     display:block;
     color:var(--green-dark);
     font-size:17px;
     margin-top:4px;
 }
-
 .dashboard-note{
     background:#fff8e7;
     border:1px solid #f2dfaa;
@@ -1076,30 +1093,14 @@ footer{
     font-size:12px;
     margin-bottom:14px;
 }
-
 @media(max-width:900px){
-    .dashboard-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .money-flow{
-        grid-template-columns:1fr;
-    }
+    .dashboard-grid{grid-template-columns:repeat(2,1fr);}
+    .money-flow{grid-template-columns:1fr;}
 }
-
 @media(max-width:700px){
-    .dashboard-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .dashboard-table{
-        font-size:11px;
-    }
-
-    .dashboard-table th,
-    .dashboard-table td{
-        padding:8px 5px;
-    }
+    .dashboard-grid{grid-template-columns:1fr 1fr;}
+    .dashboard-table{font-size:11px;}
+    .dashboard-table th,.dashboard-table td{padding:8px 5px;}
 }
 
 /* ================= TOAST ================= */
@@ -1336,12 +1337,12 @@ footer{
         <div class="mini-stats">
 
             <div class="mini-stat">
-                <strong id="heroUMKM">22+</strong>
+                <strong id="heroUMKM">3</strong>
                 <span>UMKM Binaan</span>
             </div>
 
             <div class="mini-stat">
-                <strong id="heroProducts">21+</strong>
+                <strong id="heroProducts">18</strong>
                 <span>Produk</span>
             </div>
 
@@ -1370,13 +1371,13 @@ footer{
 
         <div class="stat-card">
             <div class="stat-icon">🏪</div>
-            <strong id="statUMKM">22</strong>
+            <strong id="statUMKM">3</strong>
             <span>UMKM Binaan</span>
         </div>
 
         <div class="stat-card">
             <div class="stat-icon">📦</div>
-            <strong id="statProducts">21</strong>
+            <strong id="statProducts">18</strong>
             <span>Produk Dipasarkan</span>
         </div>
 
@@ -1418,14 +1419,12 @@ footer{
 
         <div class="search-box">
             <span>🔎</span>
-
             <input
                 id="productSearch"
                 type="text"
                 placeholder="Cari produk atau UMKM..."
                 oninput="displayProducts()"
             >
-
         </div>
 
         <select
@@ -1465,114 +1464,22 @@ footer{
         </div>
 
         <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
-
-            <button
-                class="secondary-btn"
-                onclick="openUMKMDashboard()"
-            >
+            <button class="secondary-btn" onclick="openUMKMDashboard()">
                 📊 Dashboard UMKM
             </button>
-
-            <button
-                class="secondary-btn"
-                onclick="openUMKMForm()"
-            >
+            <button class="secondary-btn" onclick="openUMKMForm()">
                 + Daftarkan UMKM
             </button>
-
         </div>
 
     </div>
 
 
-    <div class="umkm-grid">
+    <div class="umkm-grid" id="umkmBinaanGrid"></div>
 
-        <div class="umkm-card">
+    <p id="umkmBinaanEmpty" style="display:none;color:var(--muted);margin-top:14px;">Belum ada data UMKM binaan yang terdaftar.</p>
 
-            <div class="umkm-head">
-
-                <div class="umkm-avatar">
-                    SP
-                </div>
-
-                <div>
-                    <h3>Si Pisang Trepan</h3>
-                    <small>📍 Gresik</small>
-                </div>
-
-            </div>
-
-            <p>
-                UMKM olahan pisang dengan produk makanan
-                yang dipasarkan secara digital.
-            </p>
-
-            <div class="umkm-meta">
-                <span>🍌 Makanan</span>
-                <span>8 Produk</span>
-            </div>
-
-        </div>
-
-
-        <div class="umkm-card">
-
-            <div class="umkm-head">
-
-                <div class="umkm-avatar">
-                    KR
-                </div>
-
-                <div>
-                    <h3>Kriya Rasa</h3>
-                    <small>📍 Gresik</small>
-                </div>
-
-            </div>
-
-            <p>
-                Produk kerajinan dan olahan kreatif
-                dari pelaku UMKM lokal.
-            </p>
-
-            <div class="umkm-meta">
-                <span>🎨 Kerajinan</span>
-                <span>12 Produk</span>
-            </div>
-
-        </div>
-
-
-        <div class="umkm-card">
-
-            <div class="umkm-head">
-
-                <div class="umkm-avatar">
-                    RJ
-                </div>
-
-                <div>
-                    <h3>Rasa Jaya</h3>
-                    <small>📍 Gresik</small>
-                </div>
-
-            </div>
-
-            <p>
-                Produk makanan dan minuman lokal
-                yang dikembangkan untuk pasar digital.
-            </p>
-
-            <div class="umkm-meta">
-                <span>🥤 Minuman</span>
-                <span>15 Produk</span>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 
 <!-- ================= ABOUT ================= -->
@@ -1597,50 +1504,36 @@ footer{
             <div class="feature-list">
 
                 <div class="feature">
-
                     <div class="feature-icon">📱</div>
-
                     <div>
                         <strong>Pemasaran Digital</strong>
-
                         <p>
                             Produk dapat ditemukan dan dipromosikan
                             secara online.
                         </p>
                     </div>
-
                 </div>
 
-
                 <div class="feature">
-
                     <div class="feature-icon">🌐</div>
-
                     <div>
                         <strong>Perluasan Pasar</strong>
-
                         <p>
                             UMKM memiliki peluang menjangkau
                             konsumen di luar wilayah.
                         </p>
                     </div>
-
                 </div>
 
-
                 <div class="feature">
-
                     <div class="feature-icon">🤝</div>
-
                     <div>
                         <strong>Kolaborasi Affiliate</strong>
-
                         <p>
                             Masyarakat dapat membantu memasarkan
                             produk dan memperoleh komisi.
                         </p>
                     </div>
-
                 </div>
 
             </div>
@@ -1657,63 +1550,44 @@ footer{
             <div class="feature-list">
 
                 <div class="feature">
-
                     <div class="feature-icon">1</div>
-
                     <div>
                         <strong>UMKM Mendaftarkan Produk</strong>
-
                         <p>
                             UMKM mengisi informasi usaha dan produk.
                         </p>
                     </div>
-
                 </div>
 
-
                 <div class="feature">
-
                     <div class="feature-icon">2</div>
-
                     <div>
                         <strong>Konsumen Menemukan Produk</strong>
-
                         <p>
                             Produk ditampilkan dalam katalog digital.
                         </p>
                     </div>
-
                 </div>
 
-
                 <div class="feature">
-
                     <div class="feature-icon">3</div>
-
                     <div>
                         <strong>Affiliate Membagikan Link</strong>
-
                         <p>
                             Affiliate memperoleh link khusus
                             untuk mempromosikan produk.
                         </p>
                     </div>
-
                 </div>
 
-
                 <div class="feature">
-
                     <div class="feature-icon">4</div>
-
                     <div>
                         <strong>Penjualan Bertambah</strong>
-
                         <p>
                             UMKM memperoleh peluang pasar yang lebih luas.
                         </p>
                     </div>
-
                 </div>
 
             </div>
@@ -1743,12 +1617,12 @@ footer{
         <div class="impact-grid">
 
             <div class="impact-card">
-                <strong>22</strong>
+                <strong>3</strong>
                 <span>UMKM Dibina</span>
             </div>
 
             <div class="impact-card">
-                <strong>48+</strong>
+                <strong>18</strong>
                 <span>Produk Dipasarkan</span>
             </div>
 
@@ -1776,7 +1650,6 @@ footer{
     <div class="cta">
 
         <div>
-
             <h2>
                 Punya UMKM dan ingin berkembang?
             </h2>
@@ -1785,7 +1658,6 @@ footer{
                 Daftarkan produk Anda dan perluas peluang
                 pemasaran melalui platform digital.
             </p>
-
         </div>
 
         <button
@@ -1811,11 +1683,8 @@ footer{
     <div class="footer-brand">
 
         <div class="logo" style="color:white">
-
             <div class="logo-icon">🌱</div>
-
             PETROGROW
-
         </div>
 
         <p>
@@ -1843,17 +1712,11 @@ footer{
 
         <h4>Kolaborasi</h4>
 
-        <a
-            href="#"
-            onclick="openAffiliateDashboard();return false;"
-        >
+        <a href="#" onclick="openAffiliateDashboard();return false;">
             Affiliate
         </a>
 
-        <a
-            href="#"
-            onclick="openUMKMForm();return false;"
-        >
+        <a href="#" onclick="openUMKMForm();return false;">
             Daftarkan UMKM
         </a>
 
@@ -1879,19 +1742,13 @@ footer{
 
         <h3>Detail Produk</h3>
 
-        <button
-            class="close-btn"
-            onclick="closeModal('productModal')"
-        >
+        <button class="close-btn" onclick="closeModal('productModal')">
             ×
         </button>
 
     </div>
 
-    <div
-        class="modal-body"
-        id="productDetailContent"
-    ></div>
+    <div class="modal-body" id="productDetailContent"></div>
 
 </div>
 
@@ -1908,10 +1765,7 @@ footer{
 
         <h3>Keranjang Belanja</h3>
 
-        <button
-            class="close-btn"
-            onclick="closeModal('cartModal')"
-        >
+        <button class="close-btn" onclick="closeModal('cartModal')">
             ×
         </button>
 
@@ -1935,17 +1789,11 @@ footer{
 
     <div class="modal-footer">
 
-        <button
-            class="secondary-btn"
-            onclick="closeModal('cartModal')"
-        >
+        <button class="secondary-btn" onclick="closeModal('cartModal')">
             Lanjut Belanja
         </button>
 
-        <button
-            class="primary-btn"
-            onclick="checkout()"
-        >
+        <button class="primary-btn" onclick="checkout()">
             Checkout
         </button>
 
@@ -1966,10 +1814,7 @@ footer{
 
         <h3>Affiliate Center</h3>
 
-        <button
-            class="close-btn"
-            onclick="closeModal('affiliateModal')"
-        >
+        <button class="close-btn" onclick="closeModal('affiliateModal')">
             ×
         </button>
 
@@ -1980,28 +1825,17 @@ footer{
 
         <div class="affiliate-box">
 
-            <strong>
-                Gabung sebagai Affiliate
-            </strong>
+            <strong>Gabung sebagai Affiliate</strong>
 
             <p style="font-size:13px;color:#6b7280;margin-top:5px;">
-                Pilih produk, buat link khusus,
-                bagikan link ke WhatsApp, TikTok,
-                Instagram, atau media sosial lainnya,
-                lalu pantau klik, pesanan, dan komisi.
+                Pilih produk, lalu buat link khusus untuk
+                dibagikan ke WhatsApp, TikTok, Instagram,
+                atau media sosial lainnya.
             </p>
 
+            <div class="form-group" style="margin-top:15px;">
 
-            <!-- ================= ID AFFILIATE ================= -->
-
-            <div
-                class="form-group"
-                style="margin-top:15px;"
-            >
-
-                <label>
-                    ID Affiliate
-                </label>
+                <label>ID Affiliate</label>
 
                 <input
                     id="affiliateIdInput"
@@ -2012,119 +1846,52 @@ footer{
 
             </div>
 
+            <div class="form-group">
 
-            <!-- ================= PAYOUT ================= -->
+                <label>Nama Affiliate</label>
 
-            <div class="payout-box">
+                <input
+                    id="affiliateNameInput"
+                    type="text"
+                    placeholder="Nama affiliate"
+                >
 
-                <h4>
-                    💸 Tujuan Pencairan Komisi
-                </h4>
+            </div>
+
+            <div class="form-row">
 
                 <div class="form-group">
-
-                    <label>
-                        Metode Pencairan
-                    </label>
-
+                    <label>Metode Pencairan</label>
                     <select id="affiliatePayoutMethod">
-
-                        <option value="">
-                            Pilih metode pencairan
-                        </option>
-
-                        <option value="Transfer Bank">
-                            Transfer Bank
-                        </option>
-
-                        <option value="DANA">
-                            DANA
-                        </option>
-
-                        <option value="GoPay">
-                            GoPay
-                        </option>
-
-                        <option value="OVO">
-                            OVO
-                        </option>
-
-                        <option value="ShopeePay">
-                            ShopeePay
-                        </option>
-
+                        <option value="DANA">DANA</option>
+                        <option value="OVO">OVO</option>
+                        <option value="GoPay">GoPay</option>
+                        <option value="ShopeePay">ShopeePay</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BRI">BRI</option>
+                        <option value="BNI">BNI</option>
+                        <option value="Mandiri">Mandiri</option>
                     </select>
-
                 </div>
 
-
                 <div class="form-group">
-
-                    <label>
-                        Rekening / Nomor E-Wallet
-                    </label>
-
+                    <label>Nomor Rekening / E-wallet</label>
                     <input
                         id="affiliatePayoutAccount"
                         type="text"
-                        placeholder="Contoh: 081234567890"
+                        placeholder="Nomor rekening / e-wallet"
                     >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Nama Pemilik
-                    </label>
-
-                    <input
-                        id="affiliatePayoutName"
-                        type="text"
-                        placeholder="Nama pemilik rekening/e-wallet"
-                    >
-
-                </div>
-
-
-                <button
-                    type="button"
-                    class="secondary-btn"
-                    onclick="saveAffiliatePayout()"
-                >
-                    💾 Simpan Data Pencairan
-                </button>
-
-
-                <div
-                    id="payoutSavedStatus"
-                    class="payout-status"
-                    style="display:none;"
-                >
-                    ✅ Data pencairan sudah tersimpan.
                 </div>
 
             </div>
 
+            <div class="form-group">
 
-            <!-- ================= PRODUCT AFFILIATE ================= -->
+                <label>Pilih Produk</label>
 
-            <div
-                class="form-group"
-                style="margin-top:18px;"
-            >
-
-                <label>
-                    Pilih Produk
-                </label>
-
-                <select
-                    id="affiliateProductSelect"
-                ></select>
+                <select id="affiliateProductSelect"></select>
 
             </div>
-
 
             <button
                 class="primary-btn"
@@ -2133,27 +1900,19 @@ footer{
                 🔗 Buat Link Affiliate
             </button>
 
-
-            <!-- ================= GENERATED LINK ================= -->
-
             <div
                 id="generatedAffiliate"
                 style="display:none;margin-top:20px;"
             >
 
-                <strong>
-                    Link Affiliate Kamu
-                </strong>
+                <strong>Link Affiliate Kamu</strong>
 
                 <div
                     class="affiliate-link"
                     id="affiliateLinkText"
                 ></div>
 
-
-                <div
-                    style="display:flex;gap:8px;flex-wrap:wrap;"
-                >
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
 
                     <button
                         class="secondary-btn"
@@ -2176,46 +1935,23 @@ footer{
         </div>
 
 
-        <!-- ================= AFFILIATE STATS ================= -->
-
         <div class="affiliate-stats">
 
             <div class="aff-stat">
-
-                <strong id="affiliateClicks">
-                    0
-                </strong>
-
-                <span>
-                    Total Klik
-                </span>
-
+                <strong id="affiliateClicks">0</strong>
+                <span>Total Klik</span>
             </div>
 
-
             <div class="aff-stat">
-
-                <strong id="affiliateOrders">
-                    0
-                </strong>
-
-                <span>
-                    Total Pesanan
-                </span>
-
+                <strong id="affiliateOrders">0</strong>
+                <span>Total Pesanan</span>
             </div>
 
-
             <div class="aff-stat">
-
                 <strong id="affiliateCommission">
                     Rp0
                 </strong>
-
-                <span>
-                    Total Komisi
-                </span>
-
+                <span>Total Komisi</span>
             </div>
 
         </div>
@@ -2227,39 +1963,18 @@ footer{
 </div>
 
 
+
+
 <!-- ================= UMKM DASHBOARD MODAL ================= -->
-
-<div
-    class="modal-overlay"
-    id="umkmDashboardModal"
->
-
+<div class="modal-overlay" id="umkmDashboardModal">
 <div class="modal">
-
     <div class="modal-header">
-
-        <h3>
-            📊 Dashboard UMKM
-        </h3>
-
-        <button
-            class="close-btn"
-            onclick="closeModal('umkmDashboardModal')"
-        >
-            ×
-        </button>
-
+        <h3>📊 Dashboard UMKM</h3>
+        <button class="close-btn" onclick="closeModal('umkmDashboardModal')">×</button>
     </div>
-
-    <div
-        class="modal-body"
-        id="umkmDashboardContent"
-    ></div>
-
+    <div class="modal-body" id="umkmDashboardContent"></div>
 </div>
-
 </div>
-
 
 <!-- ================= UMKM MODAL ================= -->
 
@@ -2269,14 +1984,9 @@ footer{
 
     <div class="modal-header">
 
-        <h3>
-            Daftarkan UMKM
-        </h3>
+        <h3>Daftarkan UMKM</h3>
 
-        <button
-            class="close-btn"
-            onclick="closeModal('umkmModal')"
-        >
+        <button class="close-btn" onclick="closeModal('umkmModal')">
             ×
         </button>
 
@@ -2289,9 +1999,7 @@ footer{
 
             <div class="form-group">
 
-                <label>
-                    Nama UMKM
-                </label>
+                <label>Nama UMKM</label>
 
                 <input
                     id="umkmName"
@@ -2301,12 +2009,9 @@ footer{
 
             </div>
 
-
             <div class="form-group">
 
-                <label>
-                    Nama Pemilik
-                </label>
+                <label>Nama Pemilik</label>
 
                 <input
                     id="umkmOwner"
@@ -2323,9 +2028,7 @@ footer{
 
             <div class="form-group">
 
-                <label>
-                    WhatsApp
-                </label>
+                <label>WhatsApp</label>
 
                 <input
                     id="umkmPhone"
@@ -2335,12 +2038,9 @@ footer{
 
             </div>
 
-
             <div class="form-group">
 
-                <label>
-                    Lokasi
-                </label>
+                <label>Lokasi</label>
 
                 <input
                     id="umkmLocation"
@@ -2355,27 +2055,14 @@ footer{
 
         <div class="form-group">
 
-            <label>
-                Kategori
-            </label>
+            <label>Kategori</label>
 
             <select id="umkmCategory">
 
-                <option>
-                    Makanan
-                </option>
-
-                <option>
-                    Minuman
-                </option>
-
-                <option>
-                    Kerajinan
-                </option>
-
-                <option>
-                    Fashion
-                </option>
+                <option>Makanan</option>
+                <option>Minuman</option>
+                <option>Kerajinan</option>
+                <option>Fashion</option>
 
             </select>
 
@@ -2384,9 +2071,7 @@ footer{
 
         <div class="form-group">
 
-            <label>
-                Deskripsi UMKM
-            </label>
+            <label>Deskripsi UMKM</label>
 
             <textarea
                 id="umkmDescription"
@@ -2400,9 +2085,7 @@ footer{
 
             <div class="form-group">
 
-                <label>
-                    Nama Produk
-                </label>
+                <label>Nama Produk</label>
 
                 <input
                     id="newProductName"
@@ -2412,12 +2095,9 @@ footer{
 
             </div>
 
-
             <div class="form-group">
 
-                <label>
-                    Harga Produk
-                </label>
+                <label>Harga Produk</label>
 
                 <input
                     id="newProductPrice"
@@ -2432,9 +2112,7 @@ footer{
 
         <div class="form-group">
 
-            <label>
-                Deskripsi Produk
-            </label>
+            <label>Deskripsi Produk</label>
 
             <textarea
                 id="newProductDescription"
@@ -2448,9 +2126,7 @@ footer{
 
             <div class="form-group">
 
-                <label>
-                    Stock
-                </label>
+                <label>Stock</label>
 
                 <input
                     id="newProductStock"
@@ -2461,12 +2137,9 @@ footer{
 
             </div>
 
-
             <div class="form-group">
 
-                <label>
-                    Komisi Affiliate (%)
-                </label>
+                <label>Komisi Affiliate (%)</label>
 
                 <input
                     id="newProductCommission"
@@ -2508,10 +2181,7 @@ footer{
 
 <!-- ================= TOAST ================= -->
 
-<div
-    class="toast"
-    id="toast"
-></div>
+<div class="toast" id="toast"></div>
 
 
 <script>
@@ -2524,7 +2194,7 @@ const products = [
 
     {
         id:1,
-        name:"Keripik Pisang Terapan",
+        name:"Keripik Pisang Trepan",
         umkm:"Kampung Pisang Trepan",
         category:"Makanan",
         price:18000,
@@ -2670,7 +2340,7 @@ const products = [
         name:"Batik Keluarga",
         umkm:"Batik Bangsawan",
         category:"Fashion",
-        price:285000,
+        price:175000,
         stock:6,
         commission:12,
         rating:4.9,
@@ -2694,7 +2364,7 @@ const products = [
     {
         id:15,
         name:"Batik Tunik Wanita",
-        umkm:"Batik Lokal",
+        umkm:"Batik Bangsawan",
         category:"Fashion",
         price:125000,
         stock:7,
@@ -2707,7 +2377,7 @@ const products = [
     {
         id:16,
         name:"Batik Vest",
-        umkm:"Batik Lokal",
+        umkm:"Batik Bangsawan",
         category:"Fashion",
         price:115000,
         stock:7,
@@ -2718,71 +2388,46 @@ const products = [
     },
 
     {
-        id:17,
-        name:"Pupuk Petroganik",
-        umkm:"Petrokimia Gresik",
-        category:"Pertanian",
-        price:30000,
-        stock:20,
-        commission:10,
+        id:22,
+        name:"Daster Celine Kimono",
+        umkm:"Gisyaluna",
+        category:"Fashion",
+        price:50000,
+        stock:10,
+        commission:12,
         rating:4.8,
-        image:"./Pupuk%20Petroganik.png",
-        description:"Pupuk organik untuk membantu meningkatkan kesuburan tanah dan mendukung pertumbuhan tanaman. Harga Per Sak, Berat Bersih 40Kg"
+        image:"./Daster%20Celine%20Kimono.png",
+        description:"Daster model kimono dengan desain nyaman untuk dipakai sehari-hari."
     },
 
     {
-        id:18,
-        name:"Pupuk Phonska",
-        umkm:"Petrokimia Gresik",
-        category:"Pertanian",
-        price:90000,
-        stock:20,
-        commission:10,
+        id:23,
+        name:"Daster Sheza",
+        umkm:"Gisyaluna",
+        category:"Fashion",
+        price:50000,
+        stock:10,
+        commission:12,
         rating:4.8,
-        image:"./Pupuk%20Phonska.png",
-        description:"Pupuk majemuk untuk membantu memenuhi kebutuhan nutrisi tanaman. Harga Per Sak, Berat Bersih 50Kg"
+        image:"./Daster%20Sheza.png",
+        description:"Daster nyaman dengan model santai untuk aktivitas sehari-hari."
     },
 
     {
-        id:19,
-        name:"Pupuk SP 36",
-        umkm:"Petrokimia Gresik",
-        category:"Pertanian",
-        price:90000,
-        stock:20,
-        commission:10,
+        id:24,
+        name:"Daster Viola",
+        umkm:"Gisyaluna",
+        category:"Fashion",
+        price:50000,
+        stock:10,
+        commission:12,
         rating:4.8,
-        image:"./Pupuk%20SP%2036.png",
-        description:"Pupuk sumber fosfor untuk mendukung pertumbuhan dan perkembangan tanaman. Harga Per Sak, Berat Bersih 50Kg"
-    },
-
-    {
-        id:20,
-        name:"Pupuk UREA",
-        umkm:"Petrokimia Gresik",
-        category:"Pertanian",
-        price:90000,
-        stock:20,
-        commission:10,
-        rating:4.8,
-        image:"./Pupuk%20UREA.png",
-        description:"Pupuk nitrogen untuk membantu mendukung pertumbuhan tanaman. Harga Per Sak, Berat Bersih 50Kg"
-    },
-
-    {
-        id:21,
-        name:"Pupuk ZA",
-        umkm:"Petrokimia Gresik",
-        category:"Pertanian",
-        price:90000,
-        stock:20,
-        commission:10,
-        rating:4.8,
-        image:"./Pupuk%20ZA.png",
-        description:"Pupuk yang mengandung nitrogen dan sulfur untuk membantu memenuhi kebutuhan nutrisi tanaman. Harga Per Sak, Berat Bersih 50Kg"
+        image:"./Daster%20Viola.png",
+        description:"Daster dengan desain simpel dan nyaman untuk digunakan di rumah."
     }
 
 ];
+
 
 
 /* =========================================================
@@ -2899,15 +2544,10 @@ function displayProducts(){
                 text-align:center;
                 border-radius:18px;
             ">
-
-                <h3>
-                    Produk tidak ditemukan
-                </h3>
-
+                <h3>Produk tidak ditemukan</h3>
                 <p style="color:#6b7280">
                     Coba gunakan kata kunci lain.
                 </p>
-
             </div>
         `;
 
@@ -2919,7 +2559,6 @@ function displayProducts(){
 
         let stockClass = "stock-available";
         let stockText = `Tersedia ${p.stock}`;
-
 
         if(p.stock === 0){
 
@@ -3028,8 +2667,7 @@ function openProduct(id){
     const p =
         products.find(x => x.id === id);
 
-    if(!p)
-        return;
+    if(!p) return;
 
 
     currentProductId = id;
@@ -3058,9 +2696,7 @@ function openProduct(id){
                     ${p.category}
                 </div>
 
-                <h2>
-                    ${p.name}
-                </h2>
+                <h2>${p.name}</h2>
 
                 <div style="color:#6b7280;font-size:13px;">
                     ${p.umkm}
@@ -3071,16 +2707,9 @@ function openProduct(id){
                 </div>
 
                 <div style="font-size:13px;">
-
                     ⭐ ${p.rating}
-
                     &nbsp; • &nbsp;
-
-                    Stock:
-                    <strong>
-                        ${p.stock}
-                    </strong>
-
+                    Stock: <strong>${p.stock}</strong>
                 </div>
 
                 <div class="detail-description">
@@ -3089,8 +2718,7 @@ function openProduct(id){
 
                 ${
                     p.stock > 0
-                    ?
-                    `
+                    ? `
                     <div class="quantity">
 
                         <button onclick="changeQuantity(-1)">
@@ -3168,7 +2796,6 @@ function openProduct(id){
             </div>
 
         </div>
-
     `;
 
 
@@ -3184,12 +2811,9 @@ function openProduct(id){
 function changeQuantity(change){
 
     const p =
-        products.find(
-            x => x.id === currentProductId
-        );
+        products.find(x => x.id === currentProductId);
 
-    if(!p)
-        return;
+    if(!p) return;
 
 
     currentQuantity += change;
@@ -3204,10 +2828,7 @@ function changeQuantity(change){
 
 
     const q =
-        document.getElementById(
-            "quantityValue"
-        );
-
+        document.getElementById("quantityValue");
 
     if(q)
         q.textContent = currentQuantity;
@@ -3222,18 +2843,13 @@ function changeQuantity(change){
 function addCurrentToCart(){
 
     const p =
-        products.find(
-            x => x.id === currentProductId
-        );
+        products.find(x => x.id === currentProductId);
 
     if(!p || p.stock === 0)
         return;
 
 
-    addToCart(
-        p.id,
-        currentQuantity
-    );
+    addToCart(p.id,currentQuantity);
 
 }
 
@@ -3241,26 +2857,18 @@ function addCurrentToCart(){
 function addToCart(id,quantity=1){
 
     const p =
-        products.find(
-            x => x.id === id
-        );
-
+        products.find(x => x.id === id);
 
     if(!p || p.stock === 0){
 
-        showToast(
-            "Produk sedang habis."
-        );
-
+        showToast("Produk sedang habis.");
         return;
 
     }
 
 
     const existing =
-        cart.find(
-            x => x.id === id
-        );
+        cart.find(x => x.id === id);
 
 
     if(existing){
@@ -3271,19 +2879,15 @@ function addToCart(id,quantity=1){
     else{
 
         cart.push({
-
             id:id,
             quantity:quantity
-
         });
 
     }
 
 
     const item =
-        cart.find(
-            x => x.id === id
-        );
+        cart.find(x => x.id === id);
 
 
     if(item.quantity > p.stock)
@@ -3292,9 +2896,7 @@ function addToCart(id,quantity=1){
 
     saveCart();
 
-    showToast(
-        "Produk berhasil masuk keranjang 🛒"
-    );
+    showToast("Produk berhasil masuk keranjang 🛒");
 
 }
 
@@ -3303,11 +2905,9 @@ function updateCartCount(){
 
     const total =
         cart.reduce(
-            (sum,item) =>
-            sum + item.quantity,
+            (sum,item)=>sum + item.quantity,
             0
         );
-
 
     document.getElementById(
         "cartCount"
@@ -3320,9 +2920,7 @@ function openCart(){
 
     renderCart();
 
-    openModal(
-        "cartModal"
-    );
+    openModal("cartModal");
 
 }
 
@@ -3330,42 +2928,30 @@ function openCart(){
 function renderCart(){
 
     const container =
-        document.getElementById(
-            "cartItems"
-        );
-
+        document.getElementById("cartItems");
 
     if(cart.length === 0){
 
         container.innerHTML = `
-
             <div style="
                 text-align:center;
                 padding:35px 10px;
             ">
-
                 <div style="font-size:40px;">
                     🛒
                 </div>
 
-                <h3>
-                    Keranjang masih kosong
-                </h3>
+                <h3>Keranjang masih kosong</h3>
 
                 <p style="color:#6b7280;">
                     Yuk pilih produk UMKM.
                 </p>
-
             </div>
-
         `;
-
 
         document.getElementById(
             "cartTotal"
-        ).textContent =
-            formatRupiah(0);
-
+        ).textContent = formatRupiah(0);
 
         return;
 
@@ -3380,18 +2966,13 @@ function renderCart(){
     cart.forEach((item,index)=>{
 
         const p =
-            products.find(
-                x => x.id === item.id
-            );
+            products.find(x => x.id === item.id);
 
-
-        if(!p)
-            return;
+        if(!p) return;
 
 
         const subtotal =
             p.price * item.quantity;
-
 
         total += subtotal;
 
@@ -3407,9 +2988,7 @@ function renderCart(){
 
             <div class="cart-item-info">
 
-                <strong>
-                    ${p.name}
-                </strong>
+                <strong>${p.name}</strong>
 
                 <small>
                     ${item.quantity} ×
@@ -3438,18 +3017,14 @@ function renderCart(){
 
     document.getElementById(
         "cartTotal"
-    ).textContent =
-        formatRupiah(total);
+    ).textContent = formatRupiah(total);
 
 }
 
 
 function removeFromCart(index){
 
-    cart.splice(
-        index,
-        1
-    );
+    cart.splice(index,1);
 
     saveCart();
 
@@ -3466,10 +3041,7 @@ function checkout(){
 
     if(cart.length === 0){
 
-        showToast(
-            "Keranjang masih kosong."
-        );
-
+        showToast("Keranjang masih kosong.");
         return;
 
     }
@@ -3482,13 +3054,9 @@ function checkout(){
     cart.forEach(item => {
 
         const p =
-            products.find(
-                x => x.id === item.id
-            );
+            products.find(x => x.id === item.id);
 
-
-        if(!p)
-            return;
+        if(!p) return;
 
 
         if(p.stock < item.quantity){
@@ -3504,17 +3072,13 @@ function checkout(){
 
         p.stock -= item.quantity;
 
-
         const subtotal =
             p.price * item.quantity;
 
-
         orderTotal += subtotal;
 
-
         commissionTotal +=
-            subtotal *
-            (p.commission / 100);
+            subtotal * (p.commission / 100);
 
     });
 
@@ -3533,20 +3097,21 @@ function checkout(){
             window.location.search
         );
 
-
     const ref =
         params.get("ref");
 
 
     if(ref){
-
         affiliateData.orders += 1;
-
-        affiliateData.commission +=
-            commissionTotal;
-
+        affiliateData.commission += commissionTotal;
         saveAffiliateData();
-
+        const profile=getAffiliateProfile(ref);
+        if(profile){
+            profile.orders=Number(profile.orders||0)+1;
+            profile.commission=Number(profile.commission||0)+commissionTotal;
+            profile.status=profile.commission>0?"Siap dicairkan":"Belum ada komisi";
+            upsertAffiliateProfile(profile);
+        }
     }
 
 
@@ -3557,9 +3122,7 @@ function checkout(){
     displayProducts();
 
 
-    closeModal(
-        "cartModal"
-    );
+    closeModal("cartModal");
 
 
     showToast(
@@ -3580,9 +3143,7 @@ function buyNow(){
         currentQuantity
     );
 
-    closeModal(
-        "productModal"
-    );
+    closeModal("productModal");
 
     openCart();
 
@@ -3596,10 +3157,7 @@ function buyNow(){
 function makeAffiliate(id){
 
     const p =
-        products.find(
-            x => x.id === id
-        );
-
+        products.find(x => x.id === id);
 
     if(!p)
         return;
@@ -3607,10 +3165,7 @@ function makeAffiliate(id){
 
     if(p.stock === 0){
 
-        showToast(
-            "Produk sedang habis."
-        );
-
+        showToast("Produk sedang habis.");
         return;
 
     }
@@ -3626,9 +3181,10 @@ function makeAffiliate(id){
 
 
     /*
+        LINK AFFILIATE BARU
+
         Contoh:
-        https://username.github.io/tjsl/
-        ?product=1&ref=AFF001
+        https://username.github.io/tjsl/?product=1&ref=AFF001
     */
 
     const link =
@@ -3639,9 +3195,12 @@ function makeAffiliate(id){
         encodeURIComponent(affiliateId);
 
 
-    currentAffiliateLink =
-        link;
+    currentAffiliateLink = link;
 
+
+    /*
+        Copy otomatis
+    */
 
     navigator.clipboard
         .writeText(link)
@@ -3661,6 +3220,10 @@ function makeAffiliate(id){
         });
 
 
+    /*
+        Buka Affiliate Center
+    */
+
     openAffiliateDashboard();
 
 
@@ -3671,14 +3234,11 @@ function makeAffiliate(id){
                 "affiliateProductSelect"
             );
 
-
         if(select)
             select.value = p.id;
 
 
-        showGeneratedLink(
-            link
-        );
+        showGeneratedLink(link);
 
     },100);
 
@@ -3703,9 +3263,8 @@ function getAffiliateId(){
             "AFF" +
             Math.floor(
                 10000 +
-                Math.random() * 90000
+                Math.random()*90000
             );
-
 
         localStorage.setItem(
             "tjsl_affiliate_id",
@@ -3721,112 +3280,23 @@ function getAffiliateId(){
 
 
 /* =========================================================
-   PAYOUT DATA
+   DATA PROFIL AFFILIATE
 ========================================================= */
 
-function getAffiliatePayout(){
-
+function getAffiliateProfiles(){
     try{
-
-        return JSON.parse(
-            localStorage.getItem(
-                "tjsl_affiliate_payout"
-            ) || "null"
-        );
-
-    }
-    catch(e){
-
-        return null;
-
-    }
-
+        const saved = JSON.parse(localStorage.getItem("tjsl_affiliate_profiles") || "[]");
+        return Array.isArray(saved) ? saved : [];
+    }catch(e){ return []; }
 }
-
-
-/* =========================================================
-   SAVE PAYOUT
-========================================================= */
-
-function saveAffiliatePayout(){
-
-    const method =
-        document.getElementById(
-            "affiliatePayoutMethod"
-        ).value;
-
-
-    const account =
-        document.getElementById(
-            "affiliatePayoutAccount"
-        ).value.trim();
-
-
-    const name =
-        document.getElementById(
-            "affiliatePayoutName"
-        ).value.trim();
-
-
-    if(!method){
-
-        showToast(
-            "Pilih metode pencairan terlebih dahulu."
-        );
-
-        return;
-
-    }
-
-
-    if(!account){
-
-        showToast(
-            "Masukkan nomor rekening atau e-wallet."
-        );
-
-        return;
-
-    }
-
-
-    if(!name){
-
-        showToast(
-            "Masukkan nama pemilik rekening/e-wallet."
-        );
-
-        return;
-
-    }
-
-
-    localStorage.setItem(
-        "tjsl_affiliate_payout",
-        JSON.stringify({
-
-            method:method,
-            account:account,
-            name:name
-
-        })
-    );
-
-
-    const status =
-        document.getElementById(
-            "payoutSavedStatus"
-        );
-
-
-    if(status)
-        status.style.display = "block";
-
-
-    showToast(
-        "Data pencairan berhasil disimpan 💾"
-    );
-
+function saveAffiliateProfiles(profiles){ localStorage.setItem("tjsl_affiliate_profiles", JSON.stringify(profiles)); }
+function getAffiliateProfile(id){ return getAffiliateProfiles().find(x => String(x.id).toLowerCase() === String(id).toLowerCase()) || null; }
+function getAffiliateTotals(){ return getAffiliateProfiles().reduce((t,p)=>({clicks:t.clicks+Number(p.clicks||0),orders:t.orders+Number(p.orders||0),commission:t.commission+Number(p.commission||0)}),{clicks:0,orders:0,commission:0}); }
+function upsertAffiliateProfile(profile){
+    const profiles=getAffiliateProfiles();
+    const index=profiles.findIndex(x=>String(x.id).toLowerCase()===String(profile.id).toLowerCase());
+    if(index>=0) profiles[index]={...profiles[index],...profile}; else profiles.push(profile);
+    saveAffiliateProfiles(profiles); return profiles;
 }
 
 
@@ -3835,218 +3305,58 @@ function saveAffiliatePayout(){
 ========================================================= */
 
 function openAffiliateDashboard(){
-
-    const select =
-        document.getElementById(
-            "affiliateProductSelect"
-        );
-
-
-    select.innerHTML = "";
-
-
-    products.forEach(p => {
-
-        select.innerHTML += `
-
-            <option
-                value="${p.id}"
-                ${p.stock === 0 ? "disabled" : ""}
-            >
-                ${p.name}
-                ${p.stock === 0 ? " - HABIS" : ""}
-            </option>
-
-        `;
-
-    });
-
-
-    document.getElementById(
-        "affiliateIdInput"
-    ).value =
-        getAffiliateId();
-
-
-    /*
-        Ambil data pencairan yang
-        sebelumnya sudah disimpan.
-    */
-
-    const payout =
-        getAffiliatePayout();
-
-
-    if(payout){
-
-        const method =
-            document.getElementById(
-                "affiliatePayoutMethod"
-            );
-
-
-        const account =
-            document.getElementById(
-                "affiliatePayoutAccount"
-            );
-
-
-        const name =
-            document.getElementById(
-                "affiliatePayoutName"
-            );
-
-
-        if(method)
-            method.value =
-                payout.method || "";
-
-
-        if(account)
-            account.value =
-                payout.account || "";
-
-
-        if(name)
-            name.value =
-                payout.name || "";
-
-
-        const status =
-            document.getElementById(
-                "payoutSavedStatus"
-            );
-
-
-        if(status)
-            status.style.display =
-                "block";
-
-    }
-
-
+    const select=document.getElementById("affiliateProductSelect");
+    select.innerHTML="";
+    products.forEach(p=>{select.innerHTML+=`<option value="${p.id}" ${p.stock===0?"disabled":""}>${p.name}${p.stock===0?" - HABIS":""}</option>`;});
+    const affiliateId=getAffiliateId();
+    const profile=getAffiliateProfile(affiliateId);
+    document.getElementById("affiliateIdInput").value=affiliateId;
+    document.getElementById("affiliateNameInput").value=profile?.name||"";
+    document.getElementById("affiliatePayoutMethod").value=profile?.payoutMethod||"DANA";
+    document.getElementById("affiliatePayoutAccount").value=profile?.payoutAccount||"";
     updateAffiliateStats();
-
-
-    openModal(
-        "affiliateModal"
-    );
-
+    openModal("affiliateModal");
 }
 
 
 /* =========================================================
+   CREATE AFFILIATE LINK/* =========================================================
    CREATE AFFILIATE LINK
 ========================================================= */
 
 function createAffiliateLink(){
-
-    const productId =
-        parseInt(
-            document.getElementById(
-                "affiliateProductSelect"
-            ).value
-        );
-
-
-    const affiliateId =
-        document.getElementById(
-            "affiliateIdInput"
-        ).value
-        .trim()
-        .replace(/\s/g,"");
-
-
-    if(!affiliateId){
-
-        showToast(
-            "Masukkan ID affiliate."
-        );
-
-        return;
-
-    }
-
-
-    const p =
-        products.find(
-            x => x.id === productId
-        );
-
-
-    if(!p)
-        return;
-
-
-    if(p.stock === 0){
-
-        showToast(
-            "Produk sedang habis."
-        );
-
-        return;
-
-    }
-
-
-    localStorage.setItem(
-        "tjsl_affiliate_id",
-        affiliateId
-    );
-
-
-    const baseURL =
-        window.location.origin +
-        window.location.pathname;
-
-
-    const link =
-        baseURL +
-        "?product=" +
-        encodeURIComponent(p.id) +
-        "&ref=" +
-        encodeURIComponent(affiliateId);
-
-
-    currentAffiliateLink =
-        link;
-
-
-    showGeneratedLink(
-        link
-    );
-
-
-    showToast(
-        "Link affiliate berhasil dibuat 🔗"
-    );
-
+    const productId=parseInt(document.getElementById("affiliateProductSelect").value);
+    const affiliateId=document.getElementById("affiliateIdInput").value.trim().replace(/\s/g,"");
+    const affiliateName=document.getElementById("affiliateNameInput").value.trim();
+    const payoutMethod=document.getElementById("affiliatePayoutMethod").value;
+    const payoutAccount=document.getElementById("affiliatePayoutAccount").value.trim();
+    if(!affiliateId||!affiliateName||!payoutMethod||!payoutAccount){showToast("Lengkapi nama affiliate dan tujuan pencairan terlebih dahulu.");return;}
+    const p=products.find(x=>x.id===productId); if(!p)return;
+    if(p.stock===0){showToast("Produk sedang habis.");return;}
+    localStorage.setItem("tjsl_affiliate_id",affiliateId);
+    const oldProfile=getAffiliateProfile(affiliateId);
+    upsertAffiliateProfile({id:affiliateId,name:affiliateName,payoutMethod,payoutAccount,clicks:Number(oldProfile?.clicks||0),orders:Number(oldProfile?.orders||0),commission:Number(oldProfile?.commission||0),status:oldProfile?.status||"Belum ada komisi"});
+    localStorage.setItem("tjsl_affiliate_payout",JSON.stringify({method:payoutMethod,account:payoutAccount,name:affiliateName,affiliateId}));
+    const baseURL=window.location.origin+window.location.pathname;
+    const link=baseURL+"?product="+encodeURIComponent(p.id)+"&ref="+encodeURIComponent(affiliateId);
+    currentAffiliateLink=link; showGeneratedLink(link); updateAffiliateStats();
+    showToast("Profil affiliate dan tujuan pencairan berhasil disimpan. 🔗");
 }
 
-
-/* =========================================================
-   SHOW GENERATED LINK
-========================================================= */
 
 function showGeneratedLink(link){
 
     document.getElementById(
         "generatedAffiliate"
-    ).style.display =
-        "block";
+    ).style.display = "block";
 
 
     document.getElementById(
         "affiliateLinkText"
-    ).textContent =
-        link;
+    ).textContent = link;
 
 }
 
-
-/* =========================================================
-   COPY AFFILIATE
-========================================================= */
 
 function copyGeneratedAffiliate(){
 
@@ -4055,30 +3365,17 @@ function copyGeneratedAffiliate(){
 
 
     navigator.clipboard
-        .writeText(
-            currentAffiliateLink
-        )
+        .writeText(currentAffiliateLink)
         .then(()=>{
 
             showToast(
                 "Link affiliate berhasil dicopy 📋"
             );
 
-        })
-        .catch(()=>{
-
-            showToast(
-                "Tidak dapat menyalin otomatis."
-            );
-
         });
 
 }
 
-
-/* =========================================================
-   SHARE AFFILIATE
-========================================================= */
 
 function shareGeneratedAffiliate(){
 
@@ -4090,14 +3387,11 @@ function shareGeneratedAffiliate(){
 
         navigator.share({
 
-            title:
-                "Produk UMKM PETROGROW",
+            title:"Produk UMKM TJSL Petrokimia",
 
-            text:
-                "Lihat produk UMKM ini:",
+            text:"Lihat produk UMKM ini:",
 
-            url:
-                currentAffiliateLink
+            url:currentAffiliateLink
 
         });
 
@@ -4116,30 +3410,16 @@ function shareGeneratedAffiliate(){
 ========================================================= */
 
 function updateAffiliateStats(){
-
-    document.getElementById(
-        "affiliateClicks"
-    ).textContent =
-        affiliateData.clicks;
-
-
-    document.getElementById(
-        "affiliateOrders"
-    ).textContent =
-        affiliateData.orders;
-
-
-    document.getElementById(
-        "affiliateCommission"
-    ).textContent =
-        formatRupiah(
-            affiliateData.commission
-        );
-
+    const id=document.getElementById("affiliateIdInput")?.value||getAffiliateId();
+    const profile=getAffiliateProfile(id);
+    document.getElementById("affiliateClicks").textContent=Number(profile?.clicks||0);
+    document.getElementById("affiliateOrders").textContent=Number(profile?.orders||0);
+    document.getElementById("affiliateCommission").textContent=formatRupiah(Number(profile?.commission||0));
 }
 
 
 /* =========================================================
+   CHECK AFFILIATE LINK/* =========================================================
    CHECK AFFILIATE LINK
 ========================================================= */
 
@@ -4164,9 +3444,7 @@ function checkAffiliateLink(){
 
 
     const productId =
-        parseInt(
-            productParam
-        );
+        parseInt(productParam);
 
 
     const product =
@@ -4184,11 +3462,11 @@ function checkAffiliateLink(){
     */
 
     if(ref){
-
         affiliateData.clicks += 1;
-
         saveAffiliateData();
-
+        const profile=getAffiliateProfile(ref);
+        if(profile){ profile.clicks=Number(profile.clicks||0)+1; upsertAffiliateProfile(profile); }
+        localStorage.setItem("tjsl_active_affiliate_ref",ref);
     }
 
 
@@ -4198,9 +3476,7 @@ function checkAffiliateLink(){
 
     setTimeout(()=>{
 
-        openProduct(
-            product.id
-        );
+        openProduct(product.id);
 
 
         showToast(
@@ -4223,9 +3499,7 @@ function checkAffiliateLink(){
 
 function openUMKMForm(){
 
-    openModal(
-        "umkmModal"
-    );
+    openModal("umkmModal");
 
 }
 
@@ -4233,1075 +3507,216 @@ function openUMKMForm(){
 function submitUMKM(){
 
     const name =
-        document.getElementById(
-            "umkmName"
-        ).value.trim();
-
-
+        document.getElementById("umkmName").value.trim();
     const owner =
-        document.getElementById(
-            "umkmOwner"
-        ).value.trim();
-
-
+        document.getElementById("umkmOwner").value.trim();
     const phone =
-        document.getElementById(
-            "umkmPhone"
-        ).value.trim();
-
-
+        document.getElementById("umkmPhone").value.trim();
     const location =
-        document.getElementById(
-            "umkmLocation"
-        ).value.trim();
-
-
+        document.getElementById("umkmLocation").value.trim();
     const category =
-        document.getElementById(
-            "umkmCategory"
-        ).value;
-
-
+        document.getElementById("umkmCategory").value;
     const description =
-        document.getElementById(
-            "umkmDescription"
-        ).value.trim();
-
-
+        document.getElementById("umkmDescription").value.trim();
     const productName =
-        document.getElementById(
-            "newProductName"
-        ).value.trim();
-
-
+        document.getElementById("newProductName").value.trim();
     const productPrice =
-        Number(
-            document.getElementById(
-                "newProductPrice"
-            ).value || 0
-        );
-
-
+        Number(document.getElementById("newProductPrice").value || 0);
     const productDescription =
-        document.getElementById(
-            "newProductDescription"
-        ).value.trim();
-
-
+        document.getElementById("newProductDescription").value.trim();
     const productStock =
-        Number(
-            document.getElementById(
-                "newProductStock"
-            ).value || 0
-        );
-
-
+        Number(document.getElementById("newProductStock").value || 0);
     const productCommission =
-        Number(
-            document.getElementById(
-                "newProductCommission"
-            ).value || 0
-        );
+        Number(document.getElementById("newProductCommission").value || 0);
 
-
-    if(
-        !name ||
-        !owner ||
-        !phone ||
-        !location ||
-        !productName ||
-        !productPrice
-    ){
-
-        showToast(
-            "Mohon lengkapi data utama dan produk."
-        );
-
+    if(!name || !owner || !phone || !location || !productName || !productPrice){
+        showToast("Mohon lengkapi data utama dan produk.");
         return;
-
     }
 
-
     const registration = {
-
-        name,
-        owner,
-        phone,
-        location,
-        category,
-        description,
-        productName,
-        productPrice,
-        productDescription,
-        productStock,
-        productCommission,
-        registeredAt:
-            new Date().toLocaleDateString(
-                "id-ID"
-            )
-
+        name, owner, phone, location, category, description,
+        productName, productPrice, productDescription,
+        productStock, productCommission,
+        registeredAt:new Date().toLocaleDateString("id-ID")
     };
 
+    let registrations = getUMKMRegistrations();
+    const existingIndex = registrations.findIndex(x => String(x.name || "").toLowerCase() === String(name).toLowerCase());
 
-    localStorage.setItem(
-        "petrogrow_umkm_registration",
-        JSON.stringify(
-            registration
-        )
-    );
+    if(existingIndex >= 0){
+        registrations[existingIndex] = registration;
+    }else{
+        registrations.push(registration);
+    }
+
+    localStorage.setItem("petrogrow_umkm_registrations", JSON.stringify(registrations));
+    localStorage.setItem("petrogrow_umkm_registration", JSON.stringify(registration));
+
+    renderUMKMBinaan();
+
+    closeModal("umkmModal");
+    showToast("Pendaftaran UMKM berhasil disimpan! 🎉");
+
+    setTimeout(()=>openUMKMDashboard(),350);
+}
 
 
-    closeModal(
-        "umkmModal"
-    );
 
 
-    showToast(
-        "Pendaftaran UMKM berhasil disimpan! 🎉"
-    );
+/* =========================================================
+   DATA UMKM BINAAN
+   Pendaftaran baru ditambahkan tanpa menghapus UMKM lain.
+========================================================= */
 
+const baseUMKMBinaan = [
+    {name:"Kampung Pisang Trepan", location:"Gresik", category:"Makanan", description:"UMKM binaan yang mengembangkan produk olahan pisang dan kerajinan lokal untuk dipasarkan secara digital.", products:8},
+    {name:"Batik Bangsawan", location:"Gresik", category:"Fashion", description:"UMKM binaan yang menyediakan berbagai produk batik untuk anak, wanita, pria, dan keluarga.", products:7},
+    {name:"Gisyaluna", location:"Gresik", category:"Fashion", description:"UMKM binaan dengan produk fashion berupa daster yang nyaman untuk digunakan sehari-hari.", products:3}
+];
 
-    setTimeout(
-        () => openUMKMDashboard(),
-        350
-    );
+function getUMKMRegistrations(){
+    try{
+        const saved = JSON.parse(localStorage.getItem("petrogrow_umkm_registrations") || "null");
+        if(Array.isArray(saved)) return saved;
+        const old = JSON.parse(localStorage.getItem("petrogrow_umkm_registration") || "null");
+        return old ? [old] : [];
+    }catch(e){
+        return [];
+    }
+}
 
+function escapeHTML(value){
+    return String(value ?? "").replace(/[&<>\"']/g, char => ({
+        "&":"&amp;", "<":"&lt;", ">":"&gt;", "\"":"&quot;", "'":"&#39;"
+    }[char]));
+}
+
+function categoryIcon(category){
+    return {Makanan:"🍌", Minuman:"🥤", Kerajinan:"🎨", Fashion:"👕", Pertanian:"🌾"}[category] || "🏪";
+}
+
+function initials(name){
+    return String(name || "UMKM").trim().split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase();
+}
+
+function renderUMKMBinaan(){
+    const grid = document.getElementById("umkmBinaanGrid");
+    const empty = document.getElementById("umkmBinaanEmpty");
+    if(!grid) return;
+
+    const registrations = getUMKMRegistrations();
+    const combined = baseUMKMBinaan.map(item => ({...item, registered:false}));
+
+    registrations.forEach(reg => {
+        const index = combined.findIndex(x => x.name.toLowerCase() === String(reg.name || "").toLowerCase());
+        const mapped = {
+            name:reg.name,
+            location:reg.location || "-",
+            category:reg.category || "Makanan",
+            description:reg.description || "UMKM binaan yang telah terdaftar di platform.",
+            products:1,
+            registered:true
+        };
+
+        if(index >= 0){
+            combined[index] = {...combined[index], ...mapped};
+        }else{
+            combined.push(mapped);
+        }
+    });
+
+    grid.innerHTML = combined.map(item => `
+        <div class="umkm-card ${item.registered ? "registered" : ""}">
+            <div class="umkm-head">
+                <div class="umkm-avatar">${escapeHTML(initials(item.name))}</div>
+                <div>
+                    <h3>${escapeHTML(item.name)}</h3>
+                    <small>📍 ${escapeHTML(item.location)}</small>
+                    ${item.registered ? '<div class="umkm-status">✓ Terdaftar di platform</div>' : ''}
+                </div>
+            </div>
+            <p>${escapeHTML(item.description)}</p>
+            <div class="umkm-meta">
+                <span>${categoryIcon(item.category)} ${escapeHTML(item.category)}</span>
+                <span>${item.products} Produk</span>
+            </div>
+        </div>
+    `).join("");
+
+    if(empty) empty.style.display = combined.length ? "none" : "block";
+
+    const baseNames = new Set(baseUMKMBinaan.map(x=>x.name.toLowerCase()));
+    const additionalCount = registrations.filter(x => !baseNames.has(String(x.name || "").toLowerCase())).length;
+    const totalCount = baseUMKMBinaan.length + additionalCount;
+
+    ["heroUMKM","statUMKM"].forEach(id=>{
+        const el=document.getElementById(id);
+        if(el) el.textContent = totalCount + (id === "heroUMKM" ? "+" : "");
+    });
 }
 
 
 /* =========================================================
    UMKM DASHBOARD
+   Prototype: data tersimpan di browser (localStorage).
 ========================================================= */
 
 const demoMarketingData = {
-
-    buyers:87,
-
-    orders:96,
-
-    productsSold:142,
-
-    revenue:2874000,
-
-    clicks:624,
-
-    cities:[
-
-        {
-            city:"Gresik",
-            buyers:31,
-            sales:980000
-        },
-
-        {
-            city:"Surabaya",
-            buyers:24,
-            sales:760000
-        },
-
-        {
-            city:"Sidoarjo",
-            buyers:15,
-            sales:495000
-        },
-
-        {
-            city:"Jakarta",
-            buyers:9,
-            sales:319000
-        },
-
-        {
-            city:"Kota lainnya",
-            buyers:8,
-            sales:320000
-        }
-
+    buyers: 87,
+    orders: 96,
+    productsSold: 142,
+    revenue: 2874000,
+    clicks: 624,
+    cities: [
+        {city:"Gresik", buyers:31, sales:980000},
+        {city:"Surabaya", buyers:24, sales:760000},
+        {city:"Sidoarjo", buyers:15, sales:495000},
+        {city:"Jakarta", buyers:9, sales:319000},
+        {city:"Kota lainnya", buyers:8, sales:320000}
     ],
-
-    channels:[
-
-        {
-            channel:"Website langsung",
-            buyers:39,
-            sales:1250000
-        },
-
-        {
-            channel:"Affiliate",
-            buyers:34,
-            sales:1044000
-        },
-
-        {
-            channel:"Media sosial",
-            buyers:14,
-            sales:580000
-        }
-
-    ]
-
+    channels: [
+        {channel:"Website langsung", buyers:39, sales:1250000},
+        {channel:"Affiliate", buyers:34, sales:1044000},
+        {channel:"Media sosial", buyers:14, sales:580000}
+    ],
+    affiliate: {
+        clicks:214,
+        orders:34,
+        commission:104400,
+        payoutMethod:"DANA",
+        payoutAccount:"08xxxxxxxxxx",
+        status:"Siap dicairkan"
+    }
 };
 
-
-/* =========================================================
-   GET UMKM REGISTRATION
-========================================================= */
-
 function getUMKMRegistration(){
-
     try{
-
-        return JSON.parse(
-            localStorage.getItem(
-                "petrogrow_umkm_registration"
-            ) || "null"
-        );
-
-    }
-    catch(e){
-
+        return JSON.parse(localStorage.getItem("petrogrow_umkm_registration") || "null");
+    }catch(e){
         return null;
-
     }
-
 }
-
-
-/* =========================================================
-   GET AFFILIATE DASHBOARD DATA
-========================================================= */
-
-function getAffiliateDashboardData(){
-
-    try{
-
-        const saved =
-            JSON.parse(
-                localStorage.getItem(
-                    "tjsl_affiliate_data"
-                ) || "{}"
-            );
-
-
-        return {
-
-            clicks:
-                Number(
-                    saved.clicks || 0
-                ),
-
-            orders:
-                Number(
-                    saved.orders || 0
-                ),
-
-            commission:
-                Number(
-                    saved.commission || 0
-                )
-
-        };
-
-    }
-    catch(e){
-
-        return {
-
-            clicks:0,
-            orders:0,
-            commission:0
-
-        };
-
-    }
-
-}
-
-
-/* =========================================================
-   OPEN UMKM DASHBOARD
-========================================================= */
 
 function openUMKMDashboard(){
-
-    const registration =
-        getUMKMRegistration();
-
-
-    const affiliate =
-        getAffiliateDashboardData();
-
-
-    const payout =
-        getAffiliatePayout();
-
-
-    const container =
-        document.getElementById(
-            "umkmDashboardContent"
-        );
-
-
-    const umkmName =
-        registration?.name ||
-        "Si Pisang Trepan";
-
-
-    const owner =
-        registration?.owner ||
-        "Pemilik UMKM";
-
-
-    const location =
-        registration?.location ||
-        "Gresik";
-
-
-    const productName =
-        registration?.productName ||
-        "Keripik Pisang Terapan";
-
-
-    const registeredAt =
-        registration?.registeredAt ||
-        "Belum terdaftar";
-
-
-    /*
-        Gunakan data affiliate yang benar-benar
-        tersimpan di browser.
-    */
-
-    const hasAffiliateActivity =
-        affiliate.clicks > 0 ||
-        affiliate.orders > 0 ||
-        affiliate.commission > 0;
-
-
-    const clicks =
-        hasAffiliateActivity
-        ?
-        affiliate.clicks
-        :
-        demoMarketingData.clicks;
-
-
-    const affiliateOrders =
-        hasAffiliateActivity
-        ?
-        affiliate.orders
-        :
-        demoMarketingData.channels.find(
-            x =>
-                x.channel === "Affiliate"
-        )?.buyers || 0;
-
-
-    const affiliateCommission =
-        hasAffiliateActivity
-        ?
-        affiliate.commission
-        :
-        104400;
-
-
-    const totalRevenue =
-        demoMarketingData.revenue;
-
-
-    const umkmRevenue =
-        Math.max(
-            0,
-            totalRevenue -
-            affiliateCommission
-        );
-
-
-    const conversion =
-        clicks
-        ?
-        (
-            (
-                demoMarketingData.buyers /
-                clicks
-            ) * 100
-        ).toFixed(1)
-        :
-        "0.0";
-
-
-    /*
-        DATA PENCAIRAN AFFILIATE
-    */
-
-    const payoutMethod =
-        payout?.method ||
-        "Belum diatur";
-
-
-    const payoutAccount =
-        payout?.account ||
-        "Belum diatur";
-
-
-    const payoutName =
-        payout?.name ||
-        "Belum diatur";
-
-
-    container.innerHTML = `
-
-        <!-- ================= STATUS UMKM ================= -->
-
-        <div class="dashboard-note">
-
-            <strong>
-
-                📌
-                ${
-                    registration
-                    ?
-                    "UMKM sudah terdaftar"
-                    :
-                    "Dashboard UMKM / Contoh"
-                }
-
-            </strong>
-
-            <br>
-
-            ${
-                registration
-
-                ?
-
-                `
-                Usaha
-                <strong>
-                    ${umkmName}
-                </strong>
-
-                milik
-                <strong>
-                    ${owner}
-                </strong>
-
-                terdaftar pada
-                ${registeredAt}.
-
-                Lokasi:
-                <strong>
-                    ${location}
-                </strong>.
-                `
-
-                :
-
-                `
-                Belum ada pendaftaran UMKM
-                pada browser ini.
-
-                Data angka pemasaran yang tampil
-                adalah simulasi untuk menunjukkan
-                bentuk dashboard kepada pengguna.
-                `
-
-            }
-
-        </div>
-
-
-        <!-- ================= RINGKASAN ================= -->
-
-        <div class="dashboard-grid">
-
-            <div class="dashboard-card">
-
-                <span>
-                    👥 Jumlah Pembeli
-                </span>
-
-                <strong>
-                    ${demoMarketingData.buyers}
-                    orang
-                </strong>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <span>
-                    🛒 Jumlah Pesanan
-                </span>
-
-                <strong>
-                    ${demoMarketingData.orders}
-                </strong>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <span>
-                    📦 Produk Terjual
-                </span>
-
-                <strong>
-                    ${demoMarketingData.productsSold}
-                </strong>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <span>
-                    💰 Total Penjualan
-                </span>
-
-                <strong>
-                    ${formatRupiah(totalRevenue)}
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <!-- ================= PEMASARAN ================= -->
-
-        <div class="dashboard-section">
-
-            <h4>
-                📣 Pemasaran UMKM
-            </h4>
-
-
-            <div class="dashboard-grid">
-
-                <div class="dashboard-card">
-
-                    <span>
-                        Total klik/link
-                    </span>
-
-                    <strong>
-                        ${clicks}
-                    </strong>
-
-                </div>
-
-
-                <div class="dashboard-card">
-
-                    <span>
-                        Konversi pembeli
-                    </span>
-
-                    <strong>
-                        ${conversion}%
-                    </strong>
-
-                </div>
-
-
-                <div class="dashboard-card">
-
-                    <span>
-                        Produk utama
-                    </span>
-
-                    <strong style="font-size:15px;">
-                        ${productName}
-                    </strong>
-
-                </div>
-
-
-                <div class="dashboard-card">
-
-                    <span>
-                        Lokasi UMKM
-                    </span>
-
-                    <strong style="font-size:15px;">
-                        ${location}
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <p style="
-                font-size:12px;
-                color:#6b7280;
-                margin-top:10px;
-            ">
-
-                Dashboard ini menunjukkan
-                berapa orang yang membeli,
-                seberapa banyak pemasaran
-                menghasilkan klik, dan channel
-                mana yang menghasilkan penjualan.
-
-            </p>
-
-        </div>
-
-
-        <!-- ================= LOKASI PEMBELI ================= -->
-
-        <div class="dashboard-section">
-
-            <h4>
-                📍 Pembeli Berasal dari Mana?
-            </h4>
-
-
-            <table class="dashboard-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Lokasi
-                        </th>
-
-                        <th>
-                            Jumlah Pembeli
-                        </th>
-
-                        <th>
-                            Nilai Penjualan
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody>
-
-                    ${
-                        demoMarketingData.cities
-                        .map(
-                            x => `
-
-                            <tr>
-
-                                <td>
-                                    ${x.city}
-                                </td>
-
-                                <td>
-                                    ${x.buyers} orang
-                                </td>
-
-                                <td>
-                                    ${formatRupiah(x.sales)}
-                                </td>
-
-                            </tr>
-
-                            `
-                        )
-                        .join("")
-                    }
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-        <!-- ================= KEUANGAN ================= -->
-
-        <div class="dashboard-section">
-
-            <h4>
-                💳 Keuangan UMKM
-            </h4>
-
-
-            <div class="money-flow">
-
-                <div class="flow-item">
-
-                    <span>
-                        Total uang dari penjualan
-                    </span>
-
-                    <strong>
-                        ${formatRupiah(totalRevenue)}
-                    </strong>
-
-                </div>
-
-
-                <div class="flow-item">
-
-                    <span>
-                        Komisi affiliate
-                    </span>
-
-                    <strong>
-                        ${formatRupiah(
-                            affiliateCommission
-                        )}
-                    </strong>
-
-                </div>
-
-
-                <div class="flow-item">
-
-                    <span>
-                        Bagian UMKM
-                    </span>
-
-                    <strong>
-                        ${formatRupiah(
-                            umkmRevenue
-                        )}
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <p style="
-                font-size:12px;
-                color:#6b7280;
-                margin-top:12px;
-            ">
-
-                Alur uang:
-                <b>
-                    pembeli → transaksi →
-                    total penjualan →
-                    komisi affiliate →
-                    bagian UMKM
-                </b>.
-
-            </p>
-
-        </div>
-
-
-        <!-- ================= CHANNEL ================= -->
-
-        <div class="dashboard-section">
-
-            <h4>
-                🤝 Pemasaran Berdasarkan Channel
-            </h4>
-
-
-            <table class="dashboard-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Channel
-                        </th>
-
-                        <th>
-                            Pembeli
-                        </th>
-
-                        <th>
-                            Penjualan
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody>
-
-                    ${
-                        demoMarketingData.channels
-                        .map(x => `
-
-                            <tr>
-
-                                <td>
-                                    ${x.channel}
-                                </td>
-
-                                <td>
-                                    ${
-                                        x.channel === "Affiliate" &&
-                                        hasAffiliateActivity
-                                        ?
-                                        affiliateOrders
-                                        :
-                                        x.buyers
-                                    }
-                                    orang
-                                </td>
-
-                                <td>
-
-                                    ${
-                                        x.channel === "Affiliate" &&
-                                        hasAffiliateActivity
-
-                                        ?
-
-                                        formatRupiah(
-                                            affiliateCommission > 0
-                                            ?
-                                            affiliateCommission /
-                                            Math.max(
-                                                0.01,
-                                                (
-                                                    affiliateCommission /
-                                                    104400
-                                                )
-                                            ) *
-                                            104400
-                                            :
-                                            0
-                                        )
-
-                                        :
-
-                                        formatRupiah(
-                                            x.sales
-                                        )
-                                    }
-
-                                </td>
-
-                            </tr>
-
-                        `)
-                        .join("")
-                    }
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-        <!-- ================= AFFILIATE ================= -->
-
-        <div class="dashboard-section">
-
-            <h4>
-                🔗 Affiliate: Uang Masuk ke Mana?
-            </h4>
-
-
-            <div class="money-flow">
-
-                <div class="flow-item">
-
-                    <span>
-                        Klik link affiliate
-                    </span>
-
-                    <strong>
-                        ${clicks}
-                    </strong>
-
-                </div>
-
-
-                <div class="flow-item">
-
-                    <span>
-                        Pesanan dari affiliate
-                    </span>
-
-                    <strong>
-                        ${affiliateOrders}
-                    </strong>
-
-                </div>
-
-
-                <div class="flow-item">
-
-                    <span>
-                        Total komisi affiliate
-                    </span>
-
-                    <strong>
-                        ${formatRupiah(
-                            affiliateCommission
-                        )}
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <!-- ================= TUJUAN PENCAIRAN ================= -->
-
-            <div style="
-                margin-top:14px;
-                padding:16px;
-                border:1px solid var(--border);
-                border-radius:12px;
-                background:#fafafa;
-            ">
-
-                <strong>
-                    💸 Tujuan pencairan affiliate
-                </strong>
-
-                <br><br>
-
-
-                <strong>
-                    Metode:
-                </strong>
-
-                ${payoutMethod}
-
-                <br>
-
-
-                <strong>
-                    Rekening/E-wallet:
-                </strong>
-
-                ${payoutAccount}
-
-                <br>
-
-
-                <strong>
-                    Nama Pemilik:
-                </strong>
-
-                ${payoutName}
-
-                <br>
-
-
-                <strong>
-                    Status:
-                </strong>
-
-                ${
-                    affiliateCommission > 0
-                    ?
-                    "Siap diproses"
-                    :
-                    "Belum ada komisi"
-                }
-
-            </div>
-
-
-            <p style="
-                font-size:12px;
-                color:#6b7280;
-                margin-top:10px;
-            ">
-
-                Affiliate membuat link produk,
-                link dibagikan, pembeli masuk
-                melalui link tersebut, lalu komisi
-                tercatat.
-
-                Tujuan pencairan diambil dari
-                data affiliate yang disimpan
-                di browser.
-
-            </p>
-
-        </div>
-
-
-        <!-- ================= STATUS SISTEM ================= -->
-
-        <div
-            class="dashboard-section"
-            style="background:#f8fafc;"
-        >
-
-            <h4>
-                🧾 Status Sistem
-            </h4>
-
-
-            <p style="
-                margin:0;
-                font-size:13px;
-                color:#475569;
-                line-height:1.7;
-            ">
-
-                ${
-                    registration
-                    ?
-                    "✅ Data UMKM sudah tersimpan di browser."
-                    :
-                    "⚠️ UMKM belum mendaftar."
-                }
-
-                <br>
-
-
-                ${
-                    hasAffiliateActivity
-                    ?
-                    "✅ Aktivitas affiliate sudah tercatat dari penggunaan link."
-                    :
-                    "ℹ️ Belum ada aktivitas affiliate nyata; angka awal ditampilkan sebagai simulasi."
-                }
-
-                <br>
-
-
-                ${
-                    payout
-                    ?
-                    "✅ Data tujuan pencairan affiliate sudah diatur."
-                    :
-                    "⚠️ Tujuan pencairan affiliate belum diatur."
-                }
-
-                <br>
-
-
-                ℹ️ Untuk sistem produksi,
-                data pembeli, lokasi, pembayaran,
-                dan pencairan perlu dihubungkan
-                ke database/payment gateway.
-
-            </p>
-
-        </div>
-
-    `;
-
-
-    openModal(
-        "umkmDashboardModal"
-    );
-
+    const registration=getUMKMRegistration(); const data=demoMarketingData; const container=document.getElementById("umkmDashboardContent");
+    const umkmName=registration?registration.name:"Si Pisang Trepan"; const location=registration?registration.location:"Gresik"; const productName=registration?registration.productName:"Keripik Pisang Trepan";
+    const profiles=getAffiliateProfiles(); const totals=getAffiliateTotals(); const affiliateClicks=totals.clicks; const affiliateOrders=totals.orders; const affiliateCommission=totals.commission;
+    const umkmRevenue=Math.max(0,data.revenue-affiliateCommission); const conversion=affiliateClicks?((affiliateOrders/affiliateClicks)*100).toFixed(1):"0.0";
+    const affiliateRows=profiles.length?profiles.map(profile=>`<div class="affiliate-profile"><div class="affiliate-profile-head"><div><strong>${escapeHTML(profile.name||"Affiliate")}</strong><small style="display:block;">ID: ${escapeHTML(profile.id)}</small></div><strong style="color:var(--green);">${formatRupiah(Number(profile.commission||0))}</strong></div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px;font-size:12px;"><span>🔗 Klik: <strong>${Number(profile.clicks||0)}</strong></span><span>🛒 Pesanan: <strong>${Number(profile.orders||0)}</strong></span></div><div class="affiliate-payout-badge">💳 ${escapeHTML(profile.payoutMethod||"Belum diatur")} • ${escapeHTML(profile.payoutAccount||"Belum diatur")}</div><div style="font-size:12px;color:#6b7280;margin-top:7px;">Status: ${escapeHTML(profile.status||"Belum ada komisi")}</div></div>`).join(""):`<div style="padding:14px;border:1px dashed var(--border);border-radius:12px;color:#6b7280;">Belum ada affiliate yang terdaftar. Affiliate dapat membuat profil dan mengisi tujuan pencairannya melalui menu <strong>Gabung sebagai Affiliate</strong>.</div>`;
+    container.innerHTML=`<div class="dashboard-note"><strong>📌 ${registration?"UMKM sudah terdaftar":"Contoh Dashboard UMKM"}</strong><br>${registration?`Data usaha <strong>${escapeHTML(umkmName)}</strong> tersimpan. Lokasi: ${escapeHTML(location)}.`:"Silakan daftar UMKM terlebih dahulu. Angka penjualan utama di bawah adalah data simulasi untuk menunjukkan bentuk dashboard."}</div>
+    <div class="dashboard-grid"><div class="dashboard-card"><span>👥 Pembeli</span><strong>${data.buyers}</strong></div><div class="dashboard-card"><span>🛒 Pesanan</span><strong>${data.orders}</strong></div><div class="dashboard-card"><span>📦 Produk Terjual</span><strong>${data.productsSold}</strong></div><div class="dashboard-card"><span>💰 Penjualan</span><strong>${formatRupiah(data.revenue)}</strong></div></div>
+    <div class="dashboard-section"><h4>📣 Kinerja Pemasaran</h4><div class="dashboard-grid"><div class="dashboard-card"><span>Total klik semua affiliate</span><strong>${affiliateClicks}</strong></div><div class="dashboard-card"><span>Konversi affiliate</span><strong>${conversion}%</strong></div><div class="dashboard-card"><span>Produk utama</span><strong style="font-size:15px;">${escapeHTML(productName)}</strong></div><div class="dashboard-card"><span>Lokasi UMKM</span><strong style="font-size:15px;">${escapeHTML(location)}</strong></div></div></div>
+    <div class="dashboard-section"><h4>📍 Pembeli Berasal dari Mana?</h4><table class="dashboard-table"><thead><tr><th>Lokasi</th><th>Jumlah Pembeli</th><th>Nilai Penjualan</th></tr></thead><tbody>${data.cities.map(x=>`<tr><td>${escapeHTML(x.city)}</td><td>${x.buyers} orang</td><td>${formatRupiah(x.sales)}</td></tr>`).join("")}</tbody></table></div>
+    <div class="dashboard-section"><h4>💳 Uang Masuk & Aliran Dana</h4><div class="money-flow"><div class="flow-item"><span>Total penjualan</span><strong>${formatRupiah(data.revenue)}</strong></div><div class="flow-item"><span>Masuk untuk UMKM</span><strong>${formatRupiah(umkmRevenue)}</strong></div><div class="flow-item"><span>Total komisi affiliate</span><strong>${formatRupiah(affiliateCommission)}</strong></div></div><p style="font-size:12px;color:#6b7280;margin-top:12px;">Alur: pembeli melakukan transaksi → penjualan tercatat → komisi affiliate dihitung → komisi menjadi hak affiliate sesuai transaksi.</p></div>
+    <div class="dashboard-section"><h4>🤝 Pemasaran Berdasarkan Channel</h4><table class="dashboard-table"><thead><tr><th>Channel</th><th>Pembeli</th><th>Penjualan</th></tr></thead><tbody>${data.channels.map(x=>x.channel==="Affiliate"?`<tr><td>Affiliate</td><td>${affiliateOrders} orang</td><td>${formatRupiah(affiliateCommission)}</td></tr>`:`<tr><td>${escapeHTML(x.channel)}</td><td>${x.buyers} orang</td><td>${formatRupiah(x.sales)}</td></tr>`).join("")}</tbody></table></div>
+    <div class="dashboard-section"><h4>🔗 Affiliate: Uang Masuk ke Mana?</h4><div class="dashboard-grid"><div class="dashboard-card"><span>Affiliate terdaftar</span><strong>${profiles.length} orang</strong></div><div class="dashboard-card"><span>Pesanan dari affiliate</span><strong>${affiliateOrders}</strong></div><div class="dashboard-card"><span>Total komisi affiliate</span><strong>${formatRupiah(affiliateCommission)}</strong></div><div class="dashboard-card"><span>Status</span><strong style="font-size:15px;">${affiliateCommission>0?"Ada komisi":"Belum ada komisi"}</strong></div></div><h4 style="margin-top:18px;">💸 Tujuan Pencairan per Affiliate</h4><div class="affiliate-profile-list">${affiliateRows}</div><p style="font-size:12px;color:#6b7280;margin-top:10px;">Setiap affiliate memiliki tujuan pencairan sendiri. Data rekening/e-wallet tersimpan berdasarkan ID affiliate, sehingga satu UMKM dapat memiliki banyak affiliate tanpa mencampur tujuan pencairannya.</p></div>`;
+    openModal("umkmDashboardModal");
 }
 
 
 /* =========================================================
+   MODAL/* =========================================================
    MODAL
 ========================================================= */
 
@@ -5390,23 +3805,15 @@ let toastTimer;
 function showToast(message){
 
     const toast =
-        document.getElementById(
-            "toast"
-        );
+        document.getElementById("toast");
 
 
-    toast.textContent =
-        message;
+    toast.textContent = message;
+
+    toast.classList.add("show");
 
 
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        toastTimer
-    );
+    clearTimeout(toastTimer);
 
 
     toastTimer =
@@ -5426,10 +3833,12 @@ function showToast(message){
 ========================================================= */
 
 displayProducts();
+renderUMKMBinaan();
 
 updateCartCount();
 
 checkAffiliateLink();
+
 
 </script>
 
