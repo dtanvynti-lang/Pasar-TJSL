@@ -1289,7 +1289,7 @@ footer{
             </div>
 
             <div class="mini-stat">
-                <strong id="heroProducts">48+</strong>
+                <strong id="heroProducts">16+</strong>
                 <span>Produk</span>
             </div>
 
@@ -1324,7 +1324,7 @@ footer{
 
         <div class="stat-card">
             <div class="stat-icon">📦</div>
-            <strong id="statProducts">48</strong>
+            <strong id="statProducts">16</strong>
             <span>Produk Dipasarkan</span>
         </div>
 
@@ -2184,7 +2184,7 @@ const products = [
 
     {
         id:1,
-        name:"Trepan Pisang Original",
+        name:"Keripik Pisang Terapan",
         umkm:"Si Pisang Trepan",
         category:"Makanan",
         price:18000,
@@ -2192,101 +2192,206 @@ const products = [
         commission:10,
         rating:4.9,
         image:"./keripik%20pisang%20terapan.png",
-        description:"Olahan pisang dengan rasa khas yang cocok dinikmati sebagai camilan."
+        description:"Keripik pisang renyah dengan rasa gurih dan cocok untuk teman ngemil."
     },
 
     {
         id:2,
-        name:"Trepan Pisang Cokelat",
+        name:"Brownies Pisang",
         umkm:"Si Pisang Trepan",
         category:"Makanan",
         price:22000,
         stock:14,
-        commission:12,
+        commission:10,
         rating:4.8,
         image:"./Brownies%20Pisang.png",
-        description:"Olahan pisang dengan perpaduan rasa manis cokelat."
+        description:"Olahan pisang dalam bentuk brownies dengan rasa manis yang nikmat."
     },
 
     {
         id:3,
-        name:"Keripik Pisang Premium",
-        umkm:"Rasa Jaya",
+        name:"Ontong Pisang",
+        umkm:"Si Pisang Trepan",
         category:"Makanan",
-        price:25000,
-        stock:30,
+        price:15000,
+        stock:20,
         commission:10,
         rating:4.7,
-        image:"./keripik%20pisang%20terapan.png",
-        description:"Keripik pisang renyah dengan pilihan rasa yang menarik."
+        image:"./Ontong%20pisang.png",
+        description:"Olahan ontong pisang khas UMKM yang dapat dinikmati sebagai makanan lokal."
     },
 
     {
         id:4,
-        name:"Kopi Gresik Arabica",
-        umkm:"Kopi Lokal Gresik",
-        category:"Minuman",
-        price:45000,
-        stock:12,
-        commission:15,
-        rating:4.9,
-        image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
-        description:"Kopi lokal dengan karakter aroma dan rasa yang kuat."
+        name:"Debok Pisang",
+        umkm:"Si Pisang Trepan",
+        category:"Makanan",
+        price:15000,
+        stock:18,
+        commission:10,
+        rating:4.7,
+        image:"./debok%20pisang.png",
+        description:"Produk olahan pisang lokal dengan cita rasa khas."
     },
 
     {
         id:5,
-        name:"Cookies UMKM",
-        umkm:"Dapur Rasa",
+        name:"Sambal Terapan",
+        umkm:"Dapur Terapan",
         category:"Makanan",
-        price:30000,
-        stock:8,
+        price:20000,
+        stock:20,
         commission:10,
-        rating:4.6,
-        image:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=900&q=80",
-        description:"Cookies rumahan dengan tekstur renyah dan rasa manis."
+        rating:4.8,
+        image:"./Sambal%20Terapan.jpeg",
+        description:"Sambal dengan cita rasa pedas dan gurih untuk melengkapi berbagai hidangan."
     },
 
     {
         id:6,
-        name:"Tas Anyaman Lokal",
-        umkm:"Kriya Rasa",
+        name:"Tas Model 1",
+        umkm:"Kriya Lokal",
         category:"Kerajinan",
         price:85000,
-        stock:5,
+        stock:8,
         commission:15,
         rating:4.8,
         image:"./Tas%20model%201.png",
-        description:"Tas anyaman buatan tangan dari pengrajin lokal."
+        description:"Tas hasil kerajinan UMKM dengan desain sederhana dan cocok digunakan sehari-hari."
     },
 
     {
         id:7,
-        name:"Batik UMKM Gresik",
-        umkm:"Batik Nusantara",
-        category:"Fashion",
-        price:125000,
-        stock:6,
-        commission:12,
+        name:"Tas Model 2",
+        umkm:"Kriya Lokal",
+        category:"Kerajinan",
+        price:90000,
+        stock:7,
+        commission:15,
         rating:4.8,
-        image:"./batik%20model%201.png",
-        description:"Batik dengan motif khas yang dikembangkan oleh UMKM lokal."
+        image:"./Tas%20model%202.png",
+        description:"Tas kerajinan dengan model berbeda untuk melengkapi kebutuhan sehari-hari."
     },
 
     {
         id:8,
-        name:"Sambal Nusantara",
-        umkm:"Dapur Rasa",
-        category:"Makanan",
-        price:20000,
-        stock:0,
-        commission:10,
+        name:"Tas Model 3",
+        umkm:"Kriya Lokal",
+        category:"Kerajinan",
+        price:95000,
+        stock:6,
+        commission:15,
+        rating:4.8,
+        image:"./Tas%20model%203.png",
+        description:"Tas kerajinan UMKM dengan model modern dan praktis."
+    },
+
+    {
+        id:9,
+        name:"Topi Anyaman",
+        umkm:"Kriya Lokal",
+        category:"Kerajinan",
+        price:60000,
+        stock:10,
+        commission:12,
         rating:4.7,
-        image:"./Sambal%20Terapan.jpeg",
-        description:"Sambal lokal dengan cita rasa pedas dan gurih."
+        image:"./Topi%20Anyaman.png",
+        description:"Topi anyaman buatan UMKM yang cocok digunakan untuk aktivitas luar ruangan."
+    },
+
+    {
+        id:10,
+        name:"Batik Anak Cowok",
+        umkm:"Batik Lokal",
+        category:"Fashion",
+        price:75000,
+        stock:10,
+        commission:12,
+        rating:4.8,
+        image:"./batik%20anak%20cowo.png",
+        description:"Busana batik anak dengan motif yang cocok untuk berbagai kegiatan."
+    },
+
+    {
+        id:11,
+        name:"Batik Cewe",
+        umkm:"Batik Lokal",
+        category:"Fashion",
+        price:110000,
+        stock:8,
+        commission:12,
+        rating:4.8,
+        image:"./batik%20cewe.png",
+        description:"Batik wanita dengan desain yang nyaman dan menarik."
+    },
+
+    {
+        id:12,
+        name:"Batik Dress Anak Cewe",
+        umkm:"Batik Lokal",
+        category:"Fashion",
+        price:95000,
+        stock:8,
+        commission:12,
+        rating:4.8,
+        image:"./batik%20dress%20anak%20cewe.png",
+        description:"Dress batik anak perempuan dengan desain yang cocok untuk acara keluarga maupun kegiatan lainnya."
+    },
+
+    {
+        id:13,
+        name:"Batik Keluarga",
+        umkm:"Batik Lokal",
+        category:"Fashion",
+        price:175000,
+        stock:6,
+        commission:12,
+        rating:4.9,
+        image:"./batik%20keluarga.png",
+        description:"Pilihan busana batik untuk keluarga dengan motif yang serasi."
+    },
+
+    {
+        id:14,
+        name:"Batik Model 1",
+        umkm:"Batik Lokal",
+        category:"Fashion",
+        price:120000,
+        stock:7,
+        commission:12,
+        rating:4.8,
+        image:"./batik%20model%201.png",
+        description:"Batik dengan desain elegan yang cocok untuk berbagai kesempatan."
+    },
+
+    {
+        id:15,
+        name:"Batik Tunik",
+        umkm:"Batik Lokal",
+        category:"Fashion",
+        price:125000,
+        stock:7,
+        commission:12,
+        rating:4.8,
+        image:"./batik%20tunik.png",
+        description:"Tunik batik dengan model nyaman dan cocok untuk digunakan sehari-hari."
+    },
+
+    {
+        id:16,
+        name:"Batik Vest",
+        umkm:"Batik Lokal",
+        category:"Fashion",
+        price:115000,
+        stock:7,
+        commission:12,
+        rating:4.8,
+        image:"./batik%20vest.png",
+        description:"Vest batik dengan model modern untuk melengkapi gaya berpakaian."
     }
 
 ];
+
 
 
 /* =========================================================
@@ -3528,7 +3633,7 @@ function openUMKMDashboard(){
 
     const umkmName = registration ? registration.name : "Si Pisang Trepan";
     const location = registration ? registration.location : "Gresik";
-    const productName = registration ? registration.productName : "Trepan Pisang Original";
+    const productName = registration ? registration.productName : "Keripik Pisang Terapan";
 
     let savedPayout = null;
     try{ savedPayout = JSON.parse(localStorage.getItem("tjsl_affiliate_payout") || "null"); }catch(e){}
