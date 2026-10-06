@@ -964,92 +964,6 @@ footer{
     color:var(--muted);
 }
 
-
-
-/* ================= UMKM DASHBOARD ================= */
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    margin-bottom:18px;
-}
-.dashboard-card{
-    background:white;
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:16px;
-}
-.dashboard-card strong{
-    display:block;
-    font-size:22px;
-    color:var(--green);
-    margin-top:5px;
-}
-.dashboard-card span{
-    font-size:12px;
-    color:var(--muted);
-}
-.dashboard-section{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:16px;
-    padding:18px;
-    margin-top:14px;
-}
-.dashboard-section h4{
-    margin-bottom:12px;
-}
-.dashboard-table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:13px;
-}
-.dashboard-table th,.dashboard-table td{
-    padding:10px 8px;
-    border-bottom:1px solid var(--border);
-    text-align:left;
-}
-.dashboard-table th{
-    color:var(--muted);
-    font-size:11px;
-    text-transform:uppercase;
-}
-.money-flow{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-}
-.flow-item{
-    background:var(--green-light);
-    border:1px solid #cce7d9;
-    border-radius:12px;
-    padding:14px;
-}
-.flow-item strong{
-    display:block;
-    color:var(--green-dark);
-    font-size:17px;
-    margin-top:4px;
-}
-.dashboard-note{
-    background:#fff8e7;
-    border:1px solid #f2dfaa;
-    color:#7a5b10;
-    border-radius:12px;
-    padding:12px;
-    font-size:12px;
-    margin-bottom:14px;
-}
-@media(max-width:900px){
-    .dashboard-grid{grid-template-columns:repeat(2,1fr);}
-    .money-flow{grid-template-columns:1fr;}
-}
-@media(max-width:700px){
-    .dashboard-grid{grid-template-columns:1fr 1fr;}
-    .dashboard-table{font-size:11px;}
-    .dashboard-table th,.dashboard-table td{padding:8px 5px;}
-}
-
 /* ================= TOAST ================= */
 
 .toast{
@@ -1186,7 +1100,6 @@ footer{
         <a href="#beranda">Beranda</a>
         <a href="#produk">Produk</a>
         <a href="#umkm">UMKM</a>
-        <a href="#" onclick="openUMKMDashboard();return false;">Dashboard UMKM</a>
         <a href="#tentang">Tentang Kami</a>
         <a href="#dampak">Dampak yang Dihasilkan</a>
     </nav>
@@ -1201,10 +1114,6 @@ footer{
 
         <button class="secondary-btn" onclick="openAffiliateDashboard()">
             Gabung sebagai Affiliate
-        </button>
-
-        <button class="secondary-btn" onclick="openUMKMDashboard()">
-            📊 Dashboard UMKM
         </button>
 
         <button class="primary-btn" onclick="openUMKMForm()">
@@ -1289,7 +1198,7 @@ footer{
             </div>
 
             <div class="mini-stat">
-                <strong id="heroProducts">21+</strong>
+                <strong id="heroProducts">48+</strong>
                 <span>Produk</span>
             </div>
 
@@ -1324,7 +1233,7 @@ footer{
 
         <div class="stat-card">
             <div class="stat-icon">📦</div>
-            <strong id="statProducts">21</strong>
+            <strong id="statProducts">48</strong>
             <span>Produk Dipasarkan</span>
         </div>
 
@@ -1410,14 +1319,9 @@ footer{
             </p>
         </div>
 
-        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
-            <button class="secondary-btn" onclick="openUMKMDashboard()">
-                📊 Dashboard UMKM
-            </button>
-            <button class="secondary-btn" onclick="openUMKMForm()">
-                + Daftarkan UMKM
-            </button>
-        </div>
+        <button class="secondary-btn" onclick="openUMKMForm()">
+            + Daftarkan UMKM
+        </button>
 
     </div>
 
@@ -1446,7 +1350,7 @@ footer{
 
             <div class="umkm-meta">
                 <span>🍌 Makanan</span>
-                <span>8 Produk</span>
+                <span>24 Produk</span>
             </div>
 
         </div>
@@ -1954,19 +1858,6 @@ footer{
 </div>
 
 
-
-
-<!-- ================= UMKM DASHBOARD MODAL ================= -->
-<div class="modal-overlay" id="umkmDashboardModal">
-<div class="modal">
-    <div class="modal-header">
-        <h3>📊 Dashboard UMKM</h3>
-        <button class="close-btn" onclick="closeModal('umkmDashboardModal')">×</button>
-    </div>
-    <div class="modal-body" id="umkmDashboardContent"></div>
-</div>
-</div>
-
 <!-- ================= UMKM MODAL ================= -->
 
 <div class="modal-overlay" id="umkmModal">
@@ -2054,6 +1945,7 @@ footer{
                 <option>Minuman</option>
                 <option>Kerajinan</option>
                 <option>Fashion</option>
+                <option>Pertanian</option>
 
             </select>
 
@@ -2185,185 +2077,197 @@ const products = [
 
     {
         id:1,
-        name:"Keripik Pisang Terapan",
-        umkm:"Kampung Pisang Trepan",
+        name:"Keripik Pisang Trepan",
+        umkm:"Si Pisang Trepan",
         category:"Makanan",
         price:18000,
         stock:25,
         commission:10,
         rating:4.9,
-        image:"./keripik%20pisang%20terapan.png",
-        description:"Keripik pisang renyah dengan rasa gurih dan cocok untuk teman ngemil."
+        image:"keripik pisang terapan.png",
+        description:"Keripik pisang renyah, gurih, dan cocok untuk camilan kapan saja."
     },
 
     {
         id:2,
         name:"Brownies Pisang",
-        umkm:"Kampung Pisang Trepan",
+        umkm:"Si Pisang Trepan",
         category:"Makanan",
         price:22000,
-        stock:14,
-        commission:10,
+        stock:15,
+        commission:12,
         rating:4.8,
-        image:"./Brownies%20Pisang.png",
-        description:"Olahan pisang dalam bentuk brownies dengan rasa manis yang nikmat."
+        image:"Brownies Pisang.png",
+        description:"Olahan pisang dengan rasa manis yang cocok untuk teman santai."
     },
 
     {
         id:3,
         name:"Ontong Pisang",
-        umkm:"Kampung Pisang Trepan",
+        umkm:"Si Pisang Trepan",
         category:"Makanan",
-        price:15000,
-        stock:20,
+        price:20000,
+        stock:18,
         commission:10,
-        rating:4.7,
-        image:"./Ontong%20pisang.png",
-        description:"Olahan ontong pisang khas UMKM yang dapat dinikmati sebagai makanan lokal."
+        rating:4.8,
+        image:"Ontong pisang.png",
+        description:"Olahan ontong pisang khas yang cocok dinikmati bersama keluarga."
     },
 
     {
         id:4,
         name:"Debok Pisang",
-        umkm:"Kampung Pisang Trepan",
+        umkm:"Si Pisang Trepan",
         category:"Makanan",
-        price:15000,
-        stock:18,
+        price:20000,
+        stock:16,
         commission:10,
         rating:4.7,
-        image:"./debok%20pisang.png",
-        description:"Produk olahan pisang lokal dengan cita rasa khas."
+        image:"debok pisang.png",
+        description:"Olahan pisang lokal dengan cita rasa khas."
     },
 
     {
         id:5,
         name:"Sambal Terapan",
-        umkm:"Kampung Pisang Trepan",
+        umkm:"Dapur Terapan",
         category:"Makanan",
         price:20000,
         stock:20,
         commission:10,
-        rating:4.8,
-        image:"./Sambal%20Terapan.jpeg",
-        description:"Sambal dengan cita rasa pedas dan gurih untuk melengkapi berbagai hidangan."
+        rating:4.7,
+        image:"Sambal Terapan.jpeg",
+        description:"Sambal dengan rasa pedas dan gurih untuk pelengkap makanan."
     },
 
     {
         id:6,
-        name:"Tas Anyaman",
-        umkm:"Kampung Pisang Trepan",
+        name:"Tas Model 1",
+        umkm:"Kriya Lokal",
         category:"Kerajinan",
         price:85000,
         stock:8,
         commission:15,
         rating:4.8,
-        image:"./Tas%20model%201.png",
-        description:"Tas hasil kerajinan UMKM dengan desain sederhana dan cocok digunakan sehari-hari."
+        image:"Tas model 1.png",
+        description:"Tas kerajinan lokal dengan desain praktis dan menarik."
     },
 
     {
         id:7,
-        name:"Tas Kepang",
-        umkm:"Kampung Pisang Trepan",
+        name:"Tas Model 2",
+        umkm:"Kriya Lokal",
         category:"Kerajinan",
         price:90000,
         stock:7,
         commission:15,
         rating:4.8,
-        image:"./Tas%20model%202.png",
-        description:"Tas kerajinan dengan model berbeda untuk melengkapi kebutuhan sehari-hari."
+        image:"Tas model 2.png",
+        description:"Tas kerajinan lokal dengan model yang cocok untuk berbagai aktivitas."
     },
 
     {
-        
+        id:8,
+        name:"Tas Model 3",
+        umkm:"Kriya Lokal",
+        category:"Kerajinan",
+        price:95000,
+        stock:6,
+        commission:15,
+        rating:4.8,
+        image:"Tas model 3.png",
+        description:"Tas kerajinan lokal dengan model modern dan unik."
+    },
+
+    {
         id:9,
         name:"Topi Anyaman",
-        umkm:"Kampung Pisang Trepan",
+        umkm:"Kriya Lokal",
         category:"Kerajinan",
-        price:60000,
+        price:65000,
         stock:10,
         commission:12,
         rating:4.7,
-        image:"./Topi%20Anyaman.png",
-        description:"Topi anyaman buatan UMKM yang cocok digunakan untuk aktivitas luar ruangan."
+        image:"Topi Anyaman.png",
+        description:"Topi anyaman buatan lokal yang ringan dan nyaman digunakan."
     },
 
     {
         id:10,
         name:"Batik Anak Cowok",
-        umkm:"Batik Bangsawan",
+        umkm:"Batik Lokal",
         category:"Fashion",
         price:75000,
         stock:10,
         commission:12,
         rating:4.8,
-        image:"./batik%20anak%20cowo.png",
-        description:"Busana batik anak dengan motif yang cocok untuk berbagai kegiatan."
+        image:"batik anak cowo.png",
+        description:"Batik anak dengan desain yang nyaman dan menarik."
     },
 
     {
         id:11,
-        name:"Batik Wanita",
-        umkm:"Batik Bangsawan",
+        name:"Batik Cewe",
+        umkm:"Batik Lokal",
         category:"Fashion",
-        price:110000,
+        price:125000,
         stock:8,
         commission:12,
         rating:4.8,
-        image:"./batik%20cewe.png",
-        description:"Batik wanita dengan desain yang nyaman dan menarik."
+        image:"batik cewe.png",
+        description:"Batik wanita dengan desain khas untuk berbagai kesempatan."
     },
 
     {
         id:12,
-        name:"Batik Dress Anak Cewek",
-        umkm:"Batik Bangsawan",
+        name:"Batik Dress Anak Cewe",
+        umkm:"Batik Lokal",
         category:"Fashion",
         price:95000,
         stock:8,
         commission:12,
         rating:4.8,
-        image:"./batik%20dress%20anak%20cewe.png",
-        description:"Dress batik anak perempuan dengan desain yang cocok untuk acara keluarga maupun kegiatan lainnya."
+        image:"batik dress anak cewe.png",
+        description:"Dress batik anak dengan desain manis dan nyaman."
     },
 
     {
         id:13,
         name:"Batik Keluarga",
-        umkm:"Batik Bangsawan",
+        umkm:"Batik Lokal",
         category:"Fashion",
         price:175000,
         stock:6,
         commission:12,
         rating:4.9,
-        image:"./batik%20keluarga.png",
-        description:"Pilihan busana batik untuk keluarga dengan motif yang serasi."
+        image:"batik keluarga.png",
+        description:"Pilihan batik keluarga untuk tampil serasi."
     },
 
     {
         id:14,
-        name:"Batik Pria",
-        umkm:"Batik Bangsawan",
+        name:"Batik Model 1",
+        umkm:"Batik Lokal",
         category:"Fashion",
-        price:120000,
+        price:135000,
         stock:7,
         commission:12,
         rating:4.8,
-        image:"./batik%20model%201.png",
-        description:"Batik dengan desain elegan yang cocok untuk berbagai kesempatan."
+        image:"batik model 1.png",
+        description:"Batik dengan model modern dan motif khas."
     },
 
     {
         id:15,
-        name:"Batik Tunik Wanita",
+        name:"Batik Tunik",
         umkm:"Batik Lokal",
         category:"Fashion",
-        price:125000,
+        price:145000,
         stock:7,
         commission:12,
         rating:4.8,
-        image:"./batik%20tunik.png",
-        description:"Tunik batik dengan model nyaman dan cocok untuk digunakan sehari-hari."
+        image:"batik tunik.png",
+        description:"Tunik batik dengan gaya modern dan nyaman."
     },
 
     {
@@ -2371,12 +2275,12 @@ const products = [
         name:"Batik Vest",
         umkm:"Batik Lokal",
         category:"Fashion",
-        price:115000,
+        price:120000,
         stock:7,
         commission:12,
-        rating:4.8,
-        image:"./batik%20vest.png",
-        description:"Vest batik dengan model modern untuk melengkapi gaya berpakaian."
+        rating:4.7,
+        image:"batik vest.png",
+        description:"Vest batik yang mudah dipadukan dengan berbagai outfit."
     },
 
     {
@@ -2384,12 +2288,12 @@ const products = [
         name:"Pupuk Petroganik",
         umkm:"Petrokimia Gresik",
         category:"Pertanian",
-        price:30000,
-        stock:20,
-        commission:10,
+        price:25000,
+        stock:30,
+        commission:8,
         rating:4.8,
-        image:"./Pupuk%20Petroganik.png",
-        description:"Pupuk organik untuk membantu meningkatkan kesuburan tanah dan mendukung pertumbuhan tanaman. Harga Per Sak, Berat Bersih 40Kg"
+        image:"Pupuk Petroganik.png",
+        description:"Pupuk organik untuk membantu meningkatkan kualitas tanah dan pertumbuhan tanaman."
     },
 
     {
@@ -2397,12 +2301,12 @@ const products = [
         name:"Pupuk Phonska",
         umkm:"Petrokimia Gresik",
         category:"Pertanian",
-        price:90000,
-        stock:20,
-        commission:10,
+        price:150000,
+        stock:25,
+        commission:8,
         rating:4.8,
-        image:"./Pupuk%20Phonska.png",
-        description:"Pupuk majemuk untuk membantu memenuhi kebutuhan nutrisi tanaman. Harga Per Sak, Berat Bersih 50Kg"
+        image:"Pupuk Phonska.png",
+        description:"Pupuk majemuk untuk mendukung kebutuhan nutrisi tanaman."
     },
 
     {
@@ -2410,12 +2314,12 @@ const products = [
         name:"Pupuk SP 36",
         umkm:"Petrokimia Gresik",
         category:"Pertanian",
-        price:90000,
-        stock:20,
-        commission:10,
-        rating:4.8,
-        image:"./Pupuk%20SP%2036.png",
-        description:"Pupuk sumber fosfor untuk mendukung pertumbuhan dan perkembangan tanaman. Harga Per Sak, Berat Bersih 50Kg"
+        price:140000,
+        stock:22,
+        commission:8,
+        rating:4.7,
+        image:"Pupuk SP 36.png",
+        description:"Pupuk sumber fosfor untuk membantu pertumbuhan dan perkembangan tanaman."
     },
 
     {
@@ -2423,12 +2327,12 @@ const products = [
         name:"Pupuk UREA",
         umkm:"Petrokimia Gresik",
         category:"Pertanian",
-        price:90000,
-        stock:20,
-        commission:10,
+        price:130000,
+        stock:24,
+        commission:8,
         rating:4.8,
-        image:"./Pupuk%20UREA.png",
-        description:"Pupuk nitrogen untuk membantu mendukung pertumbuhan tanaman. Harga Per Sak, Berat Bersih 50Kg"
+        image:"Pupuk UREA.png",
+        description:"Pupuk nitrogen untuk mendukung pertumbuhan tanaman."
     },
 
     {
@@ -2436,16 +2340,54 @@ const products = [
         name:"Pupuk ZA",
         umkm:"Petrokimia Gresik",
         category:"Pertanian",
-        price:90000,
+        price:120000,
         stock:20,
-        commission:10,
+        commission:8,
+        rating:4.7,
+        image:"Pupuk ZA.png",
+        description:"Pupuk untuk membantu memenuhi kebutuhan nitrogen dan sulfur tanaman."
+    },
+
+    {
+        id:22,
+        name:"Daster Celine Kimono",
+        umkm:"Fashion UMKM",
+        category:"Fashion",
+        price:85000,
+        stock:10,
+        commission:12,
         rating:4.8,
-        image:"./Pupuk%20ZA.png",
-        description:"Pupuk yang mengandung nitrogen dan sulfur untuk membantu memenuhi kebutuhan nutrisi tanaman. Harga Per Sak, Berat Bersih 50Kg"
+        image:"Daster Celine Kimono.png",
+        description:"Daster model kimono dengan desain nyaman untuk dipakai sehari-hari."
+    },
+
+    {
+        id:23,
+        name:"Daster Sheza",
+        umkm:"Fashion UMKM",
+        category:"Fashion",
+        price:85000,
+        stock:10,
+        commission:12,
+        rating:4.8,
+        image:"Daster Sheza.png",
+        description:"Daster nyaman dengan model santai untuk aktivitas sehari-hari."
+    },
+
+    {
+        id:24,
+        name:"Daster Viola",
+        umkm:"Fashion UMKM",
+        category:"Fashion",
+        price:90000,
+        stock:10,
+        commission:12,
+        rating:4.8,
+        image:"Daster Viola.png",
+        description:"Daster dengan desain simpel dan nyaman untuk digunakan di rumah."
     }
 
 ];
-
 
 
 /* =========================================================
@@ -3390,11 +3332,6 @@ function createAffiliateLink(){
         affiliateId
     );
 
-    localStorage.setItem("tjsl_affiliate_payout", JSON.stringify({
-        method: document.getElementById("affiliatePayoutMethod")?.value || "Belum diisi",
-        account: document.getElementById("affiliatePayoutAccount")?.value.trim() || "Belum diisi"
-    }));
-
 
     const baseURL =
         window.location.origin +
@@ -3594,179 +3531,59 @@ function openUMKMForm(){
 function submitUMKM(){
 
     const name =
-        document.getElementById("umkmName").value.trim();
-    const owner =
-        document.getElementById("umkmOwner").value.trim();
-    const phone =
-        document.getElementById("umkmPhone").value.trim();
-    const location =
-        document.getElementById("umkmLocation").value.trim();
-    const category =
-        document.getElementById("umkmCategory").value;
-    const description =
-        document.getElementById("umkmDescription").value.trim();
-    const productName =
-        document.getElementById("newProductName").value.trim();
-    const productPrice =
-        Number(document.getElementById("newProductPrice").value || 0);
-    const productDescription =
-        document.getElementById("newProductDescription").value.trim();
-    const productStock =
-        Number(document.getElementById("newProductStock").value || 0);
-    const productCommission =
-        Number(document.getElementById("newProductCommission").value || 0);
+        document.getElementById(
+            "umkmName"
+        ).value.trim();
 
-    if(!name || !owner || !phone || !location || !productName || !productPrice){
-        showToast("Mohon lengkapi data utama dan produk.");
+    const owner =
+        document.getElementById(
+            "umkmOwner"
+        ).value.trim();
+
+    const phone =
+        document.getElementById(
+            "umkmPhone"
+        ).value.trim();
+
+    const productName =
+        document.getElementById(
+            "newProductName"
+        ).value.trim();
+
+
+    if(
+        !name ||
+        !owner ||
+        !phone ||
+        !productName
+    ){
+
+        showToast(
+            "Mohon lengkapi data utama."
+        );
+
         return;
+
     }
 
-    const registration = {
-        name, owner, phone, location, category, description,
-        productName, productPrice, productDescription,
-        productStock, productCommission,
-        registeredAt:new Date().toLocaleDateString("id-ID")
-    };
-
-    localStorage.setItem("petrogrow_umkm_registration", JSON.stringify(registration));
 
     closeModal("umkmModal");
-    showToast("Pendaftaran UMKM berhasil disimpan! 🎉");
 
-    setTimeout(()=>openUMKMDashboard(),350);
+
+    showToast(
+        "Pendaftaran UMKM berhasil dikirim! 🎉"
+    );
+
+
+    /*
+        Catatan:
+        Pada versi prototype, data belum dikirim
+        ke database. Untuk sistem sungguhan,
+        bagian ini dapat dihubungkan ke backend.
+    */
+
 }
 
-
-
-
-/* =========================================================
-   UMKM DASHBOARD
-   Prototype: data tersimpan di browser (localStorage).
-========================================================= */
-
-const demoMarketingData = {
-    buyers: 87,
-    orders: 96,
-    productsSold: 142,
-    revenue: 2874000,
-    clicks: 624,
-    cities: [
-        {city:"Gresik", buyers:31, sales:980000},
-        {city:"Surabaya", buyers:24, sales:760000},
-        {city:"Sidoarjo", buyers:15, sales:495000},
-        {city:"Jakarta", buyers:9, sales:319000},
-        {city:"Kota lainnya", buyers:8, sales:320000}
-    ],
-    channels: [
-        {channel:"Website langsung", buyers:39, sales:1250000},
-        {channel:"Affiliate", buyers:34, sales:1044000},
-        {channel:"Media sosial", buyers:14, sales:580000}
-    ],
-    affiliate: {
-        clicks:214,
-        orders:34,
-        commission:104400,
-        payoutMethod:"DANA",
-        payoutAccount:"08xxxxxxxxxx",
-        status:"Siap dicairkan"
-    }
-};
-
-function getUMKMRegistration(){
-    try{
-        return JSON.parse(localStorage.getItem("petrogrow_umkm_registration") || "null");
-    }catch(e){
-        return null;
-    }
-}
-
-function openUMKMDashboard(){
-    const registration = getUMKMRegistration();
-    const data = demoMarketingData;
-    const container = document.getElementById("umkmDashboardContent");
-
-    const umkmName = registration ? registration.name : "Si Pisang Trepan";
-    const location = registration ? registration.location : "Gresik";
-    const productName = registration ? registration.productName : "Keripik Pisang Terapan";
-
-    let savedPayout = null;
-    try{ savedPayout = JSON.parse(localStorage.getItem("tjsl_affiliate_payout") || "null"); }catch(e){}
-    const payoutMethod = savedPayout?.method || data.affiliate.payoutMethod;
-    const payoutAccount = savedPayout?.account || data.affiliate.payoutAccount;
-    const commission = data.affiliate.commission;
-    const umkmRevenue = data.revenue - commission;
-
-    container.innerHTML = `
-        <div class="dashboard-note">
-            <strong>📌 ${registration ? "UMKM sudah terdaftar" : "Contoh Dashboard UMKM"}</strong><br>
-            ${registration ? `Data usaha <strong>${umkmName}</strong> tersimpan. Lokasi: ${location}.` : "Silakan daftar UMKM terlebih dahulu. Angka pemasaran di bawah adalah data simulasi untuk menunjukkan cara kerja dashboard."}
-        </div>
-
-        <div class="dashboard-grid">
-            <div class="dashboard-card"><span>👥 Pembeli</span><strong>${data.buyers}</strong></div>
-            <div class="dashboard-card"><span>🛒 Pesanan</span><strong>${data.orders}</strong></div>
-            <div class="dashboard-card"><span>📦 Produk Terjual</span><strong>${data.productsSold}</strong></div>
-            <div class="dashboard-card"><span>💰 Penjualan</span><strong>${formatRupiah(data.revenue)}</strong></div>
-        </div>
-
-        <div class="dashboard-section">
-            <h4>📣 Kinerja Pemasaran</h4>
-            <div class="dashboard-grid">
-                <div class="dashboard-card"><span>Total klik/link</span><strong>${data.clicks}</strong></div>
-                <div class="dashboard-card"><span>Konversi pembeli</span><strong>${((data.buyers/data.clicks)*100).toFixed(1)}%</strong></div>
-                <div class="dashboard-card"><span>Produk utama</span><strong style="font-size:15px;">${productName}</strong></div>
-                <div class="dashboard-card"><span>Lokasi UMKM</span><strong style="font-size:15px;">${location}</strong></div>
-            </div>
-        </div>
-
-        <div class="dashboard-section">
-            <h4>📍 Pembeli Berasal dari Mana?</h4>
-            <table class="dashboard-table">
-                <thead><tr><th>Lokasi</th><th>Jumlah Pembeli</th><th>Nilai Penjualan</th></tr></thead>
-                <tbody>
-                    ${data.cities.map(x=>`<tr><td>${x.city}</td><td>${x.buyers} orang</td><td>${formatRupiah(x.sales)}</td></tr>`).join("")}
-                </tbody>
-            </table>
-        </div>
-
-        <div class="dashboard-section">
-            <h4>💳 Uang Masuk & Aliran Dana</h4>
-            <div class="money-flow">
-                <div class="flow-item"><span>Total penjualan</span><strong>${formatRupiah(data.revenue)}</strong></div>
-                <div class="flow-item"><span>Masuk untuk UMKM</span><strong>${formatRupiah(umkmRevenue)}</strong></div>
-                <div class="flow-item"><span>Komisi affiliate</span><strong>${formatRupiah(commission)}</strong></div>
-            </div>
-            <p style="font-size:12px;color:#6b7280;margin-top:12px;">Alur: pembeli melakukan transaksi → penjualan tercatat → bagian komisi affiliate dihitung → sisanya menjadi nilai penjualan UMKM.</p>
-        </div>
-
-        <div class="dashboard-section">
-            <h4>🤝 Pemasaran Berdasarkan Channel</h4>
-            <table class="dashboard-table">
-                <thead><tr><th>Channel</th><th>Pembeli</th><th>Penjualan</th></tr></thead>
-                <tbody>
-                    ${data.channels.map(x=>`<tr><td>${x.channel}</td><td>${x.buyers} orang</td><td>${formatRupiah(x.sales)}</td></tr>`).join("")}
-                </tbody>
-            </table>
-        </div>
-
-        <div class="dashboard-section">
-            <h4>🔗 Uang Affiliate Masuk ke Mana?</h4>
-            <div class="money-flow">
-                <div class="flow-item"><span>Klik affiliate</span><strong>${data.affiliate.clicks}</strong></div>
-                <div class="flow-item"><span>Pesanan affiliate</span><strong>${data.affiliate.orders}</strong></div>
-                <div class="flow-item"><span>Komisi affiliate</span><strong>${formatRupiah(data.affiliate.commission)}</strong></div>
-            </div>
-            <div style="margin-top:14px;padding:14px;border:1px solid var(--border);border-radius:12px;">
-                <strong>Tujuan pencairan:</strong> ${data.affiliate.payoutMethod}<br>
-                <strong>Penerima:</strong> ${payoutAccount}<br>
-                <strong>Status:</strong> ${data.affiliate.status}
-            </div>
-            <p style="font-size:12px;color:#6b7280;margin-top:10px;">Tujuan pencairan affiliate dapat diisi saat affiliate membuat profil/link. Pada prototype ini belum terhubung ke payment gateway atau rekening bank sungguhan.</p>
-        </div>
-    `;
-
-    openModal("umkmDashboardModal");
-}
 
 /* =========================================================
    MODAL
