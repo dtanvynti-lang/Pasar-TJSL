@@ -1103,6 +1103,25 @@ footer{
     .dashboard-table th,.dashboard-table td{padding:8px 5px;}
 }
 
+/* ================= TOMBOL HAPUS / BATALKAN ================= */
+
+.danger-btn{
+    background:white;
+    color:var(--danger);
+    border:1px solid var(--danger);
+    padding:10px 17px;
+    border-radius:11px;
+    font-weight:700;
+}
+.danger-btn:hover{
+    background:#fee2e2;
+}
+.danger-btn.small{
+    padding:7px 12px;
+    font-size:12px;
+    margin-top:10px;
+}
+
 /* ================= TOAST ================= */
 
 .toast{
@@ -1900,6 +1919,14 @@ footer{
                 🔗 Buat Link Affiliate
             </button>
 
+            <button
+                class="danger-btn"
+                style="margin-left:8px;"
+                onclick="deleteAffiliate(encodeURIComponent(document.getElementById('affiliateIdInput').value.trim()))"
+            >
+                🗑 Hapus Akun Affiliate
+            </button>
+
             <div
                 id="generatedAffiliate"
                 style="display:none;margin-top:20px;"
@@ -2275,7 +2302,7 @@ const products = [
         name:"Tas Kepang",
         umkm:"Kampung Pisang Trepan",
         category:"Kerajinan",
-        price:90000,
+        price:100000,
         stock:7,
         commission:15,
         rating:4.8,
@@ -3385,7 +3412,6 @@ function openAffiliateDashboard(){
 
 
 /* =========================================================
-   CREATE AFFILIATE LINK/* =========================================================
    CREATE AFFILIATE LINK
 ========================================================= */
 
@@ -3484,7 +3510,6 @@ function updateAffiliateStats(){
 
 
 /* =========================================================
-   CHECK AFFILIATE LINK/* =========================================================
    CHECK AFFILIATE LINK
 ========================================================= */
 
@@ -3706,6 +3731,7 @@ function renderUMKMBinaan(){
                 <span>${categoryIcon(item.category)} ${escapeHTML(item.category)}</span>
                 <span>${item.products} Produk</span>
             </div>
+            ${item.registered ? `<button class="danger-btn small" onclick="deleteUMKM('${encodeURIComponent(item.name)}')">🗑 Batalkan / Hapus Pendaftaran</button>` : ""}
         </div>
     `).join("");
 
@@ -3768,8 +3794,8 @@ function openUMKMDashboard(){
     const umkmName=registration?registration.name:"Si Pisang Trepan"; const location=registration?registration.location:"Gresik"; const productName=registration?registration.productName:"Keripik Pisang Trepan";
     const profiles=getAffiliateProfiles(); const totals=getAffiliateTotals(); const affiliateClicks=totals.clicks; const affiliateOrders=totals.orders; const affiliateCommission=totals.commission;
     const umkmRevenue=Math.max(0,data.revenue-affiliateCommission); const conversion=affiliateClicks?((affiliateOrders/affiliateClicks)*100).toFixed(1):"0.0";
-    const affiliateRows=profiles.length?profiles.map(profile=>`<div class="affiliate-profile"><div class="affiliate-profile-head"><div><strong>${escapeHTML(profile.name||"Affiliate")}</strong><small style="display:block;">ID: ${escapeHTML(profile.id)}</small></div><strong style="color:var(--green);">${formatRupiah(Number(profile.commission||0))}</strong></div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px;font-size:12px;"><span>🔗 Klik: <strong>${Number(profile.clicks||0)}</strong></span><span>🛒 Pesanan: <strong>${Number(profile.orders||0)}</strong></span></div><div class="affiliate-payout-badge">💳 ${escapeHTML(profile.payoutMethod||"Belum diatur")} • ${escapeHTML(profile.payoutAccount||"Belum diatur")}</div><div style="font-size:12px;color:#6b7280;margin-top:7px;">Status: ${escapeHTML(profile.status||"Belum ada komisi")}</div></div>`).join(""):`<div style="padding:14px;border:1px dashed var(--border);border-radius:12px;color:#6b7280;">Belum ada affiliate yang terdaftar. Affiliate dapat membuat profil dan mengisi tujuan pencairannya melalui menu <strong>Gabung sebagai Affiliate</strong>.</div>`;
-    container.innerHTML=`<div class="dashboard-note"><strong>📌 ${registration?"UMKM sudah terdaftar":"Contoh Dashboard UMKM"}</strong><br>${registration?`Data usaha <strong>${escapeHTML(umkmName)}</strong> tersimpan. Lokasi: ${escapeHTML(location)}.`:"Silakan daftar UMKM terlebih dahulu. Angka penjualan utama di bawah adalah data simulasi untuk menunjukkan bentuk dashboard."}</div>
+    const affiliateRows=profiles.length?profiles.map(profile=>`<div class="affiliate-profile"><div class="affiliate-profile-head"><div><strong>${escapeHTML(profile.name||"Affiliate")}</strong><small style="display:block;">ID: ${escapeHTML(profile.id)}</small></div><strong style="color:var(--green);">${formatRupiah(Number(profile.commission||0))}</strong></div><div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px;font-size:12px;"><span>🔗 Klik: <strong>${Number(profile.clicks||0)}</strong></span><span>🛒 Pesanan: <strong>${Number(profile.orders||0)}</strong></span></div><div class="affiliate-payout-badge">💳 ${escapeHTML(profile.payoutMethod||"Belum diatur")} • ${escapeHTML(profile.payoutAccount||"Belum diatur")}</div><div style="font-size:12px;color:#6b7280;margin-top:7px;">Status: ${escapeHTML(profile.status||"Belum ada komisi")}</div><button class="danger-btn small" onclick="deleteAffiliate('${encodeURIComponent(profile.id)}',true)">🗑 Hapus Affiliate</button></div>`).join(""):`<div style="padding:14px;border:1px dashed var(--border);border-radius:12px;color:#6b7280;">Belum ada affiliate yang terdaftar. Affiliate dapat membuat profil dan mengisi tujuan pencairannya melalui menu <strong>Gabung sebagai Affiliate</strong>.</div>`;
+    container.innerHTML=`<div class="dashboard-note"><strong>📌 ${registration?"UMKM sudah terdaftar":"Contoh Dashboard UMKM"}</strong><br>${registration?`Data usaha <strong>${escapeHTML(umkmName)}</strong> tersimpan. Lokasi: ${escapeHTML(location)}.<br><button class="danger-btn small" onclick="deleteUMKM('${encodeURIComponent(umkmName)}',true)">🗑 Batalkan / Hapus Pendaftaran UMKM</button>`:"Silakan daftar UMKM terlebih dahulu. Angka penjualan utama di bawah adalah data simulasi untuk menunjukkan bentuk dashboard."}</div>
     <div class="dashboard-grid"><div class="dashboard-card"><span>👥 Pembeli</span><strong>${data.buyers}</strong></div><div class="dashboard-card"><span>🛒 Pesanan</span><strong>${data.orders}</strong></div><div class="dashboard-card"><span>📦 Produk Terjual</span><strong>${data.productsSold}</strong></div><div class="dashboard-card"><span>💰 Penjualan</span><strong>${formatRupiah(data.revenue)}</strong></div></div>
     <div class="dashboard-section"><h4>📣 Kinerja Pemasaran</h4><div class="dashboard-grid"><div class="dashboard-card"><span>Total klik semua affiliate</span><strong>${affiliateClicks}</strong></div><div class="dashboard-card"><span>Konversi affiliate</span><strong>${conversion}%</strong></div><div class="dashboard-card"><span>Produk utama</span><strong style="font-size:15px;">${escapeHTML(productName)}</strong></div><div class="dashboard-card"><span>Lokasi UMKM</span><strong style="font-size:15px;">${escapeHTML(location)}</strong></div></div></div>
     <div class="dashboard-section"><h4>📍 Pembeli Berasal dari Mana?</h4><table class="dashboard-table"><thead><tr><th>Lokasi</th><th>Jumlah Pembeli</th><th>Nilai Penjualan</th></tr></thead><tbody>${data.cities.map(x=>`<tr><td>${escapeHTML(x.city)}</td><td>${x.buyers} orang</td><td>${formatRupiah(x.sales)}</td></tr>`).join("")}</tbody></table></div>
@@ -3781,7 +3807,85 @@ function openUMKMDashboard(){
 
 
 /* =========================================================
-   MODAL/* =========================================================
+   HAPUS / BATALKAN PENDAFTARAN
+========================================================= */
+
+function deleteUMKM(encodedName, fromDashboard = false){
+
+    const name = decodeURIComponent(encodedName);
+
+    if(!confirm(`Hapus pendaftaran UMKM "${name}"? Data usaha dan produk yang didaftarkan akan dihapus.`))
+        return;
+
+    const registrations = getUMKMRegistrations().filter(
+        x => String(x.name || "").toLowerCase() !== name.toLowerCase()
+    );
+
+    localStorage.setItem("petrogrow_umkm_registrations", JSON.stringify(registrations));
+
+    if(registrations.length){
+        localStorage.setItem(
+            "petrogrow_umkm_registration",
+            JSON.stringify(registrations[registrations.length - 1])
+        );
+    }else{
+        localStorage.removeItem("petrogrow_umkm_registration");
+    }
+
+    renderUMKMBinaan();
+
+    if(fromDashboard) openUMKMDashboard();
+
+    showToast("Pendaftaran UMKM berhasil dihapus 🗑");
+
+}
+
+
+function deleteAffiliate(encodedId, fromDashboard = false){
+
+    const id = decodeURIComponent(encodedId || "");
+
+    if(!id || !getAffiliateProfile(id)){
+        showToast("Akun affiliate ini belum tersimpan.");
+        return;
+    }
+
+    if(!confirm(`Hapus akun affiliate "${id}"? Data klik, pesanan, komisi, dan tujuan pencairan akan dihapus.`))
+        return;
+
+    saveAffiliateProfiles(
+        getAffiliateProfiles().filter(
+            x => String(x.id).toLowerCase() !== id.toLowerCase()
+        )
+    );
+
+    if((localStorage.getItem("tjsl_affiliate_id") || "").toLowerCase() === id.toLowerCase())
+        localStorage.removeItem("tjsl_affiliate_id");
+
+    if((localStorage.getItem("tjsl_active_affiliate_ref") || "").toLowerCase() === id.toLowerCase())
+        localStorage.removeItem("tjsl_active_affiliate_ref");
+
+    try{
+        const payout = JSON.parse(localStorage.getItem("tjsl_affiliate_payout") || "null");
+        if(payout && String(payout.affiliateId).toLowerCase() === id.toLowerCase())
+            localStorage.removeItem("tjsl_affiliate_payout");
+    }catch(e){}
+
+    currentAffiliateLink = "";
+    document.getElementById("generatedAffiliate").style.display = "none";
+
+    if(fromDashboard){
+        openUMKMDashboard();
+    }else{
+        openAffiliateDashboard(); /* form direset dengan ID affiliate baru */
+    }
+
+    showToast("Akun affiliate berhasil dihapus 🗑");
+
+}
+
+
+/* =========================================================
    MODAL
 ========================================================= */
 
